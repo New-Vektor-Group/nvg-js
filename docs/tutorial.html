@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="http://ex.nvg-team.com/bootstrap2.css" rel="stylesheet" type="text/css" media="all"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>NVG JS GUIDE</title>
+	<style type="text/css">
+		.nvgc
+		{
+			background-color: rgb(230,230,230);
+		}
+	</style>
+</head>
+<body>
+<div class="container-fluid bg-dark">
+	<div class="row">
+		<div style="height: 100%;" class="col-md-3 bg-dark text-light">
+			<br>
+			<h1>NVG Guide <span class="text-warning">JavaScript</span></h1>
+			<hr style="background-color: white;">
+			<ol>
+				<li><button data-toggle="collapse" data-target="#main2" id="main" class="btn btn-lg btn-block btn-outline-success">Main</button></li><br>
+				<li><button data-toggle="collapse" data-target="#math2" id="math" class="btn btn-lg btn-block btn-outline-success">Math</button></li><br>
+				<li><button data-toggle="collapse" data-target="#cookie2" id="cookie" class="btn btn-lg btn-block btn-outline-success">Cookie</button></li><br>
+				<!--<li><button data-toggle="collapse" data-target="#snow2" id="snow" class="btn btn-lg btn-block btn-outline-success">Snow</button></li><br>-->
+			</ol>
+		</div>
+		<div class="col-md-8 bg-light text-dark">
+			<br>
+			<hr style="background-color: black;">
+			<div class="accordion" id="accordionExample">
+				<div id="main2" data-parent="#accordionExample" class="collapse show">
+					<h1>Main</h1>
+					<ul>
+						<li class="my-4"><h5>Get height of screen</h5>
+							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_sh;</p>
+							<div>Here y might be, for example, 1080 pixels.</div>
+						</li>
+						<li class="my-4"><h5>Get width of screen</h5>
+							<p class="nvgc py-3 px-3"><code>var x =</code> nvg_sw;</p>
+							<div>Here x might be, for example, 1920 pixels.</div>
+						</li>
+						<li class="my-4"><h5>Button for scroll action</h5>
+							<p class="nvgc py-3 px-3">scrollTopSoft(<code>id</code>);</p>
+							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;button/&gt;</code>
+							<br>.(JS).<br><var>scrollTopSoft(<code>scrtbtn</code>);</var></div>
+						</li>
+						<li class="my-4"><h5>Sroll button in bottom right</h5>
+							<p class="nvgc py-3 px-3">setBtnSofter(<code>offset</code>, <code>btn_id</code>);</p>
+							<div>Set button, which should be to show or to hide in relative to current scroll position.</div>
+							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;button/&gt;</code>
+							<br>.(JS).<br><var>setBtnSofter(<code>90, scrbtn</code>);</var></div>
+						</li>
+						<br><br><br><br><br><br><br><br>
+					</ul>
+				</div>
+				<div id="math2" data-parent="#accordionExample" class="collapse hide">
+					<h1>Math</h1>
+					<ul>
+						<li class="my-4"><h5>Random</h5>
+							<p class="nvgc py-3 px-3"><code>var cis =</code> nvgRand(min, max);</p>
+							<div>Returns a random number between min (included) and max (not included)</div>
+						</li>
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+						<br><br><br><br><br><br><br><br>
+					</ul>
+				</div>
+				<div id="cookie2" data-parent="#accordionExample" class="collapse hide">
+					<h1>Work with cookies</h1>
+					<ul>
+						<li class="my-4"><h5>Create</h5>
+							<p class="nvgc py-3 px-3">setCookie(<code>keyname</code>, <code>value</code>, <code>options</code>);</p>
+							<div></div>
+						</li>
+						<li class="my-4"><h5>Get</h5>
+							<p class="nvgc py-3 px-3">getCookie(<code>keyname</code>);</p>
+							<div></div>
+						</li>
+						<li class="my-4"><h5>Delete</h5>
+							<p class="nvgc py-3 px-3">deleteCookie(<code>keyname</code>);</p>
+							<div></div>
+						</li>
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+					</ul>
+				</div>
+				<div id="snow2" data-parent="#accordionExample" class="collapse hide">
+					4
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1 bg-secondary">
+			<p class="mt-5 text-light">by NVG &copy;</p>
+		</div>
+	</div>
+</div>
+<div class="py-5 bg-dark">
+	&nbsp;
+</div>
+<footer> <script src="http://ex.nvg-team.com/jquery-3.3.1.js"></script>
+  <script src="http://ex.nvg-team.com/bootstrap3.js"></script>
+<script type="text/javascript">
+	
+</script></footer>
+</body>
+</html>
