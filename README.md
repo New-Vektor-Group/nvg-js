@@ -12,19 +12,23 @@ Next, connect libs
 <script lang="js">...Here...</script>
 ```
 ____________________________________________________________________
+* Connect all libs
+```
+nvg_connect("all")
+```
 * Main
 ```
-nvg_connect(main)
+nvg_connect("main")
 ```
 * Math
 ```
-nvg_connect(math)
+nvg_connect("math")
 ```
 * Cookies
 ```
-nvg_connect(cookie)
+nvg_connect("cookie")
 ```
 * Snow falling
 ```
-nvg_connect(snow)
+nvg_connect("snow")
 ```
