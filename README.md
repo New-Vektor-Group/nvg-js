@@ -1,4 +1,4 @@
-# nvg-js
+# NVG Framework for JavaScript (Web Development)
 NVG JS framework for web dev.
 
 ## Getting Started
