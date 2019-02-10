@@ -7,7 +7,7 @@ To connect framework from online write in HTML
 ```
 <script src="http://ex.nvg-team.com/nvg.js"></script>
 ```
-Next, connect libs. Instead of "path" write path where is located lib folder.
+Next, connect libs. Instead of "path" write path where is located lib folder or leave it empty "", if it is local.
 ```
 <script lang="js">...Here...</script>
 ```
