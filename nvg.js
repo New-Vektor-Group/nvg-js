@@ -33,17 +33,20 @@ document.body.appendChild(js);
   }
   else if(arg=="all")
   {
-            var js = document.createElement("script");
+            var js0 = document.createElement("script");
+                js1 = document.createElement("script");
+                js2 = document.createElement("script");
+                js3 = document.createElement("script");
 
-js.type = "text/javascript";
-js.src = path+"lib/nvg-snow.js";
-document.body.appendChild(js);
-js.src = path+"lib/nvg-math.js";
-document.body.appendChild(js);
-js.src = path+"lib/nvg-main.js";
-document.body.appendChild(js);
-js.src = path+"lib/nvg-cookie.js";
-document.body.appendChild(js);
+js0.type = "text/javascript";js1.type = "text/javascript";js2.type = "text/javascript";js3.type = "text/javascript";
+js0.src = path+"lib/nvg-snow.js";
+document.body.appendChild(js0);
+js1.src = path+"lib/nvg-math.js";
+document.body.appendChild(js1);
+js2.src = path+"lib/nvg-main.js";
+document.body.appendChild(js2);
+js3.src = path+"lib/nvg-cookie.js";
+document.body.appendChild(js3);
   }
   else
   {
