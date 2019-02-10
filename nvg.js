@@ -1,26 +1,49 @@
 function nvg_connect(arg) {
   if(arg=="cookie")
   {
-    $.getScript("http://ex.nvg-team.com/lib/nvg-cookie.js");
+    var js = document.createElement("script");
+
+js.type = "text/javascript";
+js.src = "lib/nvg-cookie.js";
+document.body.appendChild(js);
   }
   else if(arg=="math")
   {
-    $.getScript("http://ex.nvg-team.com/lib/nvg-math.js");
+        var js = document.createElement("script");
+
+js.type = "text/javascript";
+js.src = "lib/nvg-math.js";
+document.body.appendChild(js);
   }
   else if(arg=="main")
   {
-    $.getScript("http://ex.nvg-team.com/lib/nvg-main.js");
+        var js = document.createElement("script");
+
+js.type = "text/javascript";
+js.src = "lib/nvg-main.js";
+document.body.appendChild(js);
   }
   else if(arg=="snow")
   {
-    $.getScript("http://ex.nvg-team.com/lib/nvg-snow.js");
+        var js = document.createElement("script");
+
+js.type = "text/javascript";
+js.src = "lib/nvg-snow.js";
+document.body.appendChild(js);
   }
   else if(arg=="all")
   {
-    $.getScript("http://ex.nvg-team.com/lib/nvg-snow.js");
-    $.getScript("http://ex.nvg-team.com/lib/nvg-cookie.js");
-    $.getScript("http://ex.nvg-team.com/lib/nvg-math.js");
-    $.getScript("http://ex.nvg-team.com/lib/nvg-main.js");
+            var js = document.createElement("script");
+
+js.type = "text/javascript";
+js.src = "lib/nvg-snow.js";
+document.body.appendChild(js);
+js.src = "lib/nvg-math.js";
+document.body.appendChild(js);
+js.src = "lib/nvg-main.js";
+document.body.appendChild(js);
+js.src = "lib/nvg-cookie.js";
+document.body.appendChild(js);
   }
   else
   {
