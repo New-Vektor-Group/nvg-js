@@ -15,6 +15,13 @@ function nvg_connect(arg) {
   {
     $.getScript("lib/nvg-snow.js");
   }
+  else if(arg=="all")
+  {
+    $.getScript("lib/nvg-snow.js");
+	$.getScript("lib/nvg-cookie.js");
+    $.getScript("lib/nvg-math.js");
+    $.getScript("lib/nvg-main.js");
+  }
   else
   {
     alert("Connect error")
