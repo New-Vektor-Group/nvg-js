@@ -8,6 +8,10 @@ To connect framework write in HTML
 <script src="http://ex.nvg-team.com/nvg.js"></script>
 ```
 Next, connect libs
+```
+<script lang="js">...Here...</script>
+```
+____________________________________________________________________
 * Main
 ```
 nvg_connect(main)
