@@ -1,10 +1,10 @@
-function nvg_connect(arg) {
+function nvg_connect(arg,path) {
   if(arg=="cookie")
   {
     var js = document.createElement("script");
 
 js.type = "text/javascript";
-js.src = "lib/nvg-cookie.js";
+js.src = path+"lib/nvg-cookie.js";
 document.body.appendChild(js);
   }
   else if(arg=="math")
@@ -12,7 +12,7 @@ document.body.appendChild(js);
         var js = document.createElement("script");
 
 js.type = "text/javascript";
-js.src = "lib/nvg-math.js";
+js.src = path+"lib/nvg-math.js";
 document.body.appendChild(js);
   }
   else if(arg=="main")
@@ -20,7 +20,7 @@ document.body.appendChild(js);
         var js = document.createElement("script");
 
 js.type = "text/javascript";
-js.src = "lib/nvg-main.js";
+js.src = path+"lib/nvg-main.js";
 document.body.appendChild(js);
   }
   else if(arg=="snow")
@@ -28,7 +28,7 @@ document.body.appendChild(js);
         var js = document.createElement("script");
 
 js.type = "text/javascript";
-js.src = "lib/nvg-snow.js";
+js.src = path+"lib/nvg-snow.js";
 document.body.appendChild(js);
   }
   else if(arg=="all")
@@ -36,13 +36,13 @@ document.body.appendChild(js);
             var js = document.createElement("script");
 
 js.type = "text/javascript";
-js.src = "lib/nvg-snow.js";
+js.src = path+"lib/nvg-snow.js";
 document.body.appendChild(js);
-js.src = "lib/nvg-math.js";
+js.src = path+"lib/nvg-math.js";
 document.body.appendChild(js);
-js.src = "lib/nvg-main.js";
+js.src = path+"lib/nvg-main.js";
 document.body.appendChild(js);
-js.src = "lib/nvg-cookie.js";
+js.src = path+"lib/nvg-cookie.js";
 document.body.appendChild(js);
   }
   else
