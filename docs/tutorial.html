@@ -11,6 +11,7 @@
 			background-color: rgb(230,230,230);
 		}
 	</style>
+	<script src="http://ex.nvg-team.com/jquery-3.3.1.js"></script>
 </head>
 <body>
 <div class="container-fluid bg-dark">
@@ -34,11 +35,11 @@
 					<h1>Main</h1>
 					<ul>
 						<li class="my-4"><h5>Get height of screen</h5>
-							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_sh;</p>
+							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_sh();</p>
 							<div>Here y might be, for example, 1080 pixels.</div>
 						</li>
 						<li class="my-4"><h5>Get width of screen</h5>
-							<p class="nvgc py-3 px-3"><code>var x =</code> nvg_sw;</p>
+							<p class="nvgc py-3 px-3"><code>var x =</code> nvg_sw();</p>
 							<div>Here x might be, for example, 1920 pixels.</div>
 						</li>
 						<li class="my-4"><h5>Button for scroll action</h5>
@@ -50,7 +51,19 @@
 							<p class="nvgc py-3 px-3">setBtnSofter(<code>offset</code>, <code>btn_id</code>);</p>
 							<div>Set button, which should be to show or to hide in relative to current scroll position.</div>
 							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;button/&gt;</code>
-							<br>.(JS).<br><var>setBtnSofter(<code>90, scrbtn</code>);</var></div>
+							<br>.(JS).<br><var>setBtnSofter(<code>40, scrbtn</code>);</var></div>
+						</li>
+						<li class="my-4"><h5>Auto copy text by clicking</h5>
+							<p class="nvgc py-3 px-3">nvgcopy(<code>button</code>, <code>text_area</code>);</p>
+							<div>Set button when click to copy some text.</div>
+							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;button/&gt;</code>
+							<br>.(JS).<br><var>nvgcopy(<code>"btn", "text"</code>);</var></div>
+							<div><br><b>EXAMPLE</b><br><br>
+									<button id="btn" class="btn btn-warning">Click me)</button><br>
+									<div id="textt" class="alert alert-warning col-6">Some text by NVG. Check it. Ctrl+V somewhere.</div>
+									<script src="../lib/nvg-main.js"></script>
+									<script type="text/javascript">nvgcopy("btn","textt");</script>
+							</div>
 						</li>
 						<br><br><br><br><br><br><br><br>
 					</ul>
