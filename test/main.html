@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link href="https://ex.nvg-team.com/bootstrap3.css" rel="stylesheet" type="text/css" media="all"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>Test1</title>
+</head> 
+<body> 
+
+<div class="d-inline-block bg-primary px-5 py-2 text-light">
+Version = <span id="version">for moment testing</span>
+</div>
+<hr>
+
+<div class="d-inline-block bg-success px-5 py-2 text-light">
+Screen width = <span id="sh1">for moment testing</span><br>
+Screen height = <span id="sh2">for moment testing</span>
+</div>
+
+<div class="d-inline-block bg-success px-5 py-2 text-light">
+Window width = <span id="wh1">for moment testing</span><br>
+Window height = <span id="wh2">for moment testing</span>
+</div>
+
+<footer> 
+<script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script> 
+<script src="https://ex.nvg-team.com/bootstrap3.js"></script> 
+<script src="../lib/nvg-main.js"></script> 
+<script type="text/javascript">
+$("#version").text(nvgjs.getVersion());
+
+$("#sh1").text(nvg_sw());
+$("#sh2").text(nvg_sh());
+
+$("#wh1").text(nvg_swa());
+$("#wh2").text(nvg_sha());
+</script>
+</footer> 
+</body> 
+</html> 

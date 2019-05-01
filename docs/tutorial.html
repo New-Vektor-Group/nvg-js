@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link href="http://ex.nvg-team.com/bootstrap2.css" rel="stylesheet" type="text/css" media="all"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>NVG JS GUIDE</title>
 	<style type="text/css">
@@ -36,27 +36,48 @@
 					<ul>
 						<li class="my-4"><h5>Get height of screen</h5>
 							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_sh();</p>
-							<div>Here y might be, for example, 1080 pixels.</div>
+							<div>Here y might be, for example, 1080 pixels. <i>(Works when page loads)</i></div>
 						</li>
 						<li class="my-4"><h5>Get width of screen</h5>
 							<p class="nvgc py-3 px-3"><code>var x =</code> nvg_sw();</p>
-							<div>Here x might be, for example, 1920 pixels.</div>
+							<div>Here x might be, for example, 1920 pixels. <i>(Works when page loads)</i></div>
 						</li>
-						<li class="my-4"><h5>Button for scroll action</h5>
-							<p class="nvgc py-3 px-3">scrollTopSoft(<code>id</code>);</p>
-							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;button/&gt;</code>
-							<br>.(JS).<br><var>scrollTopSoft(<code>scrtbtn</code>);</var></div>
+
+						<li class="my-4"><h5>Get height of window</h5>
+							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_sha();</p>
+							<div>Here y might be, for example, 929 pixels. <i>(Works when page loads)</i></div>
 						</li>
-						<li class="my-4"><h5>Sroll button in bottom right</h5>
-							<p class="nvgc py-3 px-3">setBtnSofter(<code>offset</code>, <code>btn_id</code>);</p>
-							<div>Set button, which should be to show or to hide in relative to current scroll position.</div>
-							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;button/&gt;</code>
-							<br>.(JS).<br><var>setBtnSofter(<code>40, scrbtn</code>);</var></div>
+						<li class="my-4"><h5>Get width of window</h5>
+							<p class="nvgc py-3 px-3"><code>var x =</code> nvg_swa();</p>
+							<div>Here x might be, for example, 927 pixels. <i>(Works when page loads)</i></div>
 						</li>
+						<li class="my-4"><h5>Get scroll position at a page</h5>
+							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_scroll();</p>
+							<div>Here x might be, for example, 0. <i>(Works when page loads)</i></div>
+						</li>
+
+						<li class="my-4"><h5>Button for scrolling down/up <code>!only overflow scroll elements!</code></h5>
+							<p class="nvgc py-3 px-3">nvgjs.scrollbot(<code>element</code>);</p>
+							<p class="nvgc py-3 px-3">nvgjs.scrolltop(<code>element</code>);</p>
+							<div>For example, (HTML) <br><code>&lt;textarea id="lbtn"&gt;TEXT.A.LOT.OF.TEXT&lt;/textarea&gt;</code>
+							<br>.(JS).<br><var>nvgjs.scrollbot(<code>"#lbtn"</code>);</var></div>
+						</li>
+
+						<li class="my-4"><h5>Click for soft scroll to top/bot/custom</h5>
+							<p class="nvgc py-3 px-3">nvgjs.ScrollTopSoft();</p>
+							<div>For example, (HTML) <br><code>&lt;button onclick="nvgjs.ScrollTopSoft()" class="btn"&gt;Up&lt;/button&gt;</code></div>
+							<hr>
+							<p class="nvgc py-3 px-3">nvgjs.ScrollBotSoft();</p>
+							<div>For example, (HTML) <br><code>&lt;button onclick="nvgjs.ScrollBotSoft()" class="btn"&gt;Down&lt;/button&gt;</code></div>
+							<hr>
+							<p class="nvgc py-3 px-3">nvgjs.ScrollSoft(<code>y-coord</code>);</p>
+							<div>For example, (HTML) <br><code>&lt;button onclick="nvgjs.ScrollSoft(200)" class="btn"&gt;Scroll&lt;/button&gt;</code></div>
+						</li>
+						
 						<li class="my-4"><h5>Auto copy text by clicking</h5>
 							<p class="nvgc py-3 px-3">nvgcopy(<code>button</code>, <code>text_area</code>);</p>
 							<div>Set button when click to copy some text.</div>
-							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;button/&gt;</code>
+							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;/button&gt;</code>
 							<br>.(JS).<br><var>nvgcopy(<code>"btn", "text"</code>);</var></div>
 							<div><br><b>EXAMPLE</b><br><br>
 									<button id="btn" class="btn btn-warning">Click me)</button><br>
@@ -66,11 +87,6 @@
 							</div>
 						</li>
 
-						<li class="my-4"><h5>Set smooth scroll for button</h5>
-							<p class="nvgc py-3 px-3">setSmoothBTN(<code>button_id</code>);</p>
-							<div>For example, (HTML) <br><code>&lt;button id="btn" class="btn"&gt;Scroll&lt;button/&gt;</code>
-							<br>.(JS).<br><var>setSmoothBTN(<code>"btn"</code>);</var></div>
-						</li>
 						<br><br><br><br><br><br><br><br>
 					</ul>
 				</div>
