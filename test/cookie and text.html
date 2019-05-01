@@ -10,6 +10,9 @@
 <br>
 <div class="container text-dark mt-5">
 	<hr>
+	<button class="btn btn-info" onclick="nvg_cook.setCookie('lol',228, {expires: 50});">Set cookie "LoL"</button>
+	<button class="btn btn-info" onclick="alert(nvg_cook.getCookie('lol'))">Get cookie "LoL"</button>
+	<button class="btn btn-info" onclick="nvg_cook.deleteCookie('lol')">Delete cookie "LoL"</button>
 	 <h1>Without nl2br</h1>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
 	velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet,
@@ -49,6 +52,7 @@ adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliq
 <script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script> 
 <script src="https://ex.nvg-team.com/bootstrap3.js"></script> 
 <script src="../lib/nvg-text.js"></script> 
+<script src="../lib/nvg-cookie.js"></script> 
 <script type="text/javascript">
 
 
