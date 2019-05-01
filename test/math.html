@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link href="https://ex.nvg-team.com/bootstrap3.css" rel="stylesheet" type="text/css" media="all"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>Test1</title>
+</head> 
+<body> 
+
+<div class="d-inline-block bg-primary px-5 py-2 text-light">
+Random number = <span id="rand">from 0 to 6</span>
+</div>
+<hr>
+
+<div class="d-inline-block bg-success px-5 py-2 text-light">
+Sigm process (x=random) = <span id="sigm"></span><br>
+
+</div>
+
+
+<footer> 
+<script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script> 
+<script src="https://ex.nvg-team.com/bootstrap3.js"></script> 
+<script src="../lib/nvg-math.js"></script> 
+<script type="text/javascript">
+$("#rand").text(nvgRand(0,6+1));
+$("#sigm").text(nvgm.sigm(parseInt($("#rand").text())));
+</script>
+</footer> 
+</body> 
+</html> 
