@@ -36,24 +36,24 @@
 					<h1>Main</h1> <small>nvg-main.js</small>
 					<ul>
 						<li class="my-4"><h5>Get height of screen</h5>
-							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_sh();</p>
+							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_sh(); <small class="text-primary">:int</small></p>
 							<div>Here y might be, for example, 1080 pixels. <i>(Works when page loads)</i></div>
 						</li>
 						<li class="my-4"><h5>Get width of screen</h5>
-							<p class="nvgc py-3 px-3"><code>var x =</code> nvg_sw();</p>
+							<p class="nvgc py-3 px-3"><code>var x =</code> nvg_sw(); <small class="text-primary">:int</small></p>
 							<div>Here x might be, for example, 1920 pixels. <i>(Works when page loads)</i></div>
 						</li>
 
 						<li class="my-4"><h5>Get height of window</h5>
-							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_sha();</p>
+							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_sha(); <small class="text-primary">:int</small></p>
 							<div>Here y might be, for example, 929 pixels. <i>(Works when page loads)</i></div>
 						</li>
 						<li class="my-4"><h5>Get width of window</h5>
-							<p class="nvgc py-3 px-3"><code>var x =</code> nvg_swa();</p>
+							<p class="nvgc py-3 px-3"><code>var x =</code> nvg_swa(); <small class="text-primary">:int</small></p>
 							<div>Here x might be, for example, 927 pixels. <i>(Works when page loads)</i></div>
 						</li>
 						<li class="my-4"><h5>Get scroll position at a page</h5>
-							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_scroll();</p>
+							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_scroll(); <small class="text-primary">:int</small></p>
 							<div>Here x might be, for example, 0. <i>(Works when page loads)</i></div>
 						</li>
 
@@ -95,7 +95,7 @@
 					<h1>Math</h1> <small>nvg-math.js</small>
 					<ul>
 						<li class="my-4"><h5>Random</h5>
-							<p class="nvgc py-3 px-3"><code>var cis =</code> nvgRand(min, max);</p>
+							<p class="nvgc py-3 px-3"><code>var cis =</code> nvgRand(min, max); <small class="text-primary">:int</small></p>
 							<div>Returns a random number between min (included) and max (not included)</div>
 						</li>
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -110,7 +110,7 @@
 							<div></div>
 						</li>
 						<li class="my-4"><h5>Get</h5>
-							<p class="nvgc py-3 px-3">getCookie(<code>keyname</code>);</p>
+							<p class="nvgc py-3 px-3">getCookie(<code>keyname</code>); <small class="text-primary">:string</small></p>
 							<div></div>
 						</li>
 						<li class="my-4"><h5>Delete</h5>
@@ -124,8 +124,9 @@
 					<h1>Work with text</h1> <small>nvg-text.js</small>
 					<ul>
 						<li class="my-4"><h5>New lines</h5>
-							<p class="nvgc py-3 px-3">nvgtext.nl2br(<code>keyname</code>, <code>value</code>, <code>options</code>);</p>
+							<p class="nvgc py-3 px-3">nvgtext.nl2br(<code>element</code>, <code>is xhtml?</code>); <small class="text-primary">:string</small></p>
 							<div>Returns string with &lt;br/&gt; or &lt;br&gt; inserted before all newlines (\r\n, \n\r, \n and \r).</div>
+							<div>For example, <var>$(<code>"#text"</code>).html(nvgtext.nl2br($(<code>"#text"</code>).text(),false));</var>. Process text by function nl2br.</div>
 						</li>
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 					</ul>
