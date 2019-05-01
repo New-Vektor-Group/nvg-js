@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="http://ex.nvg-team.com/bootstrap2.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="https://ex.nvg-team.com/bootstrap3.css" rel="stylesheet" type="text/css" media="all"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>NVG JS GUIDE</title>
@@ -11,7 +11,7 @@
 			background-color: rgb(230,230,230);
 		}
 	</style>
-	<script src="http://ex.nvg-team.com/jquery-3.3.1.js"></script>
+	<script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script>
 </head>
 <body>
 <div class="container-fluid bg-dark">
@@ -24,6 +24,7 @@
 				<li><button data-toggle="collapse" data-target="#main2" id="main" class="btn btn-lg btn-block btn-outline-warning">Main</button></li><br>
 				<li><button data-toggle="collapse" data-target="#math2" id="math" class="btn btn-lg btn-block btn-outline-warning">Math</button></li><br>
 				<li><button data-toggle="collapse" data-target="#cookie2" id="cookie" class="btn btn-lg btn-block btn-outline-warning">Cookie</button></li><br>
+				<li><button data-toggle="collapse" data-target="#textt2" id="textt" class="btn btn-lg btn-block btn-outline-warning">Text</button></li><br>
 				<!--<li><button data-toggle="collapse" data-target="#snow2" id="snow" class="btn btn-lg btn-block btn-outline-warning">Snow</button></li><br>-->
 			</ol>
 		</div>
@@ -32,7 +33,7 @@
 			<hr style="background-color: black;">
 			<div class="accordion" id="accordionExample">
 				<div id="main2" data-parent="#accordionExample" class="collapse show">
-					<h1>Main</h1>
+					<h1>Main</h1> <small>nvg-main.js</small>
 					<ul>
 						<li class="my-4"><h5>Get height of screen</h5>
 							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_sh();</p>
@@ -91,7 +92,7 @@
 					</ul>
 				</div>
 				<div id="math2" data-parent="#accordionExample" class="collapse hide">
-					<h1>Math</h1>
+					<h1>Math</h1> <small>nvg-math.js</small>
 					<ul>
 						<li class="my-4"><h5>Random</h5>
 							<p class="nvgc py-3 px-3"><code>var cis =</code> nvgRand(min, max);</p>
@@ -102,7 +103,7 @@
 					</ul>
 				</div>
 				<div id="cookie2" data-parent="#accordionExample" class="collapse hide">
-					<h1>Work with cookies</h1>
+					<h1>Work with cookies</h1> <small>nvg-cookie.js</small>
 					<ul>
 						<li class="my-4"><h5>Create</h5>
 							<p class="nvgc py-3 px-3">setCookie(<code>keyname</code>, <code>value</code>, <code>options</code>);</p>
@@ -115,6 +116,16 @@
 						<li class="my-4"><h5>Delete</h5>
 							<p class="nvgc py-3 px-3">deleteCookie(<code>keyname</code>);</p>
 							<div></div>
+						</li>
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+					</ul>
+				</div>
+				<div id="textt2" data-parent="#accordionExample" class="collapse hide">
+					<h1>Work with text</h1> <small>nvg-text.js</small>
+					<ul>
+						<li class="my-4"><h5>New lines</h5>
+							<p class="nvgc py-3 px-3">nvgtext.nl2br(<code>keyname</code>, <code>value</code>, <code>options</code>);</p>
+							<div>Returns string with &lt;br/&gt; or &lt;br&gt; inserted before all newlines (\r\n, \n\r, \n and \r).</div>
 						</li>
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 					</ul>
@@ -132,8 +143,8 @@
 <div class="py-5 bg-dark">
 	&nbsp;
 </div>
-<footer> <script src="http://ex.nvg-team.com/jquery-3.3.1.js"></script>
-  <script src="http://ex.nvg-team.com/bootstrap3.js"></script>
+<footer> <script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script>
+  <script src="https://ex.nvg-team.com/bootstrap3.js"></script>
 <script type="text/javascript">
 	
 </script></footer>

@@ -1,17 +1,17 @@
-# NVG Framework for JavaScript (Web Development)
-NVG JS framework for web dev.
+# NVG Library for JavaScript (Web Development)
+NVG JS Library for web dev.
 
 ## Getting Started
 To connect framework from online write in HTML 
 
 ```
-<script src="http://ex.nvg-team.com/nvg.js"></script>
+<script src="https://ex.nvg-team.com/lib/nvg-main.js"></script>
 ```
 
 To connect framework from local
 
 ```
-<script src="YOUR_PATH/nvg.js"></script>
+<script src="YOUR_PATH/nvg-main.js"></script>
 ```
 
 Next, connect libs. Instead of "path" write path where is located lib folder or leave it empty "", if it is local.
@@ -19,30 +19,15 @@ Next, connect libs. Instead of "path" write path where is located lib folder or 
 <script type="text/javascript">...Here...</script>
 ```
 ____________________________________________________________________
-* Connect all libs
+* Connect any library
 ```
-nvg_connect("all",path)
+<script src="https://ex.nvg-team.com/lib/nvg-text.js"></script>
 ```
-* Main
-```
-nvg_connect("main",path)
-```
-* Math
-```
-nvg_connect("math",path)
-```
-* Cookies
-```
-nvg_connect("cookie",path)
-```
-* Snow falling
-```
-nvg_connect("snow",path)
-```
+
 Next, you should create a separate script tag. There you can use our framework.
 For example,
 ```
 <script type="text/javascript">
-setBtnSofter(30,"toper");
+nl2br(mystring);
 </script>
 ```
