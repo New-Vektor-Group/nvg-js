@@ -26,6 +26,8 @@
 				<li><button data-toggle="collapse" data-target="#cookie2" id="cookie" class="btn btn-lg btn-block btn-outline-warning">Cookie</button></li><br>
 				<li><button data-toggle="collapse" data-target="#textt2" id="textt" class="btn btn-lg btn-block btn-outline-warning">Text</button></li><br>
 				<li><button data-toggle="collapse" data-target="#snow2" id="snow" class="btn btn-lg btn-block btn-outline-warning">Snow Falling</button></li><br>
+				<li><button data-toggle="collapse" data-target="#css2" id="css" class="btn btn-lg btn-block btn-outline-warning">Styling</button></li><br>
+				<li><button data-toggle="collapse" data-target="#imgs2" id="imgs" class="btn btn-lg btn-block btn-outline-warning">Images</button></li><br>
 			</ol>
 		</div>
 		<div class="col-md-8 bg-light text-dark">
@@ -183,6 +185,25 @@
 							<p class="nvgc py-3 px-3"><code>sfall</code>.snowminsize = <var><font color="gray">25</font></var>; <font color="green">//Minimum size of a particle.</font></p>
 							<p class="nvgc py-3 px-3"><code>sfall</code>.snowingzone = <var><font color="gray">1</font></var>; <font color="green">//Where to render? 1. All screen, 2. Left part, 3. Center, 4. Right part</font></p>
 							<p class="nvgc py-3 px-3"><code>sfall</code>.snowtype = <var><font color="gray">new Array("Times")</font></var>; <font color="green">//Font</font></p>
+						</li>
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+					</ul>
+				</div>
+				<div id="css2" data-parent="#accordionExample" class="collapse hide">
+					<h1>Work with styles</h1> <small>nvg-css.js</small>
+					<ul>
+						<li class="my-4"><h5>Soft showing of element in relative to scroll position</h5>
+							<p class="nvgc py-3 px-3"><code>var element_soft</code>= new nvgs(<code>element</code>, <code>offset</code>, <code>direction</code>);</p>
+							<div>Set any element, which should to show or to hide in relative to current scroll position.</div>
+							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;/button&gt;</code>
+							<br>.(JS).<br><var>setBtnSofter(<code>90, "#scrbtn", 1</code>);</var> // This button is showen when scroll page is <b>below</b> offset variable</div>
+							<div><var>setBtnSofter(<code>90, "#scrbtn", 0</code>);</var> // This button is showen when scroll page is <b>above</b> offset variable</div>
+						</li>
+						<li class="my-4"><h5>Set fixed position for element</h5>
+							<p class="nvgc py-3 px-3">(<code>offset</code>, <code>btn_id</code>);</p>
+							<div>Set button, which should to show or to hide in relative to current scroll position.</div>
+							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;button/&gt;</code>
+							<br>.(JS).<br><var>setBtnSofter(<code>40, scrbtn</code>);</var></div>
 						</li>
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 					</ul>
