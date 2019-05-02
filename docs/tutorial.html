@@ -25,7 +25,7 @@
 				<li><button data-toggle="collapse" data-target="#math2" id="math" class="btn btn-lg btn-block btn-outline-warning">Math</button></li><br>
 				<li><button data-toggle="collapse" data-target="#cookie2" id="cookie" class="btn btn-lg btn-block btn-outline-warning">Cookie</button></li><br>
 				<li><button data-toggle="collapse" data-target="#textt2" id="textt" class="btn btn-lg btn-block btn-outline-warning">Text</button></li><br>
-				<!--<li><button data-toggle="collapse" data-target="#snow2" id="snow" class="btn btn-lg btn-block btn-outline-warning">Snow</button></li><br>-->
+				<li><button data-toggle="collapse" data-target="#snow2" id="snow" class="btn btn-lg btn-block btn-outline-warning">Snow Falling</button></li><br>
 			</ol>
 		</div>
 		<div class="col-md-8 bg-light text-dark">
@@ -137,7 +137,55 @@
 					</ul>
 				</div>
 				<div id="snow2" data-parent="#accordionExample" class="collapse hide">
-					4
+					<h1>Work with falling particles</h1> <small>nvg-snow.js</small><br><br>
+					<p>For change configuration you should change it and after it update (or redraw).</p>
+					<ul>
+						<li class="my-4"><h5>Start</h5>
+							<p class="nvgc py-3 px-3"><code>var sfall</code> = <var>new</var> nvg_snow();</p>
+							<div>This is constructor. Here are default settings for snow. It runs at once.</div>
+						</li>
+						<li class="my-4"><h5>Stop animation</h5>
+							<p class="nvgc py-3 px-3"><code>sfall</code>.stop();</p>
+							<div>Stop movement.</div>
+						</li>
+						<li class="my-4"><h5>Hide</h5>
+							<p class="nvgc py-3 px-3"><code>sfall</code>.hide();</p>
+							<div>Hide particles.</div>
+						</li>
+						<li class="my-4"><h5>Draw</h5>
+							<p class="nvgc py-3 px-3"><code>sfall</code>.draw();</p>
+							<div>Set init positions and draw particles</div>
+						</li>
+						<li class="my-4"><h5>Start movement</h5>
+							<p class="nvgc py-3 px-3"><code>sfall</code>.init();</p>
+							<div>Start and play animation (falling).</div>
+						</li>
+						<li class="my-4"><h5>Redraw</h5>
+							<p class="nvgc py-3 px-3"><code>sfall</code>.redraw();</p>
+							<div>Update settings for animation and redraw it.</div>
+						</li>
+						<li class="my-4"><h5>Update</h5>
+							<p class="nvgc py-3 px-3"><code>sfall</code>.update();</p>
+							<div>Redraw, update <b>and start animation</b></div>
+						</li>
+						<li class="my-4"><h5>Delete</h5>
+							<p class="nvgc py-3 px-3"><code>sfall</code>.delete();</p>
+							<div>Hide, stop animation and delete particles.</div>
+						</li>
+						<hr>
+						<li class="my-4"><h5>Configuration of setting</h5>
+							Here are defaults:
+							<p class="nvgc py-3 px-3"><code>sfall</code>.speed = <var><font color="gray">50</font></var>; <font color="green">//Set render speed of animation.</font></p>
+							<p class="nvgc py-3 px-3"><code>sfall</code>.snowmax = <var><font color="gray">30</font></var>; <font color="green">//Maximum of particles on a screen.</font></p>
+							<p class="nvgc py-3 px-3"><code>sfall</code>.snowletter = <var><font color="gray">"*"</font></var>; <font color="green">//What to render? * is a good for snowflake.<i>But you can write and img, svg tags and other elements.</i></font></p>
+							<p class="nvgc py-3 px-3"><code>sfall</code>.snowcolor = <var><font color="gray">new Array("#b9dff5","#7fc7ff","#7fb1ff","#7fc7ff","#b9dff5")</font></var>; <font color="green">//All colors for particles.</font></p>
+							<p class="nvgc py-3 px-3"><code>sfall</code>.snowmaxsize = <var><font color="gray">50</font></var>; <font color="green">//Maximum size of a particle.</font></p>
+							<p class="nvgc py-3 px-3"><code>sfall</code>.snowminsize = <var><font color="gray">25</font></var>; <font color="green">//Minimum size of a particle.</font></p>
+							<p class="nvgc py-3 px-3"><code>sfall</code>.snowingzone = <var><font color="gray">1</font></var>; <font color="green">//Where to render? 1. All screen, 2. Left part, 3. Center, 4. Right part</font></p>
+							<p class="nvgc py-3 px-3"><code>sfall</code>.snowtype = <var><font color="gray">new Array("Times")</font></var>; <font color="green">//Font</font></p>
+						</li>
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+					</ul>
 				</div>
 			</div>
 		</div>
