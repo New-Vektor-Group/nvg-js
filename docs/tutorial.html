@@ -200,10 +200,10 @@
 							<div><var>setBtnSofter(<code>90, "#scrbtn", 0</code>);</var> // This button is showen when scroll page is <b>above</b> offset variable</div>
 						</li>
 						<li class="my-4"><h5>Set fixed position for element</h5>
-							<p class="nvgc py-3 px-3">(<code>offset</code>, <code>btn_id</code>);</p>
-							<div>Set button, which should to show or to hide in relative to current scroll position.</div>
-							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;button/&gt;</code>
-							<br>.(JS).<br><var>setBtnSofter(<code>40, scrbtn</code>);</var></div>
+							<p class="nvgc py-3 px-3">nvgs.setFix(<code>element</code>, <code>position</code>,<code>x offset</code>,<code>y offset</code>);</p>
+							<div>POSITIONS: <var>tl</var>- top left, <var>tr</var>- top right, <var>bl</var>- bottom left, <var>tr</var>- bottom right</div>
+							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;/button&gt;</code>
+							<br>.(JS).<br><var>nvgs.setFix(<code>"#scrbtn", "br", 20, 20</code>);</var></div>
 						</li>
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 					</ul>
