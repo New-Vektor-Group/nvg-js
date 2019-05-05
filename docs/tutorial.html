@@ -193,11 +193,12 @@
 					<h1>Work with styles</h1> <small>nvg-css.js</small>
 					<ul>
 						<li class="my-4"><h5>Soft showing of element in relative to scroll position</h5>
-							<p class="nvgc py-3 px-3"><code>var element_soft</code>= new nvgs(<code>element</code>, <code>offset</code>, <code>direction</code>);</p>
+							<p class="nvgc py-3 px-3"><code>var element_soft</code>= new nvgs(<code>element</code>, <code>offset</code>, <code>direction</code>, <code style="color: #1F3E8C">offset2</code> (not important));</p>
 							<div>Set any element, which should to show or to hide in relative to current scroll position.</div>
 							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;/button&gt;</code>
 							<br>.(JS).<br><var>var scrbtn = new nvgs("#scrbtn",90,1);</var> // This button is showen when scroll page is <b>below</b> offset variable</div>
 							<div><var>var scrbtn = new nvgs("#scrbtn",90,0);</var> // This button is showen when scroll page is <b>above</b> offset variable</div>
+							<div><var>var scrbtn = new nvgs("#scrbtn",150,2,250);</var> // This button is showen when scroll page is <b>above</b> 150, but <b>below</b> 250.</div>
 						</li>
 						<li class="my-4"><h5>Set fixed position for element</h5>
 							<p class="nvgc py-3 px-3">nvgs.setFix(<code>element</code>, <code>position</code>,<code>x offset</code>,<code>y offset</code>);</p>

@@ -12,16 +12,29 @@
 <br>s<br><br>s<br><br>s<br><br>s<br><br>s<br><br>s<br><br>s<br><br>s<br><br>s<br><br>s<br><br>s<br>
 <br>s<br><br>s<br><br>s<br><br>s<br><br>s<br>
 
-<div id="lol1" class="fixed-top alert alert-success px-3 py-3 col-3">lol</div>
-<div id="lol2" class="fixed-top alert alert-success px-3 py-3 mt-5 col-3">lol2</div>
+<div id="lol1" class="fixed-top alert alert-success px-3 py-3 col-3">Down</div>
+<div id="lol2" class="fixed-top alert alert-success px-3 py-3 mt-5 col-3">Up</div><br><br><br><br><br><br>
+<div id="lol3" class="fixed-top alert alert-success px-3 py-3 mt-5 col-3">Custom</div>
+
+<div class="alert alert-info px-2 py-2" style="z-index: 100; position: fixed; bottom: 10px; left: 10px;">
+	Scroll position = <b id="ww"></b>
+</div>
+
 <footer> 
 <script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script> 
 <script src="https://ex.nvg-team.com/bootstrap3.js"></script> 
-<script src="../lib/nvg-css.js"></script> 
+<script src="../lib/nvg-css.js?7"></script> 
+<script src="../lib/nvg-main.js"></script> 
 <script type="text/javascript">
 
 var lol1 = new nvgs("#lol1",90,1);
 var lol2 = new nvgs("#lol2",90,0);
+var lol3 = new nvgs("#lol3",150,2,250);
+
+ $("#ww").text(nvg_scroll);
+    $(window).scroll(function() {
+      $("#ww").text(nvg_scroll);
+    });
 
 </script>
 </footer> 
