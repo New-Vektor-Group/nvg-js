@@ -5,17 +5,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <title>Test2</title>
+<style type="text/css">
+	#img1, #img2 
+	{
+	padding: 0.25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+	}
+</style>
 </head> 
 <body> 
 
+<div class="container my-5">
+	<img id="img1" src="https://images-na.ssl-images-amazon.com/images/I/61IiD0minLL._SY679_.jpg" height="128">
+	<img id="img2" src="https://is5-ssl.mzstatic.com/image/thumb/Video18/v4/b1/8c/a0/b18ca0cb-d395-23d3-efa8-6287fb36792e/pr_source.lsr/268x0w.png" height="128">
+	Click us
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+  Just Bootstrap
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
 
 <footer> 
 <script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script> 
 <script src="https://ex.nvg-team.com/bootstrap3.js"></script> 
 <script src="../lib/nvg-img.js"></script> 
 <script type="text/javascript">
+var p1 = "https://images-na.ssl-images-amazon.com/images/I/61IiD0minLL._SY679_.jpg";
+var p2 = "https://i.ytimg.com/vi/K4zm30yeHHE/maxresdefault.jpg";
 
+var img1 = new nvg_modal("img","#img1",p1);
+var img2 = new nvg_modal("img","#img2",p2);
 
 </script>
 </footer> 
