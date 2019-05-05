@@ -85,7 +85,7 @@
 							<div><br><b>EXAMPLE</b><br><br>
 									<button id="btn" class="btn btn-warning">Click me)</button><br>
 									<div id="textt" class="alert alert-warning col-6">Some text by NVG. Check it. Ctrl+V somewhere.</div>
-									<script src="http://ex.nvg-team.com/lib/nvg-main.js"></script>
+									<script src="../lib/nvg-main.js"></script>
 									<script type="text/javascript">nvgcopy("btn","textt");</script>
 							</div>
 						</li>
@@ -196,14 +196,29 @@
 							<p class="nvgc py-3 px-3"><code>var element_soft</code>= new nvgs(<code>element</code>, <code>offset</code>, <code>direction</code>);</p>
 							<div>Set any element, which should to show or to hide in relative to current scroll position.</div>
 							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;/button&gt;</code>
-							<br>.(JS).<br><var>setBtnSofter(<code>90, "#scrbtn", 1</code>);</var> // This button is showen when scroll page is <b>below</b> offset variable</div>
-							<div><var>setBtnSofter(<code>90, "#scrbtn", 0</code>);</var> // This button is showen when scroll page is <b>above</b> offset variable</div>
+							<br>.(JS).<br><var>var scrbtn = new nvgs("#scrbtn",90,1);</var> // This button is showen when scroll page is <b>below</b> offset variable</div>
+							<div><var>var scrbtn = new nvgs("#scrbtn",90,0);</var> // This button is showen when scroll page is <b>above</b> offset variable</div>
 						</li>
 						<li class="my-4"><h5>Set fixed position for element</h5>
 							<p class="nvgc py-3 px-3">nvgs.setFix(<code>element</code>, <code>position</code>,<code>x offset</code>,<code>y offset</code>);</p>
 							<div>POSITIONS: <var>tl</var>- top left, <var>tr</var>- top right, <var>bl</var>- bottom left, <var>tr</var>- bottom right</div>
 							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;/button&gt;</code>
 							<br>.(JS).<br><var>nvgs.setFix(<code>"#scrbtn", "br", 20, 20</code>);</var></div>
+						</li>
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+					</ul>
+				</div>
+
+				<div id="imgs2" data-parent="#accordionExample" class="collapse hide">
+					<h1>Work with images</h1> <small>nvg-img.js</small>
+					<ul>
+						<li class="my-4"><h5>Paste images from clipboard</h5>
+							<p class="nvgc py-3 px-3">nvgi.paste = <code>true</code>; <font color="green"> &nbsp; //Init, start to listen 'paste' event.</font></p>
+							<p class="nvgc py-3 px-3">nvgi.needToS = <code>true</code>; nvgi.ToS = "<code>element</code>"; <font color="green"> &nbsp; //For showing an image.</font></p>
+							<div>You can copy any image and paste everywhere (or upload, post) by clicking or pressing <kbd>CTRL</kbd> + <kbd>V</kbd></div>
+							<div>For example, (HTML) <br><code>&lt;div id="pst1"&gt; &lt;/div&gt;</code>
+							<br>.(JS).<br><var>nvgi.paste = true; <br> nvgi.needToS = true; <br> nvgi.needToS = "#pst1"; </var><br>
+							.(Result). <br> &lt;div id="pst1"&gt; &lt;img src="blob:null5850238304" &gt; &lt;/div&gt;</div>
 						</li>
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 					</ul>
@@ -218,10 +233,16 @@
 <div class="py-5 bg-dark">
 	&nbsp;
 </div>
-<footer> <script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script>
+<footer> 
+<button onclick="nvgjs.ScrollTopSoft()" id="fsd52" class="btn btn-light btn-lg">Up</button>
+
+  <script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script>
   <script src="https://ex.nvg-team.com/bootstrap3.js"></script>
+  <script src="../lib/nvg-css.js?5"></script>
+
 <script type="text/javascript">
-	
+	var element_soft = new nvgs("#fsd52", 90, 1);
+	nvgs.setFix("#fsd52", "br", 50, 50);
 </script></footer>
 </body>
 </html>
