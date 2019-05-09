@@ -20,7 +20,10 @@
 			<br>
 			<h1>NVG Guide <span class="text-warning">JavaScript</span></h1>
 			<hr style="background-color: white;">
+			<button data-toggle="collapse" data-target="#info2" id="info" class="btn btn-lg btn-block btn-secondary">Information</button>
+			<hr style="background-color: white;">
 			<ol>
+				<hr>
 				<li><button data-toggle="collapse" data-target="#main2" id="main" class="btn btn-lg btn-block btn-outline-warning">Main</button></li><br>
 				<li><button data-toggle="collapse" data-target="#math2" id="math" class="btn btn-lg btn-block btn-outline-warning">Math</button></li><br>
 				<li><button data-toggle="collapse" data-target="#cookie2" id="cookie" class="btn btn-lg btn-block btn-outline-warning">Cookie</button></li><br>
@@ -34,7 +37,48 @@
 			<br>
 			<hr style="background-color: black;">
 			<div class="accordion" id="accordionExample">
-				<div id="main2" data-parent="#accordionExample" class="collapse show">
+			<div id="info2" data-parent="#accordionExample" class="collapse show">
+					<h1>NVG Library for JavaScript (Web Development)</h1> <small>nvg.js <i class="text-warning">(v6)</i> 2019 May, 9</small><br><br>
+
+					<h2><a href="https://github.com/lonagi/nvg-js">GitHub</a> Apache2 License</h2>
+					<br>
+					<h2>Requirements</h2>
+					<ol>
+						<li>JQuery <font color="green">(3.3.1 Stable)</font></li>
+						<li>Bootstrap <font color="green">(4 Stable)</font></li>
+					</ol>
+
+					<h2>Libraries</h2>
+					<ol>
+						<li>NVG <font color="green">(General, has all libs)</font></li>
+						<li>NVG Main</li>
+						<li>NVG Math</li>
+						<li>NVG Cookie</li>
+						<li>NVG Text</li>
+						<li>NVG Snow Falling</li>
+						<li>NVG Styling</li>
+						<li>NVG Images</li>
+					</ol>
+
+					<h2>Getting Started</h2>
+					<ol>
+						<h4><li>Download JQuery</li></h4>
+						<h4><li>Download Bootstrap</li></h4>
+						<h4><li>Download NVG *lib*</li></h4>
+						<h4><li>Connect</li></h4>
+						<p class="nvgc py-3 px-3">&lt;script src="YOUR_PATH/<code>nvg-main.js</code>"&gt;&lt;/script&gt;</p>
+						<hr>
+						<h5>Connect any library</h5>
+						<p class="nvgc py-3 px-3">&lt;script src="YOUR_PATH/<code>nvg-text.js</code>"&gt;&lt;/script&gt;</p>
+						<h5>!Connect all libraries at once</h5>
+						<p class="nvgc py-3 px-3">&lt;script src="YOUR_PATH/<code>nvg.js</code>"&gt;&lt;/script&gt;</p>
+						<h4><li>Separate script</li></h4>
+						<p>Next, you should create a separate script tag. There you can use our framework. For example,</p>
+						<p class="nvgc py-3 px-3">&lt;script type="text/javascript"&gt;<br><br><span class="text-secondary">#For example, nvg-text.js </span><br>nl2br(<code>mystring</code>);<br><br>&lt;/script&gt;</p>
+					</ol>
+
+				</div>
+				<div id="main2" data-parent="#accordionExample" class="collapse hide">
 					<h1>Main</h1> <small>nvg-main.js</small>
 					<ul>
 						<li class="my-4"><h5>Get height of screen</h5>
@@ -233,14 +277,18 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-1 bg-secondary">
-			<p class="mt-5 text-light">by NVG &copy;</p>
+		<div class="col-md-1 bg-secondary text-light overflow-hidden">
+			<p class="mt-5">by NVG &copy; </p>
+			<p><img src="https://github.com/lonagi/nvg-js/raw/master/img/NVG%20JS.png" width="128px"></p>
+			<p>Apache License 2.0</p>
+			<p style="word-wrap: break-word;">newvectorgaming@gmail.com</p>
 		</div>
-	</div>
+	</div><br><br><br><br><br>
 </div>
 <div class="py-5 bg-dark">
 	&nbsp;
 </div>
+
 <footer> 
 <button onclick="nvgjs.ScrollTopSoft()" id="fsd52" class="btn btn-dark btn-lg">Up</button>
 
