@@ -1,8 +1,10 @@
 # NVG Library for JavaScript (Web Development)
 NVG JS Library for web dev.
 
+### [Documentation](https://docs.nvg-team.com/js) 
+
 ## Getting Started
-1. To connect framework
+1. Connect
 
 ```
 <script src="YOUR_PATH/nvg-main.js"></script>
@@ -18,10 +20,13 @@ ____________________________________________________________________
 <script src="YOUR_PATH/nvg.js"></script>
 ```
 
-Next, you should create a separate script tag. There you can use our framework.
+2. Next, you should create a separate script tag. There you can use our framework.
 For example,
 ```
 <script type="text/javascript">
+
+#For example, nvg-text.js
 nl2br(mystring);
+
 </script>
 ```
