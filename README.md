@@ -1,9 +1,23 @@
 # NVG Library for JavaScript (Web Development)
-NVG JS Library for web dev.
+NVG JS Library for web dev. Version 6. 2019 May, 9
 
 ![Logo](https://github.com/lonagi/nvg-js/blob/master/img/NVG%20JS.png)
 
 ### [Documentation](https://docs.nvg-team.com/js) 
+
+## Requirements
+1. JQuery (3.3.1 Stable)
+2. Bootstrap (4 Stable)
+
+## Libraries
+1. NVG (General, has all libs)
+2. NVG Main
+3. NVG Math
+4. NVG Cookie
+5. NVG Text
+6. NVG Snow Falling
+7. NVG Styling
+8. NVG Images
 
 ## Getting Started
 1. Connect
