@@ -1,6 +1,8 @@
 # NVG Library for JavaScript (Web Development)
 NVG JS Library for web dev.
 
+![Logo](https://github.com/lonagi/nvg-js/blob/master/img/NVG%20JS.png)
+
 ### [Documentation](https://docs.nvg-team.com/js) 
 
 ## Getting Started
