@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link href="https://ex.nvg-team.com/bootstrap3.css" rel="stylesheet" type="text/css" media="all"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>Название</title>
+<style>
+
+	#s
+	{
+		position: fixed;
+		top: 20px;
+		left: 20px;
+		z-index: 2;
+		/*opacity: 0.8;*/
+		opacity: 1;
+	}
+
+	#s:hover
+	{
+		opacity: 1;
+	}
+
+	body
+	{
+		/*cursor: none;*/
+	}
+	
+	.nvg1
+	{
+		background-color: none;
+		display: inline;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-top: 0px;
+		line-height: 0;
+		color: black;
+		margin:0;
+		border: 0;
+	}
+
+	.nvg2
+	{
+		display: inline-block;
+		margin:0;
+		padding: 0;
+		line-height: 0;
+		border: 0;
+	}
+
+	.nvg1:hover
+	{
+		background-color: none;
+	}
+
+	#contentn
+	{
+		word-wrap: break-word;
+	}
+
+	#nvgrid
+	{
+		position: fixed;
+		z-index: 1;
+	}
+
+</style>
+</head> 
+<body> 
+
+<div id="s" class="alert alert-info px-2 py-2">
+	Mouse X,Y = <b id="wh"></b><br>
+</div>
+
+	<div id="nvgrid">
+		
+
+	</div>
+
+	<div id="contentn">
+		
+	</div>
+
+<footer> 
+<script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script> 
+<script src="https://ex.nvg-team.com/bootstrap3.js"></script> 
+<script type="text/javascript">
+
+for (var i = 1; i <= 40; i++)
+{
+	$("#nvgrid").append("<div class='nvg2' id='p"+i+"'></div>");
+
+	for (var j = 1; j <= 94; j++)
+	{
+		$("#p"+i).append("<div class='nvg1' id='t"+j+"'></div>");
+	}
+}
+
+for (var j = 1; j <= 19400; j++)
+	{
+		$("#contentn").append(5);
+	}
+
+$(".nvg1").mouseover(function(e) {
+
+	//var x434 = e.clientX;
+	//var y434 = e.clientY;
+
+	var x434 = $(this).position().left;
+	var y434 = $(this).position().top;
+	
+	elementsMouseIsOver = document.elementsFromPoint(x434, y434);
+	$("#wh").text(x434 + ", " + y434 + ", l= ");
+
+	$("#wh").append("<br>");
+
+	for (var i = 0; i < elementsMouseIsOver.length; i++) {
+		$("#wh").append(" " + $(elementsMouseIsOver[i]).prop("tagName"));
+	}
+
+	$("#wh").append("<br>");
+
+	for (var i = 0; i < elementsMouseIsOver.length; i++) {
+		$("#wh").append(" " + $(elementsMouseIsOver[i]).attr("id"));
+	}
+});
+
+
+
+//document.addEventListener('mousemove', function(event) {
+//	elem.innerHTML = event.clientX + ' : ' + event.clientY;
+//});
+
+</script>
+</footer> 
+</body> 
+</html> 
