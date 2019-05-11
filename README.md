@@ -3,7 +3,7 @@ NVG JS Library for web dev. Version 7. 2019 May, 12
 
 ![Logo](https://github.com/lonagi/nvg-js/blob/master/img/NVG%20JS.png)
 
-### [Documentation](https://docs.nvg-team.com/js) 
+### Documentation [English](https://docs.nvg-team.com/js) [Русский](https://docs.nvg-team.com/js/ru.html) 
 
 ## Requirements
 1. JQuery (3.3.1 Stable)
