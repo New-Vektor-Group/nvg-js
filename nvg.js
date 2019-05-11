@@ -16,7 +16,7 @@ class nvgjs
 {
   static getVersion()
   {
-    return 6;
+    return 7;
   }
 
 ////////////////////////
@@ -49,6 +49,14 @@ $("html, body").animate({ scrollTop: ccoord }, 'slow');
 }
 ////////////////////////
 
+static go_ssl()
+{
+  if(location.protocol != 'https:')
+  {
+    location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+  }
+}
+////////////////////////
 }
 
 ////////////////
@@ -310,7 +318,7 @@ class nvgs
 
     if(this.direction !== 0)
     {
-      setTimeout(function(){$(this.obj).css("transform","translate(1000px,-10000px)");},0);
+      setTimeout(function(){$(this.obj).css("transform","translate(1000px,-10000px)");},1);
       setTimeout(function(){$(this.obj).removeClass("show");$(this.obj).addClass("hide");},1);
     }
 
@@ -335,7 +343,7 @@ static elsoft(element)
    else
     {
      this.needshf = true;
-     nvgs.hds5df543(element.obj);
+     nvgs.hds5df543(element.obj, this.needshf);
 
     }
     }
@@ -351,7 +359,7 @@ static elsoft(element)
    else
     {
       this.needshf = true;
-      nvgs.hds5df543(element.obj);
+      nvgs.hds5df543(element.obj, this.needshf);
     }
     }
 
@@ -366,7 +374,7 @@ static elsoft(element)
     else
     {
       this.needshf = true;
-      nvgs.hds5df543(element.obj);
+      nvgs.hds5df543(element.obj, this.needshf);
     }
     }
 }
@@ -378,11 +386,11 @@ static sh5df543(objj)
   setTimeout(function(){$(objj).css("transform","translate(0px,0px)");},0);
 }
 
-static hds5df543(objj)
+static hds5df543(objj, needshf)
 {
  $(objj).removeClass("show");
  $(objj).addClass("hide");
- setTimeout(function(){if(this.needshf) {$(objj).css("transform","translate(1000px,-10000px)");}},400);
+ setTimeout(function(){if(needshf) $(objj).css("transform","translate(1000px,-10000px)");},100);
 }
 
 static setFix(el,wh, ofx, ofy)
