@@ -38,7 +38,7 @@
 			<hr style="background-color: black;">
 			<div class="accordion" id="accordionExample">
 			<div id="info2" data-parent="#accordionExample" class="collapse show">
-					<h1>NVG Library for JavaScript (Web Development)</h1> <small>nvg.js <i class="text-warning">(v7)</i> 2019 May, 12</small><br><br>
+					<h1>NVG Library for JavaScript (Web Development)</h1> <small>nvg.js <i class="text-warning">(v7.1.1)</i> 2019 May, 24</small><br><br>
 
 					<h2><a href="https://github.com/lonagi/nvg-js">GitHub</a> Apache2 License</h2>
 					<br>
@@ -135,9 +135,13 @@
 							<div><br><b>EXAMPLE</b><br><br>
 									<button id="btn" class="btn btn-warning">Click me)</button><br>
 									<div id="textt" class="alert alert-warning col-6">Some text by NVG. Check it. Ctrl+V somewhere.</div>
-									<script src="../lib/nvg-main.js"></script>
+									<script src="https://ex.nvg-team.com/lib/nvg-main2.js?173"></script>
 									<script type="text/javascript">nvgcopy("btn","textt");</script>
 							</div>
+						</li>
+
+						<li class="my-4"><h5>The visibility of an element on the screen</h5>
+							<p class="nvgc py-3 px-3">nvgjs.isVisible(<code>element</code>) <small class="text-primary">:bool</small>;</p>
 						</li>
 
 						<br><br><br><br><br><br><br><br>
@@ -276,12 +280,19 @@
 							<br>.(JS).<br><var>nvgi.paste = true; <br> nvgi.needToS = true; <br> nvgi.needToS = "#pst1"; </var><br>
 							.(Result). <br> &lt;div id="pst1"&gt; &lt;img src="blob:null5850238304" &gt; &lt;/div&gt;</div>
 						</li>
+
 						<li class="my-4"><h5>Auto create full size modal for image</h5>
 							<p class="nvgc py-3 px-3"><var>var img</var> = new nvg_modal("img","<code>element</code>","<code>url to image</code>", <code style="color: #1F3E8C">max width</code> (not important)); <font color="green"> //width is not required. It has pixels.</font></p>
 							<div>When you click to an <code>element</code>, shows a modal with your image. </div>
 							<div>You should add first arg. <b>"img"</b> to work with images. <var>"img2"</var> is for images too, but they are in full size.</div>
 							<div>For example, (HTML) <br><code>&lt;img id="btn1" src="lol.png"&gt;</code>
 							<br>.(JS).<br><var style="word-break: break-all;">var img_img = new nvg_modal("img","#btn1","https://pp.userapi.com/hdUzk.jpg");</var></div>
+						</li>
+
+						<li class="my-4"><h5>Background image loading</h5>
+							<p class="nvgc py-3 px-3">nvgi.preLoad(<code>"elements"</code>, "<code style="color: #1F3E8C">phant_attr</code>" (not important));</p>
+							<div>PreLoad images in background.</div>
+							<div>For example, add attribute "<code>data-src</code>". Into this attribute add url of real image. In the usual <code>src</code> attribute, add a link to a "fast" image. Then, write <br><var>nvgi.preLoad(".my_images","data-src");</var></div>
 						</li>
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 					</ul>
@@ -305,7 +316,7 @@
 
   <script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script>
   <script src="https://ex.nvg-team.com/bootstrap3.js"></script>
-  <script src="../lib/nvg-css.js?5"></script>
+  <script src="https://ex.nvg-team.com/lib/nvg-css2.js?173"></script>
 
 <script type="text/javascript">
 	var element_soft = new nvgs("#fsd52", 90, 1);

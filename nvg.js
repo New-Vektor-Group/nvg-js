@@ -16,7 +16,7 @@ class nvgjs
 {
   static getVersion()
   {
-    return "7.1.0";
+    return "7.1.1";
   }
 
 ////////////////////////
@@ -56,6 +56,17 @@ static go_ssl()
     location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
   }
 }
+////////////////////////
+
+static isVisible(elem)
+{
+  var coords = elem.getBoundingClientRect();
+  var windowHeight = document.documentElement.clientHeight;
+  var topVisible = coords.top > 0 && coords.top < windowHeight;
+  var bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
+  return topVisible || bottomVisible;
+}
+
 ////////////////////////
 }
 
@@ -533,6 +544,25 @@ class nvgi
           }
       }
   }
+
+  static preLoad(elems, srcname = "nsrc")
+{
+
+  var xs = document.getElementsByClassName(elems);
+for (var i = 0; i < xs.length; i++)
+{
+  var img = new Image();
+  var x = xs[i];
+  var imageSrc = $(x).attr(srcname);
+  img.src = imageSrc;
+
+  img.onload = function() {
+    $(x).attr("src",img.src);
+};
+
+}
+
+}
 
 }
 
