@@ -16,7 +16,7 @@ class nvgjs
 {
   static getVersion()
   {
-    return "7.1.1";
+    return "7.1.2";
   }
 
 ////////////////////////
@@ -571,6 +571,21 @@ xCounter.forEach(function(ee){
 };
 
 });
+
+}
+
+static preLoadId(elem, srcname = "data-src")
+{
+
+  var img = new Image();
+  var x = document.getElementById(elem);
+  var imageSrc = $(x).attr(srcname);
+  img.src = imageSrc;
+
+      img.onload = function() {
+    $(x).attr("src",img.src);
+};
+
 
 }
 
