@@ -135,7 +135,7 @@
 							<div><br><b>НАПРИМЕР</b><br><br>
 									<button id="btn" class="btn btn-warning">Нажми на меня)</button><br>
 									<div id="textt" class="alert alert-warning col-6">Текст от NVG. Теперь проверь. Жми где-то Ctrl+V.</div>
-									<script src="https://ex.nvg-team.com/lib/nvg-main2.js?173"></script>
+									<script src="https://ex.nvg-team.com/lib/nvg-main2.js?174"></script>
 									<script type="text/javascript">nvgcopy("btn","textt");</script>
 							</div>
 						</li>
@@ -143,6 +143,22 @@
 						<li class="my-4"><h5>Есть ли объект в поле зрения</h5>
 							<p class="nvgc py-3 px-3">nvgjs.isVisible(<code>element</code>) <small class="text-primary">:bool</small>;</p>
 						</li>
+
+						<li class="my-4"><h5>Проверка устройства</h5>
+							<p class="nvgc py-3 px-3">nvgjs.isMobile(); <small class="text-primary">:bool</small>;</p>
+							<div>Первый метод проверки. Возвращает <b>true</b> если телефон.</div>
+							<div>Например, <code>console.log(</code>nvgjs.isMobile()<code>);</code></div>
+							<br>
+							<p class="nvgc py-3 px-3">nvgjs.isMScreen(); <small class="text-primary">:bool</small>;</p>
+							<div>Второй метод проверки. Возвращает <b>true</b> если маленький экран, тобишь телефон.</div>
+							<br>
+							<p class="nvgc py-3 px-3">nvgMob(); <small class="text-primary">:bool</small>;</p>
+							<div>Третий метод проверки. Возвращает <b>true</b> если телефон.</div>
+							<br>
+							<p class="nvgc py-3 px-3">nvgPC(); <small class="text-primary">:bool</small>;</p>
+							<div>Проверка компьютер ли. Возвращает <b>false</b> если телефон или планшет, но для ПК устройств <b>true</b></div>
+						</li>
+
 
 						<br><br><br><br><br><br><br><br>
 					</ul>
@@ -317,7 +333,7 @@
 
   <script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script>
   <script src="https://ex.nvg-team.com/bootstrap3.js"></script>
-  <script src="https://ex.nvg-team.com/lib/nvg-css2.js?173"></script>
+  <script src="https://ex.nvg-team.com/lib/nvg-css2.js?174"></script>
 
 <script type="text/javascript">
 	var element_soft = new nvgs("#fsd52", 90, 1);
