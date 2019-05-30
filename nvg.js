@@ -16,7 +16,7 @@ class nvgjs
 {
   static getVersion()
   {
-    return "7.1.2";
+    return "7.1.4";
   }
 
 ////////////////////////
@@ -377,11 +377,7 @@ class nvgs
     else 
       this.obj = obj2;
 
-    if(this.direction !== 0)
-    {
-      setTimeout(function(){$(this.obj).css("transform","translate(1000px,-10000px)");},1);
-      setTimeout(function(){$(this.obj).removeClass("show");$(this.obj).addClass("hide");},1);
-    }
+    nvgs.elsoft(this);
 
     $(this.obj).addClass("fade");
 
