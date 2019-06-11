@@ -28,9 +28,15 @@
 
 
 
-<div class="alert alert-info px-2 py-2" style="z-index: 100; position: fixed; top: 10px; left: 10px;">
+<div class="raz alert alert-info px-2 py-2" style="z-index: 100; position: fixed; top: 10px; left: 10px;">
 	Window height = <b id="wh"></b><br>
 	Scroll position = <b id="ww"></b>
+</div>
+
+<div class="dva alert alert-danger px-2 py-2" style="z-index: 99; position: absolute; padding: 50px; top: 80px; left: 15px;">
+<br><br><br><br>
+check
+<br><br><br><br>
 </div>
 
 <footer> 
@@ -61,6 +67,8 @@ $(window).scroll(function() {
 
 alert(nvgjs.isVisible("#dsa52s"));
 
+//alert("razT= "+ razT+" razB= "+ razB+ " dvaT= "+dvaT+" dvaB= "+dvaB + " razL= "+ razL+" razR= "+ razR+ " dvaL= "+dvaL+" dvaR= "+dvaR);
+alert(nvgjs.Collision(".raz",".dva"));
 </script>
 </footer> 
 </body> 
