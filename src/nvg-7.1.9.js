@@ -16,7 +16,7 @@ class nvgjs
 {
   static getVersion()
   {
-    return "7.1.4";
+    return "7.1.9";
   }
 
 ////////////////////////
@@ -49,6 +49,15 @@ $("html, body").animate({ scrollTop: ccoord }, 'slow');
 }
 ////////////////////////
 
+static ScrollTo(a0101x304329, speed = 800)
+{
+$('html, body').animate({ 
+scrollTop: $("#"+a0101x304329).offset().top 
+}, speed); 
+}
+
+////////////////////////
+
 static go_ssl()
 {
   if(location.protocol != 'https:')
@@ -58,13 +67,48 @@ static go_ssl()
 }
 ////////////////////////
 
-static isVisible(elem)
+static isVisible(elem, ika = 0)
 {
-  var coords = elem.getBoundingClientRect();
+  var coords = $(elem)[ika].getBoundingClientRect();
   var windowHeight = document.documentElement.clientHeight;
   var topVisible = coords.top > 0 && coords.top < windowHeight;
   var bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
   return topVisible || bottomVisible;
+}
+
+static Collision(elem1,elem2,pos1=0,pos2=0,offsety=0,offsetx=0)
+{
+//default by absolute position => posN = 0 else 1
+var el1 = $(elem1);
+var el2 = $(elem2);
+
+var T1 = el1.offset().top-offsety;
+var T2 = el2.offset().top;
+if(pos1==1) T1 = el1.position().top-offsety;
+if(pos2==1) T2 = el2.position().top;
+
+var L1 = el1.offset().left-offsetx;
+var L2 = el2.offset().left;
+if(pos1==1) L1 = el1.position().left-offsetx;
+if(pos2==1) L2 = el2.position().left;
+
+var B1 = el1.offset().top + el1.outerHeight() + offsety;
+var B2 = el2.offset().top + el2.outerHeight();
+if(pos1==1) B1 = el1.position().top + el1.outerHeight() + offsety;
+if(pos2==1) B2 = el2.position().top + el2.outerHeight();
+
+var R1 = el1.offset().left + el1.outerWidth() + offsetx;
+var R2 = el2.offset().left + el2.outerWidth();
+if(pos1==1) R1 = el1.position().left + el1.outerWidth() + offsetx;
+if(pos2==1) R2 = el2.position().left + el2.outerWidth();
+
+if(T1 <= B2 && B1 >= T2 && L1 <= R2 && R1 >= L2)
+{
+  return true;
+}
+else
+  return false;
+
 }
 
 ////////////////////////
@@ -97,11 +141,6 @@ static isMScreen() {
 }
 
 ////////////////
-function nvg_scroll()
-{
-  return document.documentElement.scrollTop;     
-}
-
 function nvg_sw()
 {
   return screen.width;     
@@ -120,6 +159,16 @@ function nvg_swa()
 function nvg_sha()
 {
   return window.innerHeight; 
+}
+
+function nvg_scroll()
+{
+  return document.documentElement.scrollTop || document.body.scrollTop;     
+}
+
+function nvg_scroll_pr()
+{
+  var scrolnoe2q = Math.ceil(100*(nvg_scroll()/($(document).height()-nvg_sha())));
 }
 ////////////////////////
 
@@ -447,7 +496,7 @@ static hds5df543(objj, needshf)
 {
  $(objj).removeClass("show");
  $(objj).addClass("hide");
- setTimeout(function(){if(needshf) $(objj).css("transform","translate(1000px,-10000px)");},100);
+ setTimeout(function(){if(needshf) $(objj).css("transform","translate(1000px,-10000px)");},0);
 }
 
 static setFix(el,wh, ofx, ofy)
@@ -581,7 +630,7 @@ class nvgi
       }
   }
 
-    static preLoad(elems, srcname = "data-src")
+    static preLoad(elems, srcname = "data-src", isCss = 0)
 {
 
   var allClassElements = document.getElementsByClassName(elems);
@@ -602,15 +651,19 @@ for (var i = 0; i < allClassElements.length; i++)
 
 xCounter.forEach(function(ee){
 
-      allImages[ee].onload = function() {
-    $(allImagesOld[ee]).attr("src",allImages[ee].src);
-};
+      allImages[ee].onload = function()
+      {
+        if(isCss==0)
+          $(allImagesOld[ee]).attr("src",allImages[ee].src);
+        else
+          $(allImagesOld[ee]).css("background-image","url('"+allImages[ee].src+"')");
+      };
 
 });
 
 }
 
-static preLoadId(elem, srcname = "data-src")
+static preLoadId(elem, srcname = "data-src", isCss = 0)
 {
 
   var img = new Image();
@@ -618,11 +671,13 @@ static preLoadId(elem, srcname = "data-src")
   var imageSrc = $(x).attr(srcname);
   img.src = imageSrc;
 
-      img.onload = function() {
-    $(x).attr("src",img.src);
-};
-
-
+      img.onload = function()
+      {
+        if(isCss==0)
+          $(x).attr("src",img.src);
+        else
+          $(x).css("background-image","url('"+img.src+"')");
+      };
 }
 
 }
