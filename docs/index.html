@@ -102,7 +102,11 @@
 						</li>
 						<li class="my-4"><h5>Get scroll position at a page</h5>
 							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_scroll(); <small class="text-primary">:int</small></p>
-							<div>Here x might be, for example, 0. <i>(Works when page loads)</i></div>
+							<div>Here y might be, for example, 0.</div>
+						</li>
+						<li class="my-4"><h5>Get scroll position at a page <b>in percents</b></h5>
+							<p class="nvgc py-3 px-3"><code>var yp =</code> nvg_scroll_pr(); <small class="text-primary">:int</small></p>
+							<div>Here yp might be, for example, 50<code>%</code>.</div>
 						</li>
 
 						<li class="my-4"><h5>Button for scrolling down/up <code>!only overflow scroll elements!</code></h5>
@@ -112,7 +116,7 @@
 							<br>.(JS).<br><var>nvgjs.scrollbot(<code>"#lbtn"</code>);</var></div>
 						</li>
 
-						<li class="my-4"><h5>Click for soft scroll to top/bot/custom</h5>
+						<li class="my-4"><h5>Click for smooth scroll to top/bot/custom</h5>
 							<p class="nvgc py-3 px-3">nvgjs.ScrollTopSoft();</p>
 							<div>For example, (HTML) <br><code>&lt;button onclick="nvgjs.ScrollTopSoft()" class="btn"&gt;Up&lt;/button&gt;</code></div>
 							<hr>
@@ -121,6 +125,15 @@
 							<hr>
 							<p class="nvgc py-3 px-3">nvgjs.ScrollSoft(<code>y-coord</code>);</p>
 							<div>For example, (HTML) <br><code>&lt;button onclick="nvgjs.ScrollSoft(200)" class="btn"&gt;Scroll&lt;/button&gt;</code></div>
+						</li>
+
+						<li class="my-4"><h5>Click for smooth scroll to element by <b>id</b></h5>
+							<p class="nvgc py-3 px-3">nvgjs.ScrollTo(<code>id</code>, <code style="color: #1F3E8C">speed</code> (not important));</p>
+							<div>For example, (HTML) <br><code>&lt;section id="main"&gt;...&lt;/section&gt;</code>
+							<br> .(JS).<br> <i><span class="text-muted">$(this).click(function(){</span><br><br>
+								nvgjs.ScrollTo("main",800);<br>
+								<font color="green">//nvgjs.ScrollTo("main");</font><br><br>
+							<span class="text-muted">});</span></i></div>
 						</li>
 
 						<li class="my-4"><h5>Go to HTTPS</h5>
@@ -141,7 +154,16 @@
 						</li>
 
 						<li class="my-4"><h5>The visibility of an element on the screen</h5>
-							<p class="nvgc py-3 px-3">nvgjs.isVisible(<code>element</code>) <small class="text-primary">:bool</small>;</p>
+							<p class="nvgc py-3 px-3">nvgjs.isVisible(<code>element</code>, <code style="color: #1F3E8C">isItClass</code> (not important)) <small class="text-primary">:bool</small>;</p>
+							<div>For example, (HTML) <br><code>&lt;span id="scrbtn" class="btn"&gt;...&lt;/span&gt;</code>
+							<br>.(JS).<br><var>nvgjs.isVisible(<code>"#scrbtn"</code>);</var>
+									  <br><var>nvgjs.isVisible(<code>".btn"</code>,<code>1</code>);</var></div>
+						</li>
+
+						<li class="my-4"><h5>Collision</h5>
+							<p class="nvgc py-3 px-3">nvgjs.Collision(<code>element_first</code>, <code>element_second</code>, <code style="color: #1F3E8C">isFirstRelative</code>, <code style="color: #1F3E8C">isSecondRelative</code>, <code style="color: #1F3E8C">First_y_offset</code>, <code style="color: #1F3E8C">First_x_offset</code> (not important)) <small class="text-primary">:bool</small>;</p>
+							<div>For example, (HTML) <br><code>&lt;span style="position: absolute;" id="scrbtn" class="btn"&gt;...&lt;/span&gt;</code><br><code>&lt;span style="position: fixed;" class="alert"&gt;...&lt;/span&gt;</code>
+							<br>.(JS).<br><var>nvgjs.Collision(<code>"#scrbtn"</code>, <code>".alert"</code>);</var></div>
 						</li>
 
 						<li class="my-4"><h5>Check device</h5>
@@ -266,7 +288,7 @@
 				<div id="css2" data-parent="#accordionExample" class="collapse hide">
 					<h1>Work with styles</h1> <small>nvg-css.js</small>
 					<ul>
-						<li class="my-4"><h5>Soft showing of element in relative to scroll position</h5>
+						<li class="my-4"><h5>Smooth showing of element in relative to scroll position</h5>
 							<p class="nvgc py-3 px-3"><code>var element_soft</code>= new nvgs(<code>element</code>, <code>offset</code>, <code>direction</code>, <code style="color: #1F3E8C">offset2</code> (not important));</p>
 							<div>Set any element, which should to show or to hide in relative to current scroll position.</div>
 							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;/button&gt;</code>
@@ -275,7 +297,7 @@
 							<div><var>var scrbtn = new nvgs("#scrbtn",150,2,250);</var> // This button is showen when scroll page is <b>above</b> 150, but <b>below</b> 250.</div>
 						</li>
 						<li class="my-4"><h5>Set fixed position for element</h5>
-							<p class="nvgc py-3 px-3">nvgs.setFix(<code>element</code>, <code>position</code>,<code>x offset</code>,<code>y offset</code>);</p>
+							<p class="nvgc py-3 px-3">nvgs.setFix(<code>element</code>, <code>position</code>,<code>x_offset</code>,<code>y_offset</code>);</p>
 							<div>POSITIONS: <var>tl</var>- top left, <var>tr</var>- top right, <var>bl</var>- bottom left, <var>tr</var>- bottom right</div>
 							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;/button&gt;</code>
 							<br>.(JS).<br><var>nvgs.setFix(<code>"#scrbtn", "br", 20, 20</code>);</var></div>
@@ -305,10 +327,11 @@
 						</li>
 
 						<li class="my-4"><h5>Background image loading</h5>
-							<p class="nvgc py-3 px-3">nvgi.preLoad("<code>class</code>", "<code style="color: #1F3E8C">phant_attr</code>" (not important));</p>
-							<div>PreLoad images in background.</div>
+							<p class="nvgc py-3 px-3">nvgi.preLoad("<code>class</code>", "<code style="color: #1F3E8C">phant_attr</code>", <code style="color: #1F3E8C">isItCss</code> (not important)); <font color="green">// Preload by Class</font></p>
+							<div>PreLoad images in background. <i>By default, phant_attr = <b>"data-src", isItCss = <b>0</b></b></i></div>
+							<div>isItCss = 0 for preload images in <b>tags &lt;img&gt;</b>, but isItCss = 1 for css <b>background-image</b>.</div>
 							<div>For example, add attribute "<code>data-src</code>". Into this attribute add url of real image. In the usual <code>src</code> attribute, add a link to a "fast" image. Then, write <br><var>nvgi.preLoad("my_images","data-src");</var></div>
-							<p class="nvgc py-3 px-3">nvgi.preLoadId("<code>id</code>", "<code style="color: #1F3E8C">phant_attr</code>" (not important)); <font color="green">// Preload by Id</font></p>
+							<p class="nvgc mt-3 py-3 px-3">nvgi.preLoadId("<code>id</code>", "<code style="color: #1F3E8C">phant_attr</code>", <code style="color: #1F3E8C">isItCss</code> (not important)); <font color="green">// Preload by Id</font></p>
 						</li>
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 					</ul>

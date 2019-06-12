@@ -38,7 +38,7 @@
 			<hr style="background-color: black;">
 			<div class="accordion" id="accordionExample">
 			<div id="info2" data-parent="#accordionExample" class="collapse show">
-					<h1>NVG библиотека для JavaScript (Веб. разработка)</h1> <small>nvg.js <i class="text-warning">(v7.1.4)</i> 2019 Май, 30</small><br><br>
+					<h1>NVG библиотека для JavaScript (Веб. разработка)</h1> <small>nvg.js <i class="text-warning">(v7.1.9)</i> 2019 Июнь, 12</small><br><br>
 
 					<h2><a href="https://github.com/lonagi/nvg-js">GitHub</a> Apache2 License</h2>
 					<br>
@@ -102,7 +102,12 @@
 						</li>
 						<li class="my-4"><h5>Узнать позицию скролла</h5>
 							<p class="nvgc py-3 px-3"><code>var y =</code> nvg_scroll(); <small class="text-primary">:int</small></p>
-							<div>Здесь x может быть, например, 0. <i>(Работает при загрузке страницы)</i></div>
+							<div>Здесь y может быть, например, 0.</div>
+						</li>
+
+						<li class="my-4"><h5>Узнать позицию скролла <b>в процентах</b></h5>
+							<p class="nvgc py-3 px-3"><code>var yp =</code> nvg_scroll_pr(); <small class="text-primary">:int</small></p>
+							<div>Здесь y может быть, например, 50<code>%</code>.</div>
 						</li>
 
 						<li class="my-4"><h5>Функция спускания вниз/вверх <code>!только для overflow scroll элементов!</code></h5>
@@ -123,6 +128,15 @@
 							<div>Например, (HTML) <br><code>&lt;button onclick="nvgjs.ScrollSoft(200)" class="btn"&gt;На 200&lt;/button&gt;</code></div>
 						</li>
 
+						<li class="my-4"><h5>Плавная прокрутку к элементу по <b>id</b></h5>
+							<p class="nvgc py-3 px-3">nvgjs.ScrollTo(<code>id</code>, <code style="color: #1F3E8C">speed</code> (не важно));</p>
+							<div>Например, (HTML) <br><code>&lt;section id="main"&gt;...&lt;/section&gt;</code>
+							<br> .(JS).<br> <i><span class="text-muted">$(this).click(function(){</span><br><br>
+								nvgjs.ScrollTo("main",800);<br>
+								<font color="green">//nvgjs.ScrollTo("main");</font><br><br>
+							<span class="text-muted">});</span></i></div>
+						</li>
+
 						<li class="my-4"><h5>Перейти на HTTPS</h5>
 							<p class="nvgc py-3 px-3">nvgjs.go_ssl();</p>
 						</li>
@@ -141,7 +155,16 @@
 						</li>
 
 						<li class="my-4"><h5>Есть ли объект в поле зрения</h5>
-							<p class="nvgc py-3 px-3">nvgjs.isVisible(<code>element</code>) <small class="text-primary">:bool</small>;</p>
+							<p class="nvgc py-3 px-3">nvgjs.isVisible(<code>element</code>, <code style="color: #1F3E8C">isItClass</code> (не важно)) <small class="text-primary">:bool</small>;</p>
+							<div>Например, (HTML) <br><code>&lt;span id="scrbtn" class="btn"&gt;...&lt;/span&gt;</code>
+							<br>.(JS).<br><var>nvgjs.isVisible(<code>"#scrbtn"</code>);</var>
+									  <br><var>nvgjs.isVisible(<code>".btn"</code>,<code>1</code>);</var></div>
+						</li>
+
+						<li class="my-4"><h5>Коллизия (соприкосновение)</h5>
+							<p class="nvgc py-3 px-3">nvgjs.Collision(<code>element_first</code>, <code>element_second</code>, <code style="color: #1F3E8C">isFirstRelative</code>, <code style="color: #1F3E8C">isSecondRelative</code>, <code style="color: #1F3E8C">First_y_offset</code>, <code style="color: #1F3E8C">First_x_offset</code> (не важно)) <small class="text-primary">:bool</small>;</p>
+							<div>Например, (HTML) <br><code>&lt;span style="position: absolute;" id="scrbtn" class="btn"&gt;...&lt;/span&gt;</code><br><code>&lt;span style="position: fixed;" class="alert"&gt;...&lt;/span&gt;</code>
+							<br>.(JS).<br><var>nvgjs.Collision(<code>"#scrbtn"</code>, <code>".alert"</code>);</var></div>
 						</li>
 
 						<li class="my-4"><h5>Проверка устройства</h5>
@@ -276,7 +299,7 @@
 							<div><var>var scrbtn = new nvgs("#scrbtn",150,2,250);</var> // Эта кнопка появится на экране когда скролл будет <b>выше</b> 150, но <b>ниже</b> 250.</div>
 						</li>
 						<li class="my-4"><h5>Зафиксировать положение элемента</h5>
-							<p class="nvgc py-3 px-3">nvgs.setFix(<code>element</code>, <code>position</code>,<code>x offset</code>,<code>y offset</code>);</p>
+							<p class="nvgc py-3 px-3">nvgs.setFix(<code>element</code>, <code>position</code>,<code>x_offset</code>,<code>y_offset</code>);</p>
 							<div>ПОЗИЦИИ: <var>tl</var>- Вверху слева, <var>tr</var>- Вверху справа, <var>bl</var>- Внизу слева, <var>tr</var>- Внизу справа</div>
 							<div>Например, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;/button&gt;</code>
 							<br>.(JS).<br><var>nvgs.setFix(<code>"#scrbtn", "br", 20, 20</code>);</var></div>
@@ -306,10 +329,11 @@
 						</li>
 
 						<li class="my-4"><h5>Фоновая загрузка изображений</h5>
-							<p class="nvgc py-3 px-3">nvgi.preLoad("<code>Class</code>", "<code style="color: #1F3E8C">phant_attr</code>" (не важно));</p>
-							<div>Загрузка картинок, высокого например, качества на фоне.</div>
+							<p class="nvgc py-3 px-3">nvgi.preLoad("<code>class</code>", "<code style="color: #1F3E8C">phant_attr</code>", <code style="color: #1F3E8C">isItCss</code> (не важно)); <font color="green">// Пред.Загрузка изображения по его Class</font></p>
+							<div>Прогрузка изображенией на фоне. <i>Изначально, phant_attr = <b>"data-src", isItCss = <b>0</b></b></i></div>
+							<div>isItCss = 0 для прогрузки изображений в <b>tags &lt;img&gt;</b>, а isItCss = 1 для CSS свойства <b>background-image</b>.</div>
 							<div>Например, добавь атрибут "<code>data-src</code>". В него помести настоящую ссылку на нужное изображение. А в обычном <code>src</code> атрибуте ссылку на "быстрое" изображение. Затем, впиши <br><var>nvgi.preLoad("my_images","data-src");</var></div>
-							<p class="nvgc py-3 px-3">nvgi.preLoadId("<code>id</code>", "<code style="color: #1F3E8C">phant_attr</code>" (не важно)); <font color="green">// Пред.Загрузка изображения по его id</font></p>
+							<p class="nvgc mt-3 py-3 px-3">nvgi.preLoadId("<code>id</code>", "<code style="color: #1F3E8C">phant_attr</code>", <code style="color: #1F3E8C">isItCss</code> (не важно)); <font color="green">// Preload by Id</font></p>
 						</li>
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 					</ul>
