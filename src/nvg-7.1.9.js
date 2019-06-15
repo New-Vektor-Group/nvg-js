@@ -1,6 +1,6 @@
 function nvgRand(min, max) 
     {
-      // Возвращает случайное число между min (включительно) и max (не включая max)
+      /* Возвращает случайное число между min (включительно) и max (не включая max)*/
       return Math.random() * (max - min) + min;
     }
 
@@ -19,19 +19,19 @@ class nvgjs
     return "7.1.9";
   }
 
-////////////////////////
+/*//////////////////////*/
 static scrollbot(nvgw)
 {
-  //Резкая прокрутка вниз
+  /*Резкая прокрутка вниз*/
    $(nvgw).scrollTop($(nvgw)[0].scrollHeight);
 }
 
 static scrolltop(nvgw)
 {
-  //Резкая прокрутка вниз
+  /*Резкая прокрутка вниз*/
    $(nvgw).scrollTop(0);
 }
-////////////////////////
+/*///////////////////////*/
 
 static ScrollTopSoft()
 {
@@ -47,7 +47,7 @@ static ScrollSoft(ccoord)
 {
 $("html, body").animate({ scrollTop: ccoord }, 'slow');
 }
-////////////////////////
+/*///////////////////////*/
 
 static ScrollTo(a0101x304329, speed = 800)
 {
@@ -56,7 +56,7 @@ scrollTop: $("#"+a0101x304329).offset().top
 }, speed); 
 }
 
-////////////////////////
+/*///////////////////////*/
 
 static go_ssl()
 {
@@ -65,7 +65,7 @@ static go_ssl()
     location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
   }
 }
-////////////////////////
+/*///////////////////////*/
 
 static isVisible(elem, ika = 0)
 {
@@ -78,7 +78,7 @@ static isVisible(elem, ika = 0)
 
 static Collision(elem1,elem2,pos1=0,pos2=0,offsety=0,offsetx=0)
 {
-//default by absolute position => posN = 0 else 1
+/*default by absolute position => posN = 0 else 1*/
 var el1 = $(elem1);
 var el2 = $(elem2);
 
@@ -111,7 +111,7 @@ else
 
 }
 
-////////////////////////
+/*///////////////////////*/
 
 static isMobile() { 
  if( navigator.userAgent.match(/Android/i)
@@ -140,7 +140,7 @@ static isMScreen() {
 
 }
 
-////////////////
+/*///////////////*/
 function nvg_sw()
 {
   return screen.width;     
@@ -170,7 +170,7 @@ function nvg_scroll_pr()
 {
   var scrolnoe2q = Math.ceil(100*(nvg_scroll()/($(document).height()-nvg_sha())));
 }
-////////////////////////
+/*///////////////////////*/
 
 
 function nvgcopy(btn, text)
@@ -208,7 +208,7 @@ function nvgcopy(btn, text)
   });
 }
 
-////////////////////////
+/*///////////////////////*/
 
   window.nvgMob = function() {
   var check = false;
@@ -255,13 +255,13 @@ class nvg_snow
         this.sinkspeed=0.6;
         this.snowmaxsize=50;
         this.snowminsize=25;
-        // 1 for all
-        // 2 for left
-        // 3 for center
-        // 4 for right
+        /* 1 for all*/
+        /* 2 for left*/
+        /* 3 for center*/
+        /* 4 for right */
         this.snowingzone=1;
 
-        // Do not edit below this line
+        /* Do not edit below this line*/
         this.actions = true;
         this.snow=new Array();
         this.marginbottom;
