@@ -1,5 +1,5 @@
 # NVG Library for JavaScript (Web Development)
-NVG JS Library for web dev. Version 7.1.9, 2019 June, 12
+NVG JS Library for web dev. Version 7.2.0, 2019 June, 17
 
 ![Logo](https://github.com/lonagi/nvg-js/blob/master/img/NVG%20JS.png)
 

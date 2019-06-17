@@ -16,7 +16,7 @@ class nvgjs
 {
   static getVersion()
   {
-    return "7.1.9";
+    return "7.2.0";
   }
 
 /*//////////////////////*/
@@ -137,8 +137,39 @@ static isMScreen() {
    }
 }
 
+/*//////////////////////*/
+
+static isnoSelfHideCollapse = false;
+static btnCollapse = "noelementt"; 
+static attrcollapse = "noelementt";
+
+static noSelfHideCollapse(btnCollapse1)
+{
+
+nvgjs.isnoSelfHideCollapse = true;
+
+if(btnCollapse1 !== undefined)
+  nvgjs.btnCollapse = btnCollapse1;
+
+$(nvgjs.btnCollapse).on('click', function() 
+{ 
+nvgjs.attrcollapse = $(this).attr("data-target"); 
+
+}); 
 
 }
+
+}
+
+/*class end*/
+$('.collapse').on('hide.bs.collapse',function(e)
+{
+  if(nvgjs.isnoSelfHideCollapse)
+  { 
+    if($(this).attr("id")==nvgjs.attrcollapse.substr(1)) 
+      e.preventDefault(); 
+  }
+});
 
 /*///////////////*/
 function nvg_sw()
@@ -527,6 +558,20 @@ static setFix(el,wh, ofx, ofy)
     $(el).css("position","fixed");
     $(el).css("bottom",ofy+"px");
     $(el).css("right",ofx+"px");
+    $(el).css("z-index","1001");
+  }
+  if(wh=="bc")
+  {
+    $(el).css("position","fixed");
+    $(el).css("bottom",ofy+"px");
+    $(el).css("left",(50+ofx)+"%");
+    $(el).css("z-index","1001");
+  }
+  if(wh=="tc")
+  {
+    $(el).css("position","fixed");
+    $(el).css("top",ofy+"px");
+    $(el).css("left",(50+ofx)+"%");
     $(el).css("z-index","1001");
   }
 }

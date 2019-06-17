@@ -38,7 +38,7 @@
 			<hr style="background-color: black;">
 			<div class="accordion" id="accordionExample">
 			<div id="info2" data-parent="#accordionExample" class="collapse show">
-					<h1>NVG Library for JavaScript (Web Development)</h1> <small>nvg.js <i class="text-warning">(v7.1.9)</i> 2019 June, 12</small><br><br>
+					<h1>NVG Library for JavaScript (Web Development)</h1> <small>nvg.js <i class="text-warning">(v7.2.0)</i> 2019 June, 17</small><br><br>
 
 					<h2><a href="https://github.com/lonagi/nvg-js">GitHub</a> Apache2 License</h2>
 					<br>
@@ -151,6 +151,13 @@
 									<script src="https://ex.nvg-team.com/lib/nvg-main2.js?174"></script>
 									<script type="text/javascript">nvgcopy("btn","textt");</script>
 							</div>
+						</li>
+
+						<li class="my-4"><h5>Ban hiding of Collapse/Accordion</h5>
+							<p class="nvgc py-3 px-3">nvgjs.noSelfHideCollapse(<code>btn_element</code>);</p>
+							<div>This function bans hiding not always. It works only if one is only. You should send as an argument your button, which has attr. <b>"data-target"</b>.</div>
+							<div>For example, (HTML) <br><code>&lt;button id="btntocoll" data-target="#acc1" class="btn"&gt;...&lt;/button&gt;</code>
+							<br>.(JS).<br><var>nvgjs.noSelfHideCollapse(<code>"#btntocoll"</code>);</var></div>
 						</li>
 
 						<li class="my-4"><h5>The visibility of an element on the screen</h5>
@@ -298,7 +305,8 @@
 						</li>
 						<li class="my-4"><h5>Set fixed position for element</h5>
 							<p class="nvgc py-3 px-3">nvgs.setFix(<code>element</code>, <code>position</code>,<code>x_offset</code>,<code>y_offset</code>);</p>
-							<div>POSITIONS: <var>tl</var>- top left, <var>tr</var>- top right, <var>bl</var>- bottom left, <var>tr</var>- bottom right</div>
+							<div>POSITIONS: <var>tl</var>- top left, <var>tr</var>- top right, <var>bl</var>- bottom left, <var>tr</var>- bottom right, <var>tc</var>- top сenter, <var>bc</var>- bottom сenter</div>
+							<div>Attention! Work with centers (on the x coordinate) is expressed as a percentage, not pixels.</div>
 							<div>For example, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;/button&gt;</code>
 							<br>.(JS).<br><var>nvgs.setFix(<code>"#scrbtn", "br", 20, 20</code>);</var></div>
 						</li>

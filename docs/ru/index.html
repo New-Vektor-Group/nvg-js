@@ -38,7 +38,7 @@
 			<hr style="background-color: black;">
 			<div class="accordion" id="accordionExample">
 			<div id="info2" data-parent="#accordionExample" class="collapse show">
-					<h1>NVG библиотека для JavaScript (Веб. разработка)</h1> <small>nvg.js <i class="text-warning">(v7.1.9)</i> 2019 Июнь, 12</small><br><br>
+					<h1>NVG библиотека для JavaScript (Веб. разработка)</h1> <small>nvg.js <i class="text-warning">(v7.2.0)</i> 2019 Июнь, 17</small><br><br>
 
 					<h2><a href="https://github.com/lonagi/nvg-js">GitHub</a> Apache2 License</h2>
 					<br>
@@ -149,9 +149,16 @@
 							<div><br><b>НАПРИМЕР</b><br><br>
 									<button id="btn" class="btn btn-warning">Нажми на меня)</button><br>
 									<div id="textt" class="alert alert-warning col-6">Текст от NVG. Теперь проверь. Жми где-то Ctrl+V.</div>
-									<script src="https://ex.nvg-team.com/lib/nvg-main2.js?174"></script>
+									<script src="https://ex.nvg-team.com/lib/nvg-main2.js?175"></script>
 									<script type="text/javascript">nvgcopy("btn","textt");</script>
 							</div>
+						</li>
+
+						<li class="my-4"><h5>Запретить скрывать Collapse или Accordion</h5>
+							<p class="nvgc py-3 px-3">nvgjs.noSelfHideCollapse(<code>btn_element</code>);</p>
+							<div>Эта функция запрещает скрывать не всегда. Она сработает, только когда элемент остался единственным. Вы должны передать, как аргумент кнопку, которая содержит атрибут <b>"data-target"</b>.</div>
+							<div>Например, (HTML) <br><code>&lt;button id="btntocoll" data-target="#acc1" class="btn"&gt;...&lt;/button&gt;</code>
+							<br>.(JS).<br><var>nvgjs.noSelfHideCollapse(<code>"#btntocoll"</code>);</var></div>
 						</li>
 
 						<li class="my-4"><h5>Есть ли объект в поле зрения</h5>
@@ -300,7 +307,8 @@
 						</li>
 						<li class="my-4"><h5>Зафиксировать положение элемента</h5>
 							<p class="nvgc py-3 px-3">nvgs.setFix(<code>element</code>, <code>position</code>,<code>x_offset</code>,<code>y_offset</code>);</p>
-							<div>ПОЗИЦИИ: <var>tl</var>- Вверху слева, <var>tr</var>- Вверху справа, <var>bl</var>- Внизу слева, <var>tr</var>- Внизу справа</div>
+							<div>ПОЗИЦИИ: <var>tl</var>- Вверху слева, <var>tr</var>- Вверху справа, <var>bl</var>- Внизу слева, <var>tr</var>- Внизу справа, <var>tc</var>- Вверху центр, <var>bc</var>- Внизу центр</div>
+							<div>Внимание! Работа с центрами (по координате х) выражается в процентах, а не пикселях.</div>
 							<div>Например, (HTML) <br><code>&lt;button id="scrbtn" class="btn"&gt;Scroll&lt;/button&gt;</code>
 							<br>.(JS).<br><var>nvgs.setFix(<code>"#scrbtn", "br", 20, 20</code>);</var></div>
 						</li>
