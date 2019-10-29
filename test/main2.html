@@ -59,10 +59,10 @@ nvgjs.scrolltop("#test2_3");
 }
 
 
-$("#wh").text(nvg_sha);
-$("#ww").text(nvg_scroll);
+$("#wh").text(nvg_sha());
+$("#ww").text(nvg_scroll());
 $(window).scroll(function() {
-      $("#ww").text(nvg_scroll);
+      $("#ww").text(nvg_scroll() + " " + nvg_scroll_pr());
     });
 
 alert(nvgjs.isVisible("#dsa52s"));
