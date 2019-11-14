@@ -1,0 +1,47 @@
+class nvgR
+{
+	static R(min, max, f = false) 
+		{
+			/* Возвращает случайное число между min (включительно) и max (не включая max)*/
+ 		 	if(f)
+ 		 		return Math.floor(Math.random() * (max - min) + min);
+ 		 	else
+ 		 		return Math.random() * (max - min) + min;
+		}
+
+	static A(caps = true, lang = 'en')
+	{
+		var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+		if(lang=='ru'){
+			chars = "ЙФЯЦЫЧУВСКАМЕПИНРТГОЬШЛБЩДЮЗЖХЭЪйфяцычувскамепинртгоьшлбщдюзжхэъ";
+			if(!caps)
+				chars = chars.slice(32);
+		}
+		else{
+			if(!caps)
+				chars = chars.slice(26);
+		}
+		
+		var rnum = Math.floor(Math.random() * chars.length);
+		var randomstring = chars.substring(rnum,rnum+1);
+		return randomstring;
+	}
+
+	static D(zero = true)
+	{
+		return nvgR.R(0,10,1);
+	}
+
+	static N(d = 1)
+	{
+		return nvgR.R(Math.pow(10,d-1),Math.pow(10,d-1)*10,1);
+	}
+}
+
+class nvgm
+{
+	static sigm(x) 
+		{
+ 		 	return 1/(1+Math.pow(Math.E, -x));
+		}
+}
