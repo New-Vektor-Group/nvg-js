@@ -622,11 +622,12 @@ class nvg_cook
 
     $(this.inputId).bind('input', function(){
     localStorage.setItem(this.id, $(this).val());
+    nvg_cook.setCookie("to54523fgRem43432",1,{expires: 86400});
     });
 
-    $(this.inputId).val(localStorage.getItem(this.inputId.slice(1)));
+    if(nvg_cook.getCookie("to54523fgRem43432")==1)
+      $(this.inputId).val(localStorage.getItem(this.inputId.slice(1)));
   }
-
   delMe()
   {
     localStorage.removeItem(this.inputId.slice(1));
