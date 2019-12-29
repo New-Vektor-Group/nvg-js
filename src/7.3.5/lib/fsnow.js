@@ -1,6 +1,6 @@
 class nvg_snow
 {
-    constructor()
+    constructor(zindex = 1000)
     {
         this.speed = 50;
         this.snowmax=30;
@@ -10,6 +10,7 @@ class nvg_snow
         this.sinkspeed=0.6;
         this.snowmaxsize=50;
         this.snowminsize=25;
+        this.zindex=zindex;
         /* 1 for all */
         /* 2 for left */
         /* 3 for center */
@@ -64,7 +65,7 @@ class nvg_snow
     {        
         for (var i=0;i<=this.snowmax;i++)
         {
-            document.body.innerHTML += ("<span id='snowflake"+i+"' style='position:absolute;top:-"+this.snowmaxsize+"'>"+this.snowletter+"</span>");
+            document.body.innerHTML += ("<span id='snowflake"+i+"' style='z-index:"+this.zindex+";position:fixed;top:-"+this.snowmaxsize+"'>"+this.snowletter+"</span>");
         }
     }
 
@@ -118,14 +119,13 @@ class nvg_snow
     initsnow()
     {
         if (this.ie5 || this.opera) 
-        {
-                this.marginbottom = document.body.scrollHeight;
-                this.marginright = document.body.clientWidth-15;
-        }
-        else if (this.ns6) {
-                this.marginbottom = document.body.scrollHeight;
-                this.marginright = window.innerWidth-15;
-        }
+            this.marginright = document.body.clientWidth-15;
+        else if (this.ns6)
+            this.marginright = window.innerWidth-15;
+        else
+            this.marginright = window.innerWidth-15;
+
+        this.marginbottom = window.innerHeight+100;
 
         this.snowsizerange=this.snowmaxsize-this.snowminsize;
 
