@@ -121,8 +121,7 @@ $(window).scroll(function ()
   {
     nvgs.countEls.forEach(function(element)
     {
-      nvgs.elsoft(element);
-      
+      nvgs.elsoft(element);   
     });
   }
 });
