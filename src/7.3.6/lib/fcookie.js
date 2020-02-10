@@ -1,31 +1,28 @@
-class nvg_cook
+function nvg_cook(inputId)
 {
-	constructor(inputId)
-	{
-		this.inputId = inputId;
+  this.inputId = inputId;
 
-		$(this.inputId).bind('input', function(){
-		localStorage.setItem(this.id, $(this).val());
-		nvg_cook.setCookie("to54523fgRem43432",1,{expires: 86400});
-		});
+  $(this.inputId).bind('input', function(){
+  localStorage.setItem(this.inputId, $(this).val());
+  nvg_cook.prototype.setCookie("ede56579ee9d437820a0f9",1,{expires: 86400});
+  });
 
-		if(nvg_cook.getCookie("to54523fgRem43432")==1)
-			$(this.inputId).val(localStorage.getItem(this.inputId.slice(1)));
-	}
+  if(nvg_cook.prototype.getCookie("ede56579ee9d437820a0f9")==1)
+  	$(this.inputId).val(localStorage.getItem(this.inputId.slice(1)));
 
-	delMe()
+	this.delMe = function()
 	{
 		localStorage.removeItem(this.inputId.slice(1));
 	}
 
-  static getCookie(name) {
+  nvg_cook.prototype.getCookie(name) {
   var matches = document.cookie.match(new RegExp(
     "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
   ));
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-static setCookie(name, value, options) {
+  nvg_cook.prototype.setCookie(name, value, options) {
   options = options || {};
 
   var expires = options.expires;
@@ -54,8 +51,8 @@ static setCookie(name, value, options) {
   document.cookie = updatedCookie;
 }
 
-static deleteCookie(name) {
-  nvg_cook.setCookie(name, "", {
+  nvg_cook.prototype.deleteCookie(name) {
+  nvg_cook.prototype.setCookie(name, "", {
     expires: -1
   })
 }

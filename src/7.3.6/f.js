@@ -1,6 +1,6 @@
-class nvgjs
+function nvgjs()
 {
-  static getVersion()
+  nvgjs.prototype.getVersion()
   {
     return "7.3.5";
   }
