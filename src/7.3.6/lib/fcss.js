@@ -1,8 +1,26 @@
 nvgs.countEls = [];
+nvgs.enabled = true;
+
+nvgs.setFix = function(el, wh, ofx, ofy)
+{
+  $(el).css("position","fixed");
+  $(el).css("z-index","1001");
+
+  if(wh[0]=="t")
+    $(el).css("top",ofy+"px");
+  else if(wh[0]=="b")
+    $(el).css("bottom",ofy+"px");
+
+  if(wh[1]=="l")
+    $(el).css("left",ofx+"px");
+  else if(wh[1]=="r")
+    $(el).css("right",ofx+"px");
+  else if(wh[1]=="c")
+    $(el).css("left",(50+ofx)+"%");
+}
+
 function nvgs(obj2, scroll_when2, direction2, scroll_when2_2)
 {
-  nvgs.enabled = true;
-
   nvgs.sh5df543 = function(objj)
   {
     $(objj).stop();
@@ -10,7 +28,7 @@ function nvgs(obj2, scroll_when2, direction2, scroll_when2_2)
       opacity: 1
     },150);
     setTimeout(function(){$(objj).css("display",'inherit')},200);
-  /*/$(objj).addClass("show");*/
+  /*$(objj).addClass("show");*/
   /*$(objj).removeClass("hide");*/
   /*setTimeout(function(){$(objj).css("transform","translate(0px,0px)");},0);*/
   }
@@ -70,24 +88,6 @@ function nvgs(obj2, scroll_when2, direction2, scroll_when2_2)
         nvgs.hds5df543(element.obj, this.needshf);
       }
     }
-  }
-
-  nvgs.setFix = function(el, wh, ofx, ofy)
-  {
-    $(el).css("position","fixed");
-    $(el).css("z-index","1001");
-
-    if(wh[0]=="t")
-      $(el).css("top",ofy+"px");
-    else if(wh[0]=="b")
-      $(el).css("bottom",ofy+"px");
- 
-    if(wh[1]=="l")
-      $(el).css("left",ofx+"px");
-    else if(wh[1]=="r")
-      $(el).css("right",ofx+"px");
-    else if(wh[1]=="c")
-      $(el).css("left",(50+ofx)+"%");
   }
 
   if(obj2 == "")
