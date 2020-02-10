@@ -1,28 +1,18 @@
 function nvg_cook(inputId)
 {
-  this.inputId = inputId;
-
-  $(this.inputId).bind('input', function(){
-  localStorage.setItem(this.inputId, $(this).val());
-  nvg_cook.prototype.setCookie("ede56579ee9d437820a0f9",1,{expires: 86400});
-  });
-
-  if(nvg_cook.prototype.getCookie("ede56579ee9d437820a0f9")==1)
-  	$(this.inputId).val(localStorage.getItem(this.inputId.slice(1)));
-
-	this.delMe = function()
+	nvg_cook.prototype.delMe = function()
 	{
 		localStorage.removeItem(this.inputId.slice(1));
 	}
 
-  nvg_cook.prototype.getCookie(name) {
+  nvg_cook.getCookie(name) {
   var matches = document.cookie.match(new RegExp(
     "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
   ));
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-  nvg_cook.prototype.setCookie(name, value, options) {
+  nvg_cook.setCookie(name, value, options) {
   options = options || {};
 
   var expires = options.expires;
@@ -51,9 +41,19 @@ function nvg_cook(inputId)
   document.cookie = updatedCookie;
 }
 
-  nvg_cook.prototype.deleteCookie(name) {
-  nvg_cook.prototype.setCookie(name, "", {
+  nvg_cook.deleteCookie(name) {
+  nvg_cook.setCookie(name, "", {
     expires: -1
   })
 }
+
+  this.inputId = inputId;
+
+  $(this.inputId).bind('input', function(){
+  localStorage.setItem(this.inputId, $(this).val());
+  nvg_cook.setCookie("ede56579ee9d437820a0f9",1,{expires: 86400});
+  });
+
+  if(nvg_cook.getCookie("ede56579ee9d437820a0f9")==1)
+    $(this.inputId).val(localStorage.getItem(this.inputId.slice(1)));
 }
