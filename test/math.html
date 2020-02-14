@@ -9,7 +9,16 @@
 <body> 
 
 <div class="d-inline-block bg-primary px-5 py-2 text-light">
-Random number = <span id="rand">from 0 to 6</span>
+Random float = <span id="rand">from 0 to 6</span>
+</div>
+<div class="d-inline-block bg-primary px-5 py-2 text-light">
+Number = <span id="rand2"></span>
+</div>
+<div class="d-inline-block bg-primary px-5 py-2 text-light">
+Random Digital = <span id="rand3">With zero</span>
+</div>
+<div class="d-inline-block bg-primary px-5 py-2 text-light">
+Random Char = <span id="rand4">English</span>
 </div>
 <hr>
 
@@ -22,10 +31,13 @@ Sigm process (x=random) = <span id="sigm"></span><br>
 <footer> 
 <script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script> 
 <script src="https://ex.nvg-team.com/bootstrap3.js"></script> 
-<script src="../lib/nvg-math.js"></script> 
+<script src="../src/7.3.6/lib/fmath.js"></script> 
 <script type="text/javascript">
-$("#rand").text(nvgR.N());
-$("#sigm").text(nvgm.sigm(parseInt($("#rand").text())));
+$("#rand").text(nvgR.I(0,7));
+$("#rand2").text(nvgR.N(3));
+$("#rand3").text(nvgR.D());
+$("#rand4").text(nvgR.C());
+$("#sigm").text(nvgM.sigm(parseInt($("#rand").text())));
 </script>
 </footer> 
 </body> 
