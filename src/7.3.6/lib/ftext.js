@@ -1,6 +1,6 @@
-class nvgtext
+function nvgtext()
 {
-	static nl2br (str, is_xhtml) {
+	nvgtext.nl2br = function(str, is_xhtml) {
     if (typeof str === 'undefined' || str === null) {
         return '';
     }
@@ -8,7 +8,7 @@ class nvgtext
     return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
 	}
 
-	static nocopy(element)
+	nvgtext.nocopy = function(element)
 	{
 		$(element).css("-webkit-user-select","none");
 		$(element).css("-khtml-user-select","none");
