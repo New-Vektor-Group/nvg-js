@@ -4,166 +4,165 @@ nvgjs.btnCollapse = "noelementt";
 nvgjs.attrcollapse = "noelementt";
 nvgjs.framework = "bs";
 
-function nvgjs()
+nvgjs.https = function()
 {
-  nvgjs.getVersion = function()
-  {
-    return "7.3.6";
-  }
-
-  nvgjs.ScrollBot = function(nvgw)
-  {
-     $(nvgw).scrollTop($(nvgw)[0].scrollHeight);
-  }
-
-  nvgjs.ScrollTop = function(nvgw)
-  {
-     $(nvgw).scrollTop(0);
-  }
-  /*///////////////////////*/
-
-  nvgjs.ScrollTopSoft = function()
-  {
-    $("html, body").animate({ scrollTop: 0 }, 'slow');
-  }
-
-  nvgjs.ScrollBotSoft = function()
-  {
-    $("html, body").animate({ scrollTop: screen.height }, 'slow');
-  }
-
-  nvgjs.ScrollSoft = function(coord)
-  {
-    $("html, body").animate({ scrollTop: coord }, 'slow');
-  }
-
-  nvgjs.ScrollTo = function(a0101x304329, speed)
-  {
-    if(speed === undefined)
-      speed = 800;
-
-    $('html, body').animate({ 
-    scrollTop: $(a0101x304329).offset().top 
-    }, speed);
-  }
-
-  nvgjs.https = function()
-  {
-    if(location.protocol != 'https:')
-      location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-  }
-
-  nvgjs.isVisible =function(elem, oft, ofb, ofl, ofr)
-  {
-    if(oft === undefined)
-      oft = 0;
-    if(ofb === undefined)
-      ofb = 0;
-    if(ofl === undefined)
-      ofl = 0;
-    if(ofr === undefined)
-      ofr = 0;
-
-    var ika = 0;
-    var coords = $(elem)[ika].getBoundingClientRect();
-
-    var windowHeight = document.documentElement.clientHeight;
-    var windowWidth = document.documentElement.clientWidth;
-
-    var topVisible = coords.top-oft > 0 && coords.top-oft < windowHeight;
-    var bottomVisible = coords.bottom-ofb < windowHeight && coords.bottom-ofb > 0;
-
-    var leftVisible = coords.left-ofl > 0 && coords.left-ofl < windowWidth;
-    var rightVisible = coords.right-ofr < windowWidth && coords.right-ofr > 0;
-
-    var a = topVisible || bottomVisible;
-    var b = leftVisible || rightVisible;
-    return a && b;
-  }
-
-  nvgjs.Collision = function(elem1,elem2,pos1,pos2,offsety,offsetx)
-  {
-  if(pos1 === undefined)
-    pos1 = 0;
-  if(pos2 === undefined)
-    pos2 = 0;
-  if(offsety === undefined)
-    offsety = 0;
-  if(offsetx === undefined)
-    offsetx = 0;
-
-  /*default by absolute position => posN = 0 else 1*/
-  var el1 = $(elem1);
-  var el2 = $(elem2);
-
-  var T1 = el1.offset().top-offsety;
-  var T2 = el2.offset().top;
-  if(pos1==1) T1 = el1.position().top-offsety;
-  if(pos2==1) T2 = el2.position().top;
-
-  var L1 = el1.offset().left-offsetx;
-  var L2 = el2.offset().left;
-  if(pos1==1) L1 = el1.position().left-offsetx;
-  if(pos2==1) L2 = el2.position().left;
-
-  var B1 = el1.offset().top + el1.outerHeight() + offsety;
-  var B2 = el2.offset().top + el2.outerHeight();
-  if(pos1==1) B1 = el1.position().top + el1.outerHeight() + offsety;
-  if(pos2==1) B2 = el2.position().top + el2.outerHeight();
-
-  var R1 = el1.offset().left + el1.outerWidth() + offsetx;
-  var R2 = el2.offset().left + el2.outerWidth();
-  if(pos1==1) R1 = el1.position().left + el1.outerWidth() + offsetx;
-  if(pos2==1) R2 = el2.position().left + el2.outerWidth();
-
-  if(T1 <= B2 && B1 >= T2 && L1 <= R2 && R1 >= L2)
-    return true;
-  else
-    return false;
-
-  }
-
-  nvgjs.isMobile = function() { 
-   if( navigator.userAgent.match(/Android/i)
-   || navigator.userAgent.match(/webOS/i)
-   || navigator.userAgent.match(/iPhone/i)
-   || navigator.userAgent.match(/iPad/i)
-   || navigator.userAgent.match(/iPod/i)
-   || navigator.userAgent.match(/BlackBerry/i)
-   || navigator.userAgent.match(/Windows Phone/i)
-   )
-    return true;
-  else
-    return false;
-  }
-
-  nvgjs.isMScreen = function() {
-     if(window.innerWidth <= 800 && window.innerHeight <= 600)
-       return true;
-     else
-       return false;
-  }
-
-  nvgjs.noSelfHideCollapse = function(btnCollapse1, framework)
-  {
-    if(framework !== undefined)
-      nvgjs.framework = framework;
-
-    nvgjs.isnoSelfHideCollapse = true;
-
-    if(btnCollapse1 !== undefined)
-      nvgjs.btnCollapse = btnCollapse1;
-
-    if(nvgjs.framework == "bs")
-    {
-      $(nvgjs.btnCollapse).on('click', function() 
-      { 
-      nvgjs.attrcollapse = $(this).attr("data-target"); 
-      }); 
-    }
-
-  }
+  if(location.protocol != 'https:')
+    location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
 }
+
+nvgjs.getVersion = function()
+{
+  return "7.3.6";
+}
+
+nvgjs.ScrollBot = function(nvgw)
+{
+   $(nvgw).scrollTop($(nvgw)[0].scrollHeight);
+}
+
+nvgjs.ScrollTop = function(nvgw)
+{
+   $(nvgw).scrollTop(0);
+}
+/*///////////////////////*/
+
+nvgjs.ScrollTopSoft = function()
+{
+  $("html, body").animate({ scrollTop: 0 }, 'slow');
+}
+
+nvgjs.ScrollBotSoft = function()
+{
+  $("html, body").animate({ scrollTop: screen.height }, 'slow');
+}
+
+nvgjs.ScrollSoft = function(coord)
+{
+  $("html, body").animate({ scrollTop: coord }, 'slow');
+}
+
+nvgjs.ScrollTo = function(a0101x304329, speed)
+{
+  if(speed === undefined)
+    speed = 800;
+
+  $('html, body').animate({ 
+  scrollTop: $(a0101x304329).offset().top 
+  }, speed);
+}
+
+nvgjs.isVisible = function(elem, oft, ofb, ofl, ofr)
+{
+  if(oft === undefined)
+    oft = 0;
+  if(ofb === undefined)
+    ofb = 0;
+  if(ofl === undefined)
+    ofl = 0;
+  if(ofr === undefined)
+    ofr = 0;
+
+  var ika = 0;
+  var coords = $(elem)[ika].getBoundingClientRect();
+
+  var windowHeight = document.documentElement.clientHeight;
+  var windowWidth = document.documentElement.clientWidth;
+
+  var topVisible = coords.top-oft > 0 && coords.top-oft < windowHeight;
+  var bottomVisible = coords.bottom-ofb < windowHeight && coords.bottom-ofb > 0;
+
+  var leftVisible = coords.left-ofl > 0 && coords.left-ofl < windowWidth;
+  var rightVisible = coords.right-ofr < windowWidth && coords.right-ofr > 0;
+
+  var a = topVisible || bottomVisible;
+  var b = leftVisible || rightVisible;
+  return a && b;
+}
+
+nvgjs.Collision = function(elem1,elem2,pos1,pos2,offsety,offsetx)
+{
+if(pos1 === undefined)
+  pos1 = 0;
+if(pos2 === undefined)
+  pos2 = 0;
+if(offsety === undefined)
+  offsety = 0;
+if(offsetx === undefined)
+  offsetx = 0;
+
+/*default by absolute position => posN = 0 else 1*/
+var el1 = $(elem1);
+var el2 = $(elem2);
+
+var T1 = el1.offset().top-offsety;
+var T2 = el2.offset().top;
+if(pos1==1) T1 = el1.position().top-offsety;
+if(pos2==1) T2 = el2.position().top;
+
+var L1 = el1.offset().left-offsetx;
+var L2 = el2.offset().left;
+if(pos1==1) L1 = el1.position().left-offsetx;
+if(pos2==1) L2 = el2.position().left;
+
+var B1 = el1.offset().top + el1.outerHeight() + offsety;
+var B2 = el2.offset().top + el2.outerHeight();
+if(pos1==1) B1 = el1.position().top + el1.outerHeight() + offsety;
+if(pos2==1) B2 = el2.position().top + el2.outerHeight();
+
+var R1 = el1.offset().left + el1.outerWidth() + offsetx;
+var R2 = el2.offset().left + el2.outerWidth();
+if(pos1==1) R1 = el1.position().left + el1.outerWidth() + offsetx;
+if(pos2==1) R2 = el2.position().left + el2.outerWidth();
+
+if(T1 <= B2 && B1 >= T2 && L1 <= R2 && R1 >= L2)
+  return true;
+else
+  return false;
+
+}
+
+nvgjs.isMobile = function() { 
+ if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)
+ )
+  return true;
+else
+  return false;
+}
+
+nvgjs.isMScreen = function() {
+   if(window.innerWidth <= 800 && window.innerHeight <= 600)
+     return true;
+   else
+     return false;
+}
+
+nvgjs.noSelfHideCollapse = function(btnCollapse1, framework)
+{
+  if(framework !== undefined)
+    nvgjs.framework = framework;
+
+  nvgjs.isnoSelfHideCollapse = true;
+
+  if(btnCollapse1 !== undefined)
+    nvgjs.btnCollapse = btnCollapse1;
+
+  if(nvgjs.framework == "bs")
+  {
+    $(nvgjs.btnCollapse).on('click', function() 
+    { 
+    nvgjs.attrcollapse = $(this).attr("data-target"); 
+    }); 
+  }
+
+}
+
+function nvgjs(){}
 
 /*Bootstrap*/
 if(nvgjs.framework == "bs")
@@ -240,8 +239,10 @@ function nvgcopy(btn, text)
     var successful = document.execCommand('copy');
     var msg = successful ? 'successful' : 'unsuccessful';
     console.log('Copying text command was ' + msg);
+    return true;
   } catch (err) {
     console.log('Oops, unable to copy');
+    return false;
   }
   });
 }
