@@ -1,154 +1,154 @@
-class nvg_snow
+function nvg_snow(zindex)
 {
-    constructor(zindex = 1000)
+    nvg_snow.prototype.movesnow()
     {
-        this.speed = 50;
-        this.snowmax=30;
-        this.snowcolor=new Array("#b9dff5","#7fc7ff","#7fb1ff","#7fc7ff","#b9dff5");
-        this.snowtype=new Array("Times");
-        this.snowletter="*";
-        this.sinkspeed=0.6;
-        this.snowmaxsize=50;
-        this.snowminsize=25;
-        this.zindex=zindex;
-        /* 1 for all */
-        /* 2 for left */
-        /* 3 for center */
-        /* 4 for right */
-        this.snowingzone=1;
-
-        /* Do not edit below this line */
-        this.actions = true;
-        this.snow=new Array();
-        this.marginbottom;
-        this.marginright;
-        this.i_snow=0;
-        this.x_mv=new Array();
-        this.crds=new Array();
-        this.lftrght=new Array();
-        this.browserinfos=navigator.userAgent;
-        this.ie5=document.all&&document.getElementById&&!this.browserinfos.match(/Opera/);
-        this.ns6=document.getElementById&&!document.all;
-        this.opera=this.browserinfos.match(/Opera/);
-        this.browserok=this.ie5||this.ns6||this.opera;
-
-        this.draw();
-        this.init();
-    }
-
-    movesnow()
-    {
-        if(this.actions)
+        if(nvg_snow.prototype.actions)
         {
-            for (var i = 0; i <= this.snowmax; i++)
-        {
-                this.crds[i] += this.x_mv[i];
-                this.snow[i].posy+= this.snow[i].sink;
-                this.snow[i].style.left = this.snow[i].posx+this.lftrght[i]*Math.sin(this.crds[i])+'px';
-                this.snow[i].style.top= this.snow[i].posy+'px';
+            for (var i = 0; i <= nvg_snow.prototype.snowmax; i++)
+            {
+                nvg_snow.prototype.crds[i] += nvg_snow.prototype.x_mv[i];
+                nvg_snow.prototype.snow[i].posy+= nvg_snow.prototype.snow[i].sink;
+                nvg_snow.prototype.snow[i].style.left = nvg_snow.prototype.snow[i].posx+nvg_snow.prototype.lftrght[i]*Math.sin(nvg_snow.prototype.crds[i])+'px';
+                nvg_snow.prototype.snow[i].style.top= nvg_snow.prototype.snow[i].posy+'px';
 
-                if (this.snow[i].posy>= this.marginbottom-2*this.snow[i].size || parseInt(this.snow[i].style.left)>(this.marginright-3*this.lftrght[i]))
+                if (nvg_snow.prototype.snow[i].posy>= nvg_snow.prototype.marginbottom-2*nvg_snow.prototype.snow[i].size || parseInt(nvg_snow.prototype.snow[i].style.left)>(nvg_snow.prototype.marginright-3*nvg_snow.prototype.lftrght[i]))
                 {
-                        if (this.snowingzone==1) {this.snow[i].posx=this.randommaker(this.marginright-this.snow[i].size)};
-                        if (this.snowingzone==2) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)};
-                        if (this.snowingzone==3) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)+this.marginright/4};
-                        if (this.snowingzone==4) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)+this.marginright/2};
-                        this.snow[i].posy=0;
+                        if (nvg_snow.prototype.snowingzone==1) {nvg_snow.prototype.snow[i].posx=nvg_snow.prototype.randommaker(nvg_snow.prototype.marginright-nvg_snow.prototype.snow[i].size)};
+                        if (nvg_snow.prototype.snowingzone==2) {nvg_snow.prototype.snow[i].posx=nvg_snow.prototype.randommaker(nvg_snow.prototype.marginright/2-nvg_snow.prototype.snow[i].size)};
+                        if (nvg_snow.prototype.snowingzone==3) {nvg_snow.prototype.snow[i].posx=nvg_snow.prototype.randommaker(nvg_snow.prototype.marginright/2-nvg_snow.prototype.snow[i].size)+nvg_snow.prototype.marginright/4};
+                        if (nvg_snow.prototype.snowingzone==4) {nvg_snow.prototype.snow[i].posx=nvg_snow.prototype.randommaker(nvg_snow.prototype.marginright/2-nvg_snow.prototype.snow[i].size)+nvg_snow.prototype.marginright/2};
+                        nvg_snow.prototype.snow[i].posy=0;
                 }
         }
-        var this2 = this;
-        setTimeout(function() {this2.movesnow();},this2.speed);
+        var nvg_snow.prototype2 = nvg_snow.prototype;
+        setTimeout(function() {nvg_snow.prototype2.movesnow();},nvg_snow.prototype2.speed);
         }
     }
 
-    draw()
+    nvg_snow.prototype.draw()
     {        
-        for (var i=0;i<=this.snowmax;i++)
+        for (var i=0;i<=nvg_snow.prototype.snowmax;i++)
         {
-            document.body.innerHTML += ("<span id='snowflake"+i+"' style='z-index:"+this.zindex+";position:fixed;top:-"+this.snowmaxsize+"'>"+this.snowletter+"</span>");
+            document.body.innerHTML += ("<span id='snowflake"+i+"' style='z-index:"+nvg_snow.prototype.zindex+";position:fixed;top:-"+nvg_snow.prototype.snowmaxsize+"'>"+nvg_snow.prototype.snowletter+"</span>");
         }
     }
 
-    redraw()
+    nvg_snow.prototype.redraw()
     {        
-        this.hide();
-        this.draw();
+        nvg_snow.prototype.hide();
+        nvg_snow.prototype.draw();
     }
 
-    update()
+    nvg_snow.prototype.update()
     {
-        this.redraw();
-        this.init();
+        nvg_snow.prototype.redraw();
+        nvg_snow.prototype.init();
     }
 
-    init()
+    nvg_snow.prototype.init()
     {
-        if (this.browserok)
+        if (nvg_snow.prototype.browserok)
         {
-        this.actions=true;
-        window.onload=this.initsnow();
+            nvg_snow.prototype.actions=true;
+            window.onload=nvg_snow.prototype.initsnow();
         }
 
     }
 
-    stop()
+    nvg_snow.prototype.stop()
     {
-        this.actions=false;
+        nvg_snow.prototype.actions=false;
     }
 
-    hide()
+    nvg_snow.prototype.hide()
     {
-       for (var i=0;i<=this.snowmax;i++)
+       for (var i=0;i<=nvg_snow.prototype.snowmax;i++)
         {
             document.getElementById("snowflake"+i).remove();
         }
     }
 
-    delete()
+    nvg_snow.prototype.delete()
     {
-       this.stop();
-       this.hide();
+       nvg_snow.prototype.stop();
+       nvg_snow.prototype.hide();
     }
 
-    randommaker(range)
+    nvg_snow.prototype.randommaker(range)
     {
-        this.rand=Math.floor(range*Math.random());
-        return this.rand
+        nvg_snow.prototype.rand=Math.floor(range*Math.random());
+        return nvg_snow.prototype.rand
     }
 
-    initsnow()
+    nvg_snow.prototype.initsnow()
     {
-        if (this.ie5 || this.opera) 
-            this.marginright = document.body.clientWidth-15;
-        else if (this.ns6)
-            this.marginright = window.innerWidth-15;
+        if (nvg_snow.prototype.ie5 || nvg_snow.prototype.opera) 
+            nvg_snow.prototype.marginright = document.body.clientWidth-15;
+        else if (nvg_snow.prototype.ns6)
+            nvg_snow.prototype.marginright = window.innerWidth-15;
         else
-            this.marginright = window.innerWidth-15;
+            nvg_snow.prototype.marginright = window.innerWidth-15;
 
-        this.marginbottom = window.innerHeight+100;
+        nvg_snow.prototype.marginbottom = window.innerHeight+100;
 
-        this.snowsizerange=this.snowmaxsize-this.snowminsize;
+        nvg_snow.prototype.snowsizerange=nvg_snow.prototype.snowmaxsize-nvg_snow.prototype.snowminsize;
 
-        for (var i = 0; i <= this.snowmax; i++)
+        for (var i = 0; i <= nvg_snow.prototype.snowmax; i++)
         {
-            this.crds[i] = 0;
-            this.lftrght[i] = Math.random()*25;
-            this.x_mv[i] = 0.03 + Math.random()/10;
-                this.snow[i]=document.getElementById("snowflake"+i);
-                this.snow[i].style.fontFamily=this.snowtype[this.randommaker(this.snowtype.length)];
-                this.snow[i].size=this.randommaker(this.snowsizerange)+this.snowminsize;
-                this.snow[i].style.fontSize=this.snow[i].size+'px';
-                this.snow[i].style.color=this.snowcolor[this.randommaker(this.snowcolor.length)];
-                this.snow[i].style.zIndex=1000;
-                this.snow[i].sink=this.sinkspeed*this.snow[i].size/5;
-                if (this.snowingzone==1) {this.snow[i].posx=this.randommaker(this.marginright-this.snow[i].size)};
-                if (this.snowingzone==2) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)};
-                if (this.snowingzone==3) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)+this.marginright/4};
-                if (this.snowingzone==4) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)+this.marginright/2};
-                this.snow[i].posy=this.randommaker(2*this.marginbottom-this.marginbottom-2*this.snow[i].size);
-                this.snow[i].style.left=this.snow[i].posx+'px';
-                this.snow[i].style.top=this.snow[i].posy+'px';
+            nvg_snow.prototype.crds[i] = 0;
+            nvg_snow.prototype.lftrght[i] = Math.random()*25;
+            nvg_snow.prototype.x_mv[i] = 0.03 + Math.random()/10;
+            nvg_snow.prototype.snow[i]=document.getElementById("snowflake"+i);
+            nvg_snow.prototype.snow[i].style.fontFamily=nvg_snow.prototype.snowtype[nvg_snow.prototype.randommaker(nvg_snow.prototype.snowtype.length)];
+            nvg_snow.prototype.snow[i].size=nvg_snow.prototype.randommaker(nvg_snow.prototype.snowsizerange)+nvg_snow.prototype.snowminsize;
+            nvg_snow.prototype.snow[i].style.fontSize=nvg_snow.prototype.snow[i].size+'px';
+            nvg_snow.prototype.snow[i].style.color=nvg_snow.prototype.snowcolor[nvg_snow.prototype.randommaker(nvg_snow.prototype.snowcolor.length)];
+            nvg_snow.prototype.snow[i].style.zIndex=1000;
+            nvg_snow.prototype.snow[i].sink=nvg_snow.prototype.sinkspeed*nvg_snow.prototype.snow[i].size/5;
+            if (nvg_snow.prototype.snowingzone==1) {nvg_snow.prototype.snow[i].posx=nvg_snow.prototype.randommaker(nvg_snow.prototype.marginright-nvg_snow.prototype.snow[i].size)};
+            if (nvg_snow.prototype.snowingzone==2) {nvg_snow.prototype.snow[i].posx=nvg_snow.prototype.randommaker(nvg_snow.prototype.marginright/2-nvg_snow.prototype.snow[i].size)};
+            if (nvg_snow.prototype.snowingzone==3) {nvg_snow.prototype.snow[i].posx=nvg_snow.prototype.randommaker(nvg_snow.prototype.marginright/2-nvg_snow.prototype.snow[i].size)+nvg_snow.prototype.marginright/4};
+            if (nvg_snow.prototype.snowingzone==4) {nvg_snow.prototype.snow[i].posx=nvg_snow.prototype.randommaker(nvg_snow.prototype.marginright/2-nvg_snow.prototype.snow[i].size)+nvg_snow.prototype.marginright/2};
+            nvg_snow.prototype.snow[i].posy=nvg_snow.prototype.randommaker(2*nvg_snow.prototype.marginbottom-nvg_snow.prototype.marginbottom-2*nvg_snow.prototype.snow[i].size);
+            nvg_snow.prototype.snow[i].style.left=nvg_snow.prototype.snow[i].posx+'px';
+            nvg_snow.prototype.snow[i].style.top=nvg_snow.prototype.snow[i].posy+'px';
         }
-        this.movesnow();
+        nvg_snow.prototype.movesnow();
     }
+
+    if(zindex === undefined)
+        zindex = 1000;
+
+    nvg_snow.prototype.speed = 50;
+    nvg_snow.prototype.snowmax=30;
+    nvg_snow.prototype.snowcolor=new Array("#b9dff5","#7fc7ff","#7fb1ff","#7fc7ff","#b9dff5");
+    nvg_snow.prototype.snowtype=new Array("Times");
+    nvg_snow.prototype.snowletter="*";
+    nvg_snow.prototype.sinkspeed=0.6;
+    nvg_snow.prototype.snowmaxsize=50;
+    nvg_snow.prototype.snowminsize=25;
+    nvg_snow.prototype.zindex=zindex;
+    /* 1 for all */
+    /* 2 for left */
+    /* 3 for center */
+    /* 4 for right */
+    nvg_snow.prototype.snowingzone=1;
+
+    /* Do not edit below nvg_snow.prototype line */
+    nvg_snow.prototype.actions = true;
+    nvg_snow.prototype.snow=new Array();
+    nvg_snow.prototype.marginbottom;
+    nvg_snow.prototype.marginright;
+    nvg_snow.prototype.i_snow=0;
+    nvg_snow.prototype.x_mv=new Array();
+    nvg_snow.prototype.crds=new Array();
+    nvg_snow.prototype.lftrght=new Array();
+    nvg_snow.prototype.browserinfos=navigator.userAgent;
+    nvg_snow.prototype.ie5=document.all&&document.getElementById&&!nvg_snow.prototype.browserinfos.match(/Opera/);
+    nvg_snow.prototype.ns6=document.getElementById&&!document.all;
+    nvg_snow.prototype.opera=nvg_snow.prototype.browserinfos.match(/Opera/);
+    nvg_snow.prototype.browserok=nvg_snow.prototype.ie5||nvg_snow.prototype.ns6||nvg_snow.prototype.opera;
+
+    nvg_snow.prototype.draw();
+    nvg_snow.prototype.init();
 }
