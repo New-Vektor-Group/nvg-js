@@ -42,34 +42,34 @@ check
 <footer> 
 <script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script> 
 <script src="https://ex.nvg-team.com/bootstrap3.js"></script> 
-<script src="../lib/nvg-main.js"></script> 
+<script src="../src/7.3.6/lib/fmain.js"></script> 
 <script type="text/javascript">
 
-nvgjs.scrollbot("#test2");
-nvgjs.scrollbot("#test2_2");
+nvgjs.ScrollBot("#test2");
+nvgjs.ScrollBot("#test2_2");
 
 function scdown()
 {
-nvgjs.scrollbot("#test2_3");
+nvgjs.ScrollBot("#test2_3");
 }
 
 function sctop()
 {
-nvgjs.scrolltop("#test2_3");
+nvgjs.ScrollTop("#test2_3");
 }
 
 
-$("#wh").text(nvg_sha());
+$("#wh").text(nvg_wh());
 $("#ww").text(nvg_scroll());
 $(window).scroll(function() {
       $("#ww").text(nvg_scroll() + " " + nvg_scroll_pr());
     });
 
-alert(nvgjs.isVisible("#dsa52s"));
-alert(nvgjs.isVisible("#dsa52s",100, 100));
+alert("Is visible ? "+nvgjs.isVisible("#dsa52s"));
+alert("Is visible with offset? "+nvgjs.isVisible("#dsa52s",100, 100));
 
 //alert("razT= "+ razT+" razB= "+ razB+ " dvaT= "+dvaT+" dvaB= "+dvaB + " razL= "+ razL+" razR= "+ razR+ " dvaL= "+dvaL+" dvaR= "+dvaR);
-alert(nvgjs.Collision(".raz",".dva"));
+alert("Collision? "+nvgjs.Collision(".raz",".dva"));
 </script>
 </footer> 
 </body> 
