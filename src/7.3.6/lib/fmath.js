@@ -1,16 +1,24 @@
-class nvgR
+function nvgR()
 {
-	static R(min, max, f = false) 
-		{
-			/* Возвращает случайное число между min (включительно) и max (не включая max)*/
- 		 	if(f)
- 		 		return Math.floor(Math.random() * (max - min) + min);
- 		 	else
- 		 		return Math.random() * (max - min) + min;
-		}
-
-	static A(caps = true, lang = 'en')
+	nvgR.I = function(min, max, f) 
 	{
+		if(f === undefined)
+			f = false;
+
+		/* min [] и max ()*/
+	 	if(f)
+	 		return Math.floor(Math.random() * (max - min) + min);
+	 	else
+	 		return Math.random() * (max - min) + min;
+	}
+
+	nvgR.C = function(caps = true, lang = 'en')
+	{
+		if(caps === undefined)
+			caps = true;
+		if(lang === undefined)
+			lang = 'en';
+
 		var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
 		if(lang=='ru'){
 			chars = "ЙФЯЦЫЧУВСКАМЕПИНРТГОЬШЛБЩДЮЗЖХЭЪйфяцычувскамепинртгоьшлбщдюзжхэъ";
@@ -27,21 +35,29 @@ class nvgR
 		return randomstring;
 	}
 
-	static D(zero = true)
+	nvgR.D = function(zero)
 	{
-		return nvgR.R(0,10,1);
+		if(zero === undefined)
+			zero = true;
+
+		if(zero)
+			return nvgR.R(0,10,1);
+		else
+			return nvgR.R(1,10,1);
 	}
 
-	static N(d = 1)
+	nvgR.N = function(d)
 	{
+		if(d === undefined)
+			d = 1;
 		return nvgR.R(Math.pow(10,d-1),Math.pow(10,d-1)*10,1);
 	}
 }
 
-class nvgm
+function nvgM()
 {
-	static sigm(x) 
-		{
- 		 	return 1/(1+Math.pow(Math.E, -x));
-		}
+	nvgM.sigm = function(x) 
+	{
+	 	return 1/(1+Math.pow(Math.E, -x));
+	}
 }
