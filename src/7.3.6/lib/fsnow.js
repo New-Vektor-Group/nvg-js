@@ -1,6 +1,6 @@
 function nvg_snow(zindex)
 {
-    nvg_snow.prototype.movesnow()
+    nvg_snow.prototype.movesnow = function()
     {
         if(nvg_snow.prototype.actions)
         {
@@ -25,7 +25,7 @@ function nvg_snow(zindex)
         }
     }
 
-    nvg_snow.prototype.draw()
+    nvg_snow.prototype.draw = function()
     {        
         for (var i=0;i<=nvg_snow.prototype.snowmax;i++)
         {
@@ -33,19 +33,19 @@ function nvg_snow(zindex)
         }
     }
 
-    nvg_snow.prototype.redraw()
+    nvg_snow.prototype.redraw = function()
     {        
         nvg_snow.prototype.hide();
         nvg_snow.prototype.draw();
     }
 
-    nvg_snow.prototype.update()
+    nvg_snow.prototype.update = function()
     {
         nvg_snow.prototype.redraw();
         nvg_snow.prototype.init();
     }
 
-    nvg_snow.prototype.init()
+    nvg_snow.prototype.init = function()
     {
         if (nvg_snow.prototype.browserok)
         {
@@ -55,12 +55,12 @@ function nvg_snow(zindex)
 
     }
 
-    nvg_snow.prototype.stop()
+    nvg_snow.prototype.stop = function()
     {
         nvg_snow.prototype.actions=false;
     }
 
-    nvg_snow.prototype.hide()
+    nvg_snow.prototype.hide = function()
     {
        for (var i=0;i<=nvg_snow.prototype.snowmax;i++)
         {
@@ -68,19 +68,19 @@ function nvg_snow(zindex)
         }
     }
 
-    nvg_snow.prototype.delete()
+    nvg_snow.prototype.delete = function()
     {
        nvg_snow.prototype.stop();
        nvg_snow.prototype.hide();
     }
 
-    nvg_snow.prototype.randommaker(range)
+    nvg_snow.prototype.randommaker = function(range)
     {
         nvg_snow.prototype.rand=Math.floor(range*Math.random());
         return nvg_snow.prototype.rand
     }
 
-    nvg_snow.prototype.initsnow()
+    nvg_snow.prototype.initsnow = function()
     {
         if (nvg_snow.prototype.ie5 || nvg_snow.prototype.opera) 
             nvg_snow.prototype.marginright = document.body.clientWidth-15;
