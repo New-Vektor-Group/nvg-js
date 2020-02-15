@@ -23,6 +23,18 @@ Window width = <span id="wh1">for moment testing</span><br>
 Window height = <span id="wh2">for moment testing</span>
 </div>
 
+<div id="copytxt" class="py-3 bg-success">
+	A lot of text. Hello world. World hello?
+</div>
+
+<div id="copytxt_btn" class="bg-primary py-2">
+	22A lot of text. Hello world. World hello?22
+</div>
+<button id="copytxt_btn_btn">Copy him</button>
+
+<input value="Test copy for input" id="copyinput">
+<button id="copyinput_btn">Copy him</button>
+
 <footer> 
 <script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script> 
 <script src="https://ex.nvg-team.com/bootstrap3.js"></script> 
@@ -37,6 +49,9 @@ $("#wh1").text(nvg_ww());
 $("#wh2").text(nvg_wh());
 
 nvgcopy("#wh1");
+nvgcopy("#copytxt");
+nvgcopy("#copytxt_btn_btn","#copytxt_btn");
+nvgcopy("#copyinput_btn","#copyinput",1);
 </script>
 </footer> 
 </body> 

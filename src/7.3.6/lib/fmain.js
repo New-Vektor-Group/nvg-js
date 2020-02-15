@@ -154,6 +154,19 @@ nvgjs.isMScreen = function() {
      return false;
 }
 
+nvgjs.clearSelection = function()
+{
+  if (window.getSelection) {
+      if (window.getSelection().empty) {  // Chrome
+        window.getSelection().empty();
+      } else if (window.getSelection().removeAllRanges) {  // Firefox
+        window.getSelection().removeAllRanges();
+      }
+    } else if (document.selection) {  // IE?
+      document.selection.empty();
+    }
+}
+
 nvgjs.noSelfHideCollapse = function(btnCollapse1, framework)
 {
   if(framework !== undefined)
@@ -219,17 +232,38 @@ function nvg_scroll_pr()
   return Math.ceil(100*(nvg_scroll()/($(document).height()-nvg_wh())));
 }
 
-function nvgcopy(btn, text)
+function nvgcopy(btn, text, isInput)
 {
   if(text === undefined)
     text = btn;
+  if(isInput === undefined)
+    isInput = false;
 
   var copyTextareaBtn = $(btn);
 
   copyTextareaBtn.click(function()
   {
     var copyTextarea = $(text);
-    var sel, range;
+    if(isInput)
+    {
+      try
+      {
+        copyTextarea.select();
+      }
+      catch(err){
+        console.log("error copy " + err);
+      }
+      try
+      {
+        copyTextarea.setSelectionRange(0, 99999);
+      }
+      catch(err){}
+      document.execCommand("copy");
+      nvgjs.clearSelection();
+      return true;
+    }
+
+  var sel, range;
   var el = copyTextarea.focus()[0];
   if (window.getSelection && document.createRange) {
     sel = window.getSelection();
@@ -249,6 +283,7 @@ function nvgcopy(btn, text)
   }
     try {
     var successful = document.execCommand('copy');
+    nvgjs.clearSelection();
     var msg = successful ? 'successful' : 'unsuccessful';
     console.log('Copying text command was ' + msg);
     return true;
