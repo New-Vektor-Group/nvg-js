@@ -1,3 +1,15 @@
+if (typeof var_dump === "undefined") { 
+	function var_dump(obj, alerti)
+	{
+		var out = '';
+		for (var i in obj) {
+			out += i + ": " + obj[i] + "\n";
+		}
+		if(alerti === true)
+			alert(out);
+		return out;
+	}
+}
 
 nvgjs.isnoSelfHideCollapse = false;
 nvgjs.btnCollapse = "noelementt"; 
