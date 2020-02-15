@@ -37,65 +37,73 @@ nvgi.getImg = function(pastee, callback)
 }
 
 nvgi.preLoad = function(elems, srcname, isCss)
-  {
-    if(srcname===undefined)
-      srcname = "data-src";
-    if(isCss===undefined)
-      isCss = 0;
-
-    var allClassElements = document.getElementsByClassName(elems);
-    var allImages = [];
-    var allImagesOld = [];
-    var xCounter = [];
-
-    for (var i = 0; i < allClassElements.length; i++)
-    {
-      var img = new Image();
-      var x = allClassElements[i];
-      var imageSrc = $(x).attr(srcname);
-      img.src = imageSrc;
-      allImages.push(img);
-      allImagesOld.push(x);
-      xCounter.push(i);
-    }
-
-    xCounter.forEach(function(ee){
-
-      allImages[ee].onload = function()
-      {
-        if(isCss==0)
-          $(allImagesOld[ee]).attr("src",allImages[ee].src);
-        else
-          /*$(allImagesOld[ee]).css({"background-image":"url('"+allImages[ee].src+"')"});*/
-          $(allImagesOld[ee]).attr("style",$(allImagesOld[ee]).attr("style")+" background-image: url('"+allImages[ee].src+"') !important");
-      };
-    });
-  }
-
-function nvgi()
 {
-  nvgi.preLoadId = function(elem, srcname, isCss)
-  {
-    if(srcname===undefined)
-        srcname = "data-src";
-    if(isCss===undefined)
-        isCss = 0;
+  if(srcname===undefined || srcname === 0)
+    srcname = "data-src";
+  if(isCss===undefined)
+    isCss = 0;
 
+  var allClassElements = document.getElementsByClassName(elems);
+  var allImages = [];
+  var allImagesOld = [];
+  var xCounter = [];
+
+  for (var i = 0; i < allClassElements.length; i++)
+  {
     var img = new Image();
-    var x = document.getElementById(elem);
+    var x = allClassElements[i];
     var imageSrc = $(x).attr(srcname);
     img.src = imageSrc;
+    allImages.push(img);
+    allImagesOld.push(x);
+    xCounter.push(i);
+  }
 
-    img.onload = function()
+  xCounter.forEach(function(ee){
+    allImages[ee].onload = function()
     {
       if(isCss==0)
-        $(x).attr("src",img.src);
+        $(allImagesOld[ee]).attr("src",allImages[ee].src);
       else
-        /*$(x).css({"background-image":"url('"+allImages[ee].src+"')"});*/
-        $(x).attr("style",$(x).attr("style")+ " background-image: url('"+allImages[ee].src+"') !important");
+      {
+        /*$(allImagesOld[ee]).css({"background-image":"url('"+allImages[ee].src+"')"});*/
+        if($(allImagesOld[ee]).attr("style") == undefined)
+          $(allImagesOld[ee]).attr("style","background-image: url('"+allImages[ee].src+"') !important");
+        else
+          $(allImagesOld[ee]).attr("style",$(allImagesOld[ee]).attr("style")+" background-image: url('"+allImages[ee].src+"') !important");
+      }
     };
-  }
+  });
 }
+
+nvgi.preLoadId = function(elem, srcname, isCss)
+{
+  if(srcname===undefined || srcname === 0)
+      srcname = "data-src";
+  if(isCss===undefined)
+      isCss = 0;
+
+  var img = new Image();
+  var x = document.getElementById(elem);
+  var imageSrc = $(x).attr(srcname);
+  img.src = imageSrc;
+
+  img.onload = function()
+  {
+    if(isCss==0)
+      $(x).attr("src",img.src);
+    else
+    {
+      /*$(x).css({"background-image":"url('"+allImages[ee].src+"')"});*/
+      if($(x).attr("style") == undefined)
+        $(x).attr("style","background-image: url('"+allImages[ee].src+"') !important");
+      else
+        $(x).attr("style",$(x).attr("style")+" background-image: url('"+allImages[ee].src+"') !important");
+    } 
+  };
+}
+
+function nvgi(){}
 
 function nvg_modal(mode, trigger, img, width_new)
 {
