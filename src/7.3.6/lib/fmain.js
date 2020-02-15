@@ -232,11 +232,11 @@ function nvg_scroll_pr()
   return Math.ceil(100*(nvg_scroll()/($(document).height()-nvg_wh())));
 }
 
-function nvgcopy(btn, text, isInput)
+function nvgcopy(btn, text, isInput, funcSucc)
 {
-  if(text === undefined)
+  if(text === undefined || text === 0)
     text = btn;
-  if(isInput === undefined)
+  if(isInput === undefined || isInput === 0)
     isInput = false;
 
   var copyTextareaBtn = $(btn);
@@ -260,6 +260,8 @@ function nvgcopy(btn, text, isInput)
       catch(err){}
       document.execCommand("copy");
       nvgjs.clearSelection();
+      if(funcSucc !== undefined)
+        funcSucc();
       return true;
     }
 
@@ -284,8 +286,10 @@ function nvgcopy(btn, text, isInput)
     try {
     var successful = document.execCommand('copy');
     nvgjs.clearSelection();
-    var msg = successful ? 'successful' : 'unsuccessful';
-    console.log('Copying text command was ' + msg);
+    if(funcSucc !== undefined)
+      funcSucc();
+    //var msg = successful ? 'successful' : 'unsuccessful';
+    //console.log('Copying text command was ' + msg);
     return true;
   } catch (err) {
     console.log('Oops, unable to copy');
