@@ -96,9 +96,9 @@ nvgi.preLoadId = function(elem, srcname, isCss)
     {
       /*$(x).css({"background-image":"url('"+allImages[ee].src+"')"});*/
       if($(x).attr("style") == undefined)
-        $(x).attr("style","background-image: url('"+allImages[ee].src+"') !important");
+        $(x).attr("style","background-image: url('"+img.src+"') !important");
       else
-        $(x).attr("style",$(x).attr("style")+" background-image: url('"+allImages[ee].src+"') !important");
+        $(x).attr("style",$(x).attr("style")+" background-image: url('"+img.src+"') !important");
     } 
   };
 }
