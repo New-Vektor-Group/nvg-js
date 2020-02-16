@@ -17,7 +17,7 @@ nvgs.setFix = function(el, wh, ofx, ofy)
     $(el).css("right",ofx+"px");
   else if(wh[1]=="c")
     $(el).css("left",(50+ofx)+"%");
-}
+};
 
 function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
 {
@@ -32,7 +32,7 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
       },100);
     }
     /*setTimeout(function(){},200);*/
-  }
+  };
 
   nvgs.hds5df543 = function(objj, animate)
   {
@@ -42,11 +42,11 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
       $(objj).animate({
         opacity: 0
       },100);
-      setTimeout(function(){$(objj).css("display",'none')},155);
+      setTimeout(function(){$(objj).css("display",'none');},155);
     }
     else
       $(objj).css("display",'none');
-  }
+  };
 
   nvgs.elsoft = function(element)
   {
@@ -66,7 +66,6 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
         
         if(!element.needshf) {
           element.needshf = true;
-          console.log("aa" + scroll);
           nvgs.hds5df543(element.obj, element.animate);
 
         }
@@ -106,7 +105,7 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
         }
       }
     }
-  }
+  };
 
   if(obj2 == "")
     this.obj = "";
@@ -146,10 +145,8 @@ $(window).scroll(function ()
       nvgs.countEls.forEach(function(element)
       {
         nvgs.elsoft(element);
-        console.log(2);
       });
     }
-    console.log(1);
   }, 1000);
 
   if(nvgs.enabled === true)
