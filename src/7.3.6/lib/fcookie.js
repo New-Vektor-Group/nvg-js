@@ -42,10 +42,16 @@ nvg_cook.setCookie(name, "", {
 
 function nvg_cook(inputId, expire)
 {
-	nvg_cook.prototype.delMe = function()
+	this.delMe = function()
 	{
 		localStorage.removeItem(this.inputId.slice(1));
 	}
+
+  this.clear = function()
+  {
+    this.delMe();
+    $(this.input).val('');
+  }
 
   if(expire === undefined)
     this.expire = 86400;
