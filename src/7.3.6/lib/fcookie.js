@@ -40,18 +40,24 @@ nvg_cook.setCookie(name, "", {
 });
 }
 
-function nvg_cook(inputId)
+function nvg_cook(inputId, expire)
 {
 	nvg_cook.prototype.delMe = function()
 	{
 		localStorage.removeItem(this.inputId.slice(1));
 	}
 
+  if(expire === undefined)
+    this.expire = 86400;
+  else
+    this.expire = expire;
+
   this.inputId = inputId;
 
-  $(this.inputId).bind('input', function(){
-  localStorage.setItem(this.inputId, $(this).val());
-  nvg_cook.setCookie("ede56579ee9d437820a0f9",1,{expires: 86400});
+  $(this.inputId).bind('input', function()
+  {
+    localStorage.setItem(this.id, $(this).val());
+    nvg_cook.setCookie("ede56579ee9d437820a0f9",1,{expires: this.expire});
   });
 
   if(nvg_cook.getCookie("ede56579ee9d437820a0f9")==1)
