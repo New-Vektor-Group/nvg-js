@@ -16,6 +16,29 @@ nvgjs.btnCollapse = "noelementt";
 nvgjs.attrcollapse = "noelementt";
 nvgjs.framework = "bs";
 
+nvgjs.get = function(parm)
+{
+  return new URL(window.location.href).searchParams.get(parm);
+}
+
+nvgjs.set = function(parm, value)
+{
+  var url = new URL(window.location.href);
+  var search_params = new URLSearchParams(url.search);
+  if(nvgjs.get(parm))
+    search_params.set(parm, value);
+  else
+    search_params.append(parm, value);
+  url.search = search_params.toString();
+
+  try
+  {
+    window.history.pushState("object or string", "Title", url.toString());
+  }
+  catch(err){}
+  return url.toString();
+}
+
 nvgjs.https = function()
 {
   if(location.protocol != 'https:')
