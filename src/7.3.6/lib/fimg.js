@@ -11,7 +11,7 @@ nvgi.getImg = function(pastee, callback)
         {
             callback(undefined);
         }
-    };
+  }
 
     var files = pastee.clipboardData.items;
 
@@ -21,7 +21,7 @@ nvgi.getImg = function(pastee, callback)
         {
             callback(undefined);
         }
-    };
+    }
 
     for (var i = 0; i < files.length; i++)
     {
@@ -34,7 +34,7 @@ nvgi.getImg = function(pastee, callback)
           callback(blob);
         }
     }
-}
+};
 
 nvgi.preLoad = function(elems, srcname, isCss)
 {
@@ -74,7 +74,7 @@ nvgi.preLoad = function(elems, srcname, isCss)
       }
     };
   });
-}
+};
 
 nvgi.preLoadId = function(elem, srcname, isCss)
 {
@@ -101,7 +101,7 @@ nvgi.preLoadId = function(elem, srcname, isCss)
         $(x).attr("style",$(x).attr("style")+" background-image: url('"+img.src+"') !important");
     } 
   };
-}
+};
 
 function nvgi(){}
 
@@ -127,7 +127,7 @@ function nvg_modal(mode, trigger, img, width_new)
             parts.push('</div></div></div>');
         }
         return parts.join("");
-	}
+	};
 
   if(width_new === undefined)
     width_new = 500;
