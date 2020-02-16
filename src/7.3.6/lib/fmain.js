@@ -33,7 +33,7 @@ nvgjs.set = function(parm, value)
 
   try
   {
-    window.history.pushState("object or string", "Title", url.toString());
+    window.history.pushState("NVG JS", "", url.toString());
   }
   catch(err){}
   return url.toString();
