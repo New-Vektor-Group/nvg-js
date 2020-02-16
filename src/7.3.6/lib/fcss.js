@@ -56,16 +56,19 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
     {
       if(scroll >= element.scroll_when)
       {
-        if(this.needshf) {
+        if(element.needshf) {
+          element.needshf = false;
           nvgs.sh5df543(element.obj, element.animate);
-          this.needshf = false;
         }
       }
       else
       {
-        if(!this.needshf) {
+        
+        if(!element.needshf) {
+          element.needshf = true;
+          console.log("aa" + scroll);
           nvgs.hds5df543(element.obj, element.animate);
-          this.needshf = true;
+
         }
       }
     }
@@ -73,16 +76,16 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
     {
       if(scroll<=element.scroll_when)
       {
-        if(this.needshf) {
+        if(element.needshf) {
+          element.needshf = false;
           nvgs.sh5df543(element.obj, element.animate);
-          this.needshf = false;
         }
       }
       else
       {
-        if(!this.needshf) {
+        if(!element.needshf) {
+          element.needshf = true;
           nvgs.hds5df543(element.obj, element.animate);
-          this.needshf = true;
         }
       }
     }
@@ -90,16 +93,16 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
     {
       if(scroll >= element.scroll_when && scroll <= element.scroll_when2)
       {
-        if(this.needshf) {
+        if(element.needshf) {
+          element.needshf = false;
           nvgs.sh5df543(element.obj, element.animate);
-          this.needshf = false;
         }
       }
       else
       {
-        if(!this.needshf) {
+        if(!element.needshf) {
+          element.needshf = true;
           nvgs.hds5df543(element.obj, element.animate);
-          this.needshf = true;
         }
       }
     }
@@ -133,13 +136,27 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
   nvgs.countEls.push(this);
 }
 
+var isScrolling52234;
 $(window).scroll(function ()
 {
+  window.clearTimeout(isScrolling52234);
+  isScrolling52234 = setTimeout(function() {
+    if(nvgs.enabled === true)
+    {
+      nvgs.countEls.forEach(function(element)
+      {
+        nvgs.elsoft(element);
+        console.log(2);
+      });
+    }
+    console.log(1);
+  }, 1000);
+
   if(nvgs.enabled === true)
   {
     nvgs.countEls.forEach(function(element)
     {
-      nvgs.elsoft(element);   
+      nvgs.elsoft(element);
     });
   }
 });
