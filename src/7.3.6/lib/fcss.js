@@ -19,25 +19,33 @@ nvgs.setFix = function(el, wh, ofx, ofy)
     $(el).css("left",(50+ofx)+"%");
 }
 
-function nvgs(obj2, scroll_when2, direction2, scroll_when2_2)
+function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
 {
-  nvgs.sh5df543 = function(objj)
+  nvgs.sh5df543 = function(objj, animate)
   {
     $(objj).css("display",'inherit');
-    $(objj).stop();
-    $(objj).animate({
-      opacity: 1
-    },150);
+    if(animate)
+    {
+      $(objj).stop();
+      $(objj).animate({
+        opacity: 1
+      },100);
+    }
     /*setTimeout(function(){},200);*/
   }
 
-  nvgs.hds5df543 = function(objj)
+  nvgs.hds5df543 = function(objj, animate)
   {
-    $(objj).stop();
-    $(objj).animate({
-      opacity: 0
-    },150);
-    setTimeout(function(){$(objj).css("display",'none')},155);
+    if(animate)
+    {
+      $(objj).stop();
+      $(objj).animate({
+        opacity: 0
+      },100);
+      setTimeout(function(){$(objj).css("display",'none')},155);
+    }
+    else
+      $(objj).css("display",'none');
   }
 
   nvgs.elsoft = function(element)
@@ -49,14 +57,14 @@ function nvgs(obj2, scroll_when2, direction2, scroll_when2_2)
       if(scroll >= element.scroll_when)
       {
         if(this.needshf) {
-          nvgs.sh5df543(element.obj);
+          nvgs.sh5df543(element.obj, element.animate);
           this.needshf = false;
         }
       }
       else
       {
         if(!this.needshf) {
-          nvgs.hds5df543(element.obj);
+          nvgs.hds5df543(element.obj, element.animate);
           this.needshf = true;
         }
       }
@@ -66,14 +74,14 @@ function nvgs(obj2, scroll_when2, direction2, scroll_when2_2)
       if(scroll<=element.scroll_when)
       {
         if(this.needshf) {
-          nvgs.sh5df543(element.obj);
+          nvgs.sh5df543(element.obj, element.animate);
           this.needshf = false;
         }
       }
       else
       {
         if(!this.needshf) {
-          nvgs.hds5df543(element.obj);
+          nvgs.hds5df543(element.obj, element.animate);
           this.needshf = true;
         }
       }
@@ -83,14 +91,14 @@ function nvgs(obj2, scroll_when2, direction2, scroll_when2_2)
       if(scroll >= element.scroll_when && scroll <= element.scroll_when2)
       {
         if(this.needshf) {
-          nvgs.sh5df543(element.obj);
+          nvgs.sh5df543(element.obj, element.animate);
           this.needshf = false;
         }
       }
       else
       {
         if(!this.needshf) {
-          nvgs.hds5df543(element.obj);
+          nvgs.hds5df543(element.obj, element.animate);
           this.needshf = true;
         }
       }
@@ -102,18 +110,23 @@ function nvgs(obj2, scroll_when2, direction2, scroll_when2_2)
   else 
     this.obj = obj2;
 
-  if(scroll_when2 !== "") 
+  if(scroll_when2 !== "" && scroll_when2 !== undefined) 
     this.scroll_when = scroll_when2;
   else
     this.scroll_when = 90;
 
-  if(scroll_when2_2 !== undefined) 
+  if(scroll_when2_2 !== "" && scroll_when2_2 !== undefined) 
     this.scroll_when2 = scroll_when2_2;
 
-  if(direction2 !== "") 
+  if(direction2 !== "" && direction2 !== undefined) 
     this.direction = direction2;
   else 
     this.direction = 1;
+
+  if(animate !== "" && animate !== undefined) 
+    this.animate = animate;
+  else 
+    this.animate = true;
 
   this.needshf = false;
   nvgs.elsoft(this);
