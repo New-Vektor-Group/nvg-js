@@ -13,17 +13,17 @@ function nvg_snow(zindex)
 
                 if (this.snow[i].posy>= this.marginbottom-2*this.snow[i].size || parseInt(this.snow[i].style.left)>(this.marginright-3*this.lftrght[i]))
                 {
-                        if (this.snowingzone==1) {this.snow[i].posx=this.randommaker(this.marginright-this.snow[i].size)};
-                        if (this.snowingzone==2) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)};
-                        if (this.snowingzone==3) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)+this.marginright/4};
-                        if (this.snowingzone==4) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)+this.marginright/2};
-                        this.snow[i].posy=0;
+                    if (this.snowingzone==1) {this.snow[i].posx=this.randommaker(this.marginright-this.snow[i].size);}
+                    if (this.snowingzone==2) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size);}
+                    if (this.snowingzone==3) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)+this.marginright/4;}
+                    if (this.snowingzone==4) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)+this.marginright/2;}
+                    this.snow[i].posy=0;
                 }
         }
         var this2 = this;
         setTimeout(function() {this2.movesnow();},this2.speed);
         }
-    }
+    };
 
     this.draw = function()
     {        
@@ -31,19 +31,19 @@ function nvg_snow(zindex)
         {
             document.body.innerHTML += ("<span id='snowflake"+i+"' style='z-index:"+this.zindex+";position:fixed;top:-"+this.snowmaxsize+"'>"+this.snowletter+"</span>");
         }
-    }
+    };
 
     this.redraw = function()
     {        
         this.hide();
         this.draw();
-    }
+    };
 
     this.update = function()
     {
         this.redraw();
         this.init();
-    }
+    };
 
     this.init = function()
     {
@@ -52,33 +52,32 @@ function nvg_snow(zindex)
             this.actions=true;
             window.onload=this.initsnow();
         }
-
-    }
+    };
 
     this.stop = function()
     {
         this.actions=false;
-    }
+    };
 
     this.hide = function()
     {
-       for (var i=0;i<=this.snowmax;i++)
+        for (var i=0;i<=this.snowmax;i++)
         {
             document.getElementById("snowflake"+i).remove();
         }
-    }
+    };
 
     this.delete = function()
     {
        this.stop();
        this.hide();
-    }
+    };
 
     this.randommaker = function(range)
     {
         this.rand=Math.floor(range*Math.random());
-        return this.rand
-    }
+        return this.rand;
+    };
 
     this.initsnow = function()
     {
@@ -105,16 +104,16 @@ function nvg_snow(zindex)
             this.snow[i].style.color=this.snowcolor[this.randommaker(this.snowcolor.length)];
             this.snow[i].style.zIndex=1000;
             this.snow[i].sink=this.sinkspeed*this.snow[i].size/5;
-            if (this.snowingzone==1) {this.snow[i].posx=this.randommaker(this.marginright-this.snow[i].size)};
-            if (this.snowingzone==2) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)};
-            if (this.snowingzone==3) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)+this.marginright/4};
-            if (this.snowingzone==4) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)+this.marginright/2};
+            if (this.snowingzone==1) {this.snow[i].posx=this.randommaker(this.marginright-this.snow[i].size);}
+            if (this.snowingzone==2) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size);}
+            if (this.snowingzone==3) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)+this.marginright/4;}
+            if (this.snowingzone==4) {this.snow[i].posx=this.randommaker(this.marginright/2-this.snow[i].size)+this.marginright/2;}
             this.snow[i].posy=this.randommaker(2*this.marginbottom-this.marginbottom-2*this.snow[i].size);
             this.snow[i].style.left=this.snow[i].posx+'px';
             this.snow[i].style.top=this.snow[i].posy+'px';
         }
         this.movesnow();
-    }
+    };
 
     if(zindex === undefined)
         zindex = 1000;
@@ -136,13 +135,13 @@ function nvg_snow(zindex)
 
     /* Do not edit below this line */
     this.actions = true;
-    this.snow=new Array();
-    this.marginbottom;
-    this.marginright;
+    this.snow=[];
+    this.marginbottom=0;
+    this.marginright=0;
     this.i_snow=0;
-    this.x_mv=new Array();
-    this.crds=new Array();
-    this.lftrght=new Array();
+    this.x_mv=[];
+    this.crds=[];
+    this.lftrght=[];
     this.browserinfos=navigator.userAgent;
     this.ie5=document.all&&document.getElementById&&!this.browserinfos.match(/Opera/);
     this.ns6=document.getElementById&&!document.all;
