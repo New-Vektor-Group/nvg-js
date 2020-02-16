@@ -1,14 +1,15 @@
 if (typeof var_dump === "undefined") { 
-	function var_dump(obj, alerti)
+	var var_dump = function (obj, alerti)
 	{
 		var out = '';
-		for (var i in obj) {
+		for (var i in obj)
+    {
 			out += i + ": " + obj[i] + "\n";
 		}
 		if(alerti === true)
 			alert(out);
 		return out;
-	}
+	};
 }
 
 nvgjs.isnoSelfHideCollapse = false;
@@ -19,7 +20,7 @@ nvgjs.framework = "bs";
 nvgjs.get = function(parm)
 {
   return new URL(window.location.href).searchParams.get(parm);
-}
+};
 
 nvgjs.set = function(parm, value)
 {
@@ -37,44 +38,43 @@ nvgjs.set = function(parm, value)
   }
   catch(err){}
   return url.toString();
-}
+};
 
 nvgjs.https = function()
 {
   if(location.protocol != 'https:')
     location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-}
+};
 
 nvgjs.getVersion = function()
 {
-  return "7.3.6";
-}
+  return "7.3.7";
+};
 
 nvgjs.ScrollBot = function(nvgw)
 {
    $(nvgw).scrollTop($(nvgw)[0].scrollHeight);
-}
+};
 
 nvgjs.ScrollTop = function(nvgw)
 {
    $(nvgw).scrollTop(0);
-}
-/*///////////////////////*/
+};
 
 nvgjs.ScrollTopSoft = function()
 {
   $("html, body").animate({ scrollTop: 0 }, 'slow');
-}
+};
 
 nvgjs.ScrollBotSoft = function()
 {
   $("html, body").animate({ scrollTop: screen.height }, 'slow');
-}
+};
 
 nvgjs.ScrollSoft = function(coord)
 {
   $("html, body").animate({ scrollTop: coord }, 'slow');
-}
+};
 
 nvgjs.ScrollTo = function(a0101x304329, speed)
 {
@@ -84,7 +84,7 @@ nvgjs.ScrollTo = function(a0101x304329, speed)
   $('html, body').animate({ 
   scrollTop: $(a0101x304329).offset().top 
   }, speed);
-}
+};
 
 nvgjs.isVisible = function(elem, oft, ofb, ofl, ofr)
 {
@@ -112,83 +112,76 @@ nvgjs.isVisible = function(elem, oft, ofb, ofl, ofr)
   var a = topVisible || bottomVisible;
   var b = leftVisible || rightVisible;
   return a && b;
-}
+};
 
 nvgjs.Collision = function(elem1,elem2,pos1,pos2,offsety,offsetx)
 {
-if(pos1 === undefined)
-  pos1 = 0;
-if(pos2 === undefined)
-  pos2 = 0;
-if(offsety === undefined)
-  offsety = 0;
-if(offsetx === undefined)
-  offsetx = 0;
+  if(pos1 === undefined)
+    pos1 = 0;
+  if(pos2 === undefined)
+    pos2 = 0;
+  if(offsety === undefined)
+    offsety = 0;
+  if(offsetx === undefined)
+    offsetx = 0;
 
-/*default by absolute position => posN = 0 else 1*/
-var el1 = $(elem1);
-var el2 = $(elem2);
+  /*default by absolute position => posN = 0 else 1*/
+  var el1 = $(elem1);
+  var el2 = $(elem2);
 
-var T1 = el1.offset().top-offsety;
-var T2 = el2.offset().top;
-if(pos1==1) T1 = el1.position().top-offsety;
-if(pos2==1) T2 = el2.position().top;
+  var T1 = el1.offset().top-offsety;
+  var T2 = el2.offset().top;
+  if(pos1==1) T1 = el1.position().top-offsety;
+  if(pos2==1) T2 = el2.position().top;
 
-var L1 = el1.offset().left-offsetx;
-var L2 = el2.offset().left;
-if(pos1==1) L1 = el1.position().left-offsetx;
-if(pos2==1) L2 = el2.position().left;
+  var L1 = el1.offset().left-offsetx;
+  var L2 = el2.offset().left;
+  if(pos1==1) L1 = el1.position().left-offsetx;
+  if(pos2==1) L2 = el2.position().left;
 
-var B1 = el1.offset().top + el1.outerHeight() + offsety;
-var B2 = el2.offset().top + el2.outerHeight();
-if(pos1==1) B1 = el1.position().top + el1.outerHeight() + offsety;
-if(pos2==1) B2 = el2.position().top + el2.outerHeight();
+  var B1 = el1.offset().top + el1.outerHeight() + offsety;
+  var B2 = el2.offset().top + el2.outerHeight();
+  if(pos1==1) B1 = el1.position().top + el1.outerHeight() + offsety;
+  if(pos2==1) B2 = el2.position().top + el2.outerHeight();
 
-var R1 = el1.offset().left + el1.outerWidth() + offsetx;
-var R2 = el2.offset().left + el2.outerWidth();
-if(pos1==1) R1 = el1.position().left + el1.outerWidth() + offsetx;
-if(pos2==1) R2 = el2.position().left + el2.outerWidth();
+  var R1 = el1.offset().left + el1.outerWidth() + offsetx;
+  var R2 = el2.offset().left + el2.outerWidth();
+  if(pos1==1) R1 = el1.position().left + el1.outerWidth() + offsetx;
+  if(pos2==1) R2 = el2.position().left + el2.outerWidth();
 
-if(T1 <= B2 && B1 >= T2 && L1 <= R2 && R1 >= L2)
-  return true;
-else
-  return false;
+  if(T1 <= B2 && B1 >= T2 && L1 <= R2 && R1 >= L2)
+    return true;
+  else
+    return false;
 
-}
+};
 
 nvgjs.isMobile = function() { 
- if( navigator.userAgent.match(/Android/i)
- || navigator.userAgent.match(/webOS/i)
- || navigator.userAgent.match(/iPhone/i)
- || navigator.userAgent.match(/iPad/i)
- || navigator.userAgent.match(/iPod/i)
- || navigator.userAgent.match(/BlackBerry/i)
- || navigator.userAgent.match(/Windows Phone/i)
- )
+ if( navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) )
   return true;
 else
   return false;
-}
+};
 
 nvgjs.isMScreen = function() {
    if(window.innerWidth <= 800 && window.innerHeight <= 600)
      return true;
    else
      return false;
-}
+};
 
 nvgjs.clearSelection = function()
 {
   if (window.getSelection) {
-      if (window.getSelection().empty) {  // Chrome
+      if (window.getSelection().empty) { 
         window.getSelection().empty();
-      } else if (window.getSelection().removeAllRanges) {  // Firefox
+      } else if (window.getSelection().removeAllRanges) {
         window.getSelection().removeAllRanges();
       }
-    } else if (document.selection) {  // IE?
+    } else if (document.selection) { 
       document.selection.empty();
     }
-}
+};
 
 nvgjs.noSelfHideCollapse = function(btnCollapse1, framework)
 {
@@ -207,8 +200,7 @@ nvgjs.noSelfHideCollapse = function(btnCollapse1, framework)
     nvgjs.attrcollapse = $(this).attr("data-target"); 
     }); 
   }
-
-}
+};
 
 function nvgjs(){}
 
@@ -307,12 +299,10 @@ function nvgcopy(btn, text, isInput, funcSucc)
     }
   }
     try {
-    var successful = document.execCommand('copy');
+    document.execCommand('copy');
     nvgjs.clearSelection();
     if(funcSucc !== undefined)
       funcSucc();
-    //var msg = successful ? 'successful' : 'unsuccessful';
-    //console.log('Copying text command was ' + msg);
     return true;
   } catch (err) {
     console.log('Oops, unable to copy');
