@@ -259,6 +259,8 @@ function nvgcopy(btn, text, isInput, funcSucc)
   copyTextareaBtn.click(function()
   {
     var copyTextarea = $(text);
+    if(text==btn)
+      copyTextarea = $(this);
     if(isInput)
     {
       try

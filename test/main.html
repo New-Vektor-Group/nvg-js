@@ -35,10 +35,28 @@ Window height = <span id="wh2">for moment testing</span>
 <input value="Test copy for input" id="copyinput">
 <button id="copyinput_btn">Copy him</button>
 
+<br>
+<hr>
+<br>
+<br>
+Copy with classes
+<div class="copyme bg-warning py-3">
+	Hello world
+</div>
+<div class="copyme bg-warning py-3">
+	3232431
+</div>
+<div class="copyme bg-warning py-3">
+	Hello world2
+</div>
+<div class="copyme bg-warning py-3">
+	Test 56
+</div>
+
 <footer> 
 <script src="https://ex.nvg-team.com/jquery-3.3.1.js"></script> 
 <script src="https://ex.nvg-team.com/bootstrap3.js"></script> 
-<script src="../src/7.3.6/lib/fmain.js"></script> 
+<script src="../src/7.3.7/lib/fmain.js"></script> 
 <script type="text/javascript">
 $("#version").text(nvgjs.getVersion());
 
@@ -56,6 +74,8 @@ nvgcopy("#wh1");
 nvgcopy("#copytxt");
 nvgcopy("#copytxt_btn_btn","#copytxt_btn");
 nvgcopy("#copyinput_btn","#copyinput",1,aa);
+nvgcopy(".copyme");
+
 
 alert(nvgjs.get("abc"));
 alert(nvgjs.set("abcd",2));
