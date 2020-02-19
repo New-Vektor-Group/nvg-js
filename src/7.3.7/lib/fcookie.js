@@ -68,9 +68,9 @@ function nvg_cook(inputId, expire)
   $(this.inputId).bind('input', function()
   {
     localStorage.setItem(this.id, $(this).val());
-    nvg_cook.setCookie("ede56579ee9d437820a0f9"+this.inputId,1,{expires: this.expire});
+    nvg_cook.setCookie("ede56579ee9d437820a0f9"+this.id,1,{expires: this.expire});
   });
 
-  if(nvg_cook.getCookie("ede56579ee9d437820a0f9"+this.inputId)==1)
+  if(nvg_cook.getCookie("ede56579ee9d437820a0f9"+this.inputId.slice(1))==1)
     $(this.inputId).val(localStorage.getItem(this.inputId.slice(1)));
 }
