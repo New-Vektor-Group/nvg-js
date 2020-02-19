@@ -105,29 +105,36 @@ nvgi.preLoadId = function(elem, srcname, isCss)
 
 function nvgi(){}
 
+nvg_modal.framework = "bs";
 function nvg_modal(mode, trigger, img, width_new)
 {
-	nvg_modal.prototype.create_window = function(mode, maxsizer, tg, img)
-	{
+  nvg_modal.prototype.create_window = function(mode, maxsizer, tg, img)
+  {
     var parts = [];
-		if(mode=="img2")
-        {
-            parts.push('<div class="modal fade" id="'+tg.substring(1)+'_2" tabindex="-1" role="dialog" aria-hidden="true">');
-            parts.push('<div class="modal-dialog" style="max-width: '+ maxsizer + 'px" role="document"><div style="background: none;" class="modal-content"><div style="border: none; background-color: snow; background-color: rgba(230,230,230,0.8);" class="modal-header">');
-            parts.push('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            parts.push('<div class="modal-body"><img style="position: relative; width: 100%;" src="'+img+'"></div>');
-            parts.push('</div></div></div>');
-        }
-        else
-        {
-            parts.push('<div class="modal fade" id="'+tg.substring(1)+'_2" tabindex="-1" role="dialog" aria-hidden="true">');
-            parts.push('<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">');
-            parts.push('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            parts.push('<div class="modal-body"><img style="position: relative; width: 100%;" src="'+img+'"></div>');
-            parts.push('</div></div></div>');
-        }
-        return parts.join("");
-	};
+    if(mode=="img2")
+    {
+      if(nvg_modal.framework == "bs")
+      {
+        parts.push('<div class="modal fade" id="'+tg.substring(1)+'_2" tabindex="-1" role="dialog" aria-hidden="true">');
+        parts.push('<div class="modal-dialog" style="max-width: '+ maxsizer + 'px" role="document"><div style="background: none;" class="modal-content"><div style="border: none; background-color: snow; background-color: rgba(230,230,230,0.8);" class="modal-header">');
+        parts.push('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        parts.push('<div class="modal-body"><img style="position: relative; width: 100%;" src="'+img+'"></div>');
+        parts.push('</div></div></div>');
+      }
+    }
+    else
+    {
+      if(nvg_modal.framework == "bs")
+      {
+        parts.push('<div class="modal fade" id="'+tg.substring(1)+'_2" tabindex="-1" role="dialog" aria-hidden="true">');
+        parts.push('<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">');
+        parts.push('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        parts.push('<div class="modal-body"><img style="position: relative; width: 100%;" src="'+img+'"></div>');
+        parts.push('</div></div></div>');
+      }
+    }
+    return parts.join("");
+  };
 
   if(width_new === undefined)
     width_new = 500;
@@ -136,11 +143,18 @@ function nvg_modal(mode, trigger, img, width_new)
   this.img = img;
 
   if(mode == "img" || mode == "" || mode == "img2")
+  {
+    if(nvg_modal.framework == "bs")
     {
       $(this.tg).css("cursor","pointer");
       $(this.tg).attr("onclick","$('"+this.tg+"_2').modal('show');");      
       $("body").append(nvg_modal.prototype.create_window(mode,width_new,this.tg, this.img));
     }
+    else if(nvg_modal.framework == "uk")
+    {
+
+    }
+  }
 }
 
 window.addEventListener("paste", function(e){
