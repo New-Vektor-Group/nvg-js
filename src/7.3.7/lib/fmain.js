@@ -200,6 +200,10 @@ nvgjs.noSelfHideCollapse = function(btnCollapse1, framework)
     nvgjs.attrcollapse = $(this).attr("data-target"); 
     }); 
   }
+  else if(nvgjs.framework == "uk")
+  {
+    $(nvgjs.btnCollapse).attr("uk-accordion","collapsible: false");
+  }
 };
 
 function nvgjs(){}
