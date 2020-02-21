@@ -3,6 +3,11 @@ nvgs.enabled = true;
 
 nvgs.setFix = function(el, wh, ofx, ofy)
 {
+  if(ofx == undefined)
+    ofx = 0;
+  if(ofy == undefined)
+    ofy = ofx;
+
   $(el).css("position","fixed");
   $(el).css("z-index","1001");
 
@@ -52,7 +57,7 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
   {
     var scroll = $(window).scrollTop();
 
-    if(element.direction == 1)
+    if(element.direction)
     {
       if(scroll >= element.scroll_when)
       {
@@ -71,7 +76,7 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
         }
       }
     }
-    else if(element.direction==0)
+    else if(!element.direction)
     {
       if(scroll<=element.scroll_when)
       {
@@ -123,7 +128,7 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
   if(direction2 !== "" && direction2 !== undefined) 
     this.direction = direction2;
   else 
-    this.direction = 1;
+    this.direction = true;
 
   if(animate !== "" && animate !== undefined) 
     this.animate = animate;
@@ -137,7 +142,7 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
 
 var isScrolling52234;
 $(window).scroll(function ()
-{
+{ 
   window.clearTimeout(isScrolling52234);
   isScrolling52234 = setTimeout(function() {
     if(nvgs.enabled === true)
