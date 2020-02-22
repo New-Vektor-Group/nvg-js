@@ -1,14 +1,12 @@
 # NVG Library for JavaScript (Web Development)
-NVG JS Library for web dev. Version 7.3.7, 2020 February, 16
-s
+NVG JS Library for web dev. Version 7.6.9, 2020 February, 22
 
 ![Logo](https://github.com/lonagi/nvg-js/blob/master/img/NVG%20JS.png)
 
 ### Documentation [English](http://docs.nvg-team.com/js) [Русский](http://docs.nvg-team.com/js/ru/) 
 
 ## Requirements
-1. JQuery (3.3.1 Stable)
-2. Bootstrap (4 Stable)
+1. JQuery ( from v3.3.1 is stable)
 
 ## Libraries
 1. NVG (General, has all libs)
@@ -24,17 +22,17 @@ s
 1. Connect
 
 ```
-<script src="YOUR_PATH/nvg-main.js"></script>
+<script src="YOUR_PATH/main.js"></script>
 ```
 ____________________________________________________________________
 * Connect any library
 ```
-<script src="YOUR_PATH/nvg-text.js"></script>
+<script src="YOUR_PATH/text.js"></script>
 ```
 
 * Connect all libraries at once
 ```
-<script src="YOUR_PATH/nvg.js"></script>
+<script src="YOUR_PATH/f.min.js"></script>
 ```
 
 2. Next, you should create a separate script tag. There you can use our framework.
@@ -42,7 +40,7 @@ For example,
 ```
 <script type="text/javascript">
 
-#For example, nvg-text.js
+//For example, text.js
 nl2br(mystring);
 
 </script>
