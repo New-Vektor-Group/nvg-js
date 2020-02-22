@@ -3,31 +3,6 @@ nvgi.needToS = false;
 nvgi.paste = false;
 nvgi.ToS = "";
 
-nvgi.copyImage = function (canvas, paste, btn, autodownload, download)
-{
-  if(typeof canvas == "object")
-    var url = canvas.toDataURL("image/png");
-
-  if(btn != undefined)
-  {
-      document.getElementById(btn).href = url;
-      if(download == undefined)
-        download = "F"+Math.round(Math.random()*50000000)+"s.png";
-      document.getElementById(btn).download = download;
-      if(autodownload === true)
-          document.getElementById(btn).click();
-  }
-
-  if(typeof paste == "string")
-  {
-    var img = document.createElement('img');
-    img.src=url;
-    document.getElementById(paste).appendChild(img);
-  }
-
-  return url;
-}
-
 nvgi.getImg = function(pastee, callback)
 {
   if(pastee.clipboardData == false)
