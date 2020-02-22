@@ -1,23 +1,23 @@
 nvgtext.nl2br = function(str, is_xhtml)
 {
-	if (typeof str === 'undefined' || str === null)
-	    return '';
-	var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
-	return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+  if (typeof str === 'undefined' || str === null)
+      return '';
+  var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+  return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
 };
 
 nvgtext.nocopy = function(element)
 {
-	$(element).css("-webkit-user-select","none");
-	$(element).css("-khtml-user-select","none");
-	$(element).css("-moz-user-select","none");
-	$(element).css("-ms-user-select","none");
-	$(element).css("-o-user-select","none");
-	$(element).css("user-select","none");
-	
-	$(element).bind('cut copy paste', function(e) {
-		e.preventDefault();
-	});
+  $(element).css("-webkit-user-select","none");
+  $(element).css("-khtml-user-select","none");
+  $(element).css("-moz-user-select","none");
+  $(element).css("-ms-user-select","none");
+  $(element).css("-o-user-select","none");
+  $(element).css("user-select","none");
+  
+  $(element).bind('cut copy paste', function(e) {
+    e.preventDefault();
+  });
 };
 
 function nvgtext(){}
@@ -181,77 +181,77 @@ function nvg_snow(zindex)
 
 nvgR.I = function(min, max, f) 
 {
-	if(f === undefined)
-		f = false;
+  if(f === undefined)
+    f = false;
 
-	/* min [] и max ()*/
- 	if(f)
- 		return Math.floor(Math.random() * (max - min) + min);
- 	else
- 		return Math.random() * (max - min) + min;
+  /* min [] и max ()*/
+  if(f)
+    return Math.floor(Math.random() * (max - min) + min);
+  else
+    return Math.random() * (max - min) + min;
 };
 
 nvgR.C = function(caps, lang)
 {
-	if(caps === undefined)
-		caps = true;
-	if(lang === undefined)
-		lang = 'en';
+  if(caps === undefined)
+    caps = true;
+  if(lang === undefined)
+    lang = 'en';
 
-	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-	if(lang=='ru'){
-		chars = "ЙФЯЦЫЧУВСКАМЕПИНРТГОЬШЛБЩДЮЗЖХЭЪйфяцычувскамепинртгоьшлбщдюзжхэъ";
-		if(!caps)
-			chars = chars.slice(32);
-	}
-	else{
-		if(!caps)
-			chars = chars.slice(26);
-	}
-	
-	var rnum = Math.floor(Math.random() * chars.length);
-	var randomstring = chars.substring(rnum,rnum+1);
-	return randomstring;
+  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+  if(lang=='ru'){
+    chars = "ЙФЯЦЫЧУВСКАМЕПИНРТГОЬШЛБЩДЮЗЖХЭЪйфяцычувскамепинртгоьшлбщдюзжхэъ";
+    if(!caps)
+      chars = chars.slice(32);
+  }
+  else{
+    if(!caps)
+      chars = chars.slice(26);
+  }
+  
+  var rnum = Math.floor(Math.random() * chars.length);
+  var randomstring = chars.substring(rnum,rnum+1);
+  return randomstring;
 };
 
 nvgR.D = function(zero)
 {
-	if(zero === undefined)
-		zero = true;
+  if(zero === undefined)
+    zero = true;
 
-	if(zero)
-		return nvgR.I(0,10,1);
-	else
-		return nvgR.I(1,10,1);
+  if(zero)
+    return nvgR.I(0,10,1);
+  else
+    return nvgR.I(1,10,1);
 };
 
 nvgR.N = function(d)
 {
-	if(d === undefined)
-		d = 1;
-	return nvgR.I(Math.pow(10,d-1),Math.pow(10,d-1)*10,1);
+  if(d === undefined)
+    d = 1;
+  return nvgR.I(Math.pow(10,d-1),Math.pow(10,d-1)*10,1);
 };
 
 function nvgR(){}
 
 nvgM.sigm = function(x) 
 {
- 	return 1/(1+Math.pow(Math.E, -x));
+  return 1/(1+Math.pow(Math.E, -x));
 };
 function nvgM(){}
 
 if (typeof var_dump === "undefined") { 
-	var var_dump = function (obj, alerti)
-	{
-		var out = '';
-		for (var i in obj)
+  var var_dump = function (obj, alerti)
+  {
+    var out = '';
+    for (var i in obj)
     {
-			out += i + ": " + obj[i] + "\n";
-		}
-		if(alerti === true)
-			alert(out);
-		return out;
-	};
+      out += i + ": " + obj[i] + "\n";
+    }
+    if(alerti === true)
+      alert(out);
+    return out;
+  };
 }
 
 nvgjs.isnoSelfHideCollapse = false;
@@ -290,7 +290,7 @@ nvgjs.https = function()
 
 nvgjs.getVersion = function()
 {
-  return "1.0.0";
+  return "7.6.9";
 };
 
 nvgjs.ScrollBot = function(nvgw)
@@ -723,10 +723,6 @@ function nvg_modal(mode, trigger, img, width_new)
       $(this.tg).attr("onclick","$('"+this.tg+"_2').modal('show');");      
       $("body").append(nvg_modal.prototype.create_window(mode,width_new,this.tg, this.img));
     }
-    else if(nvg_modal.framework == "uk")
-    {
-
-    }
   }
 }
 
@@ -734,13 +730,13 @@ window.addEventListener("paste", function(e){
 
     if(nvgi.paste)
     {
-    	nvgi.getImg(e, function(iblob){
+      nvgi.getImg(e, function(iblob){
         if(iblob)
-        	{           
+          {           
             var img = new Image();
             img.onload = function(){
             if(nvgi.needToS && nvgi.Tos != "")
-            	$(nvgi.ToS).html(img);
+              $(nvgi.ToS).html(img);
             };
 
             nvgi.block_f = iblob;
@@ -753,13 +749,21 @@ window.addEventListener("paste", function(e){
 
 }, false);
 
+
 nvgs.countEls = [];
 nvgs.enabled = true;
 
-nvgs.setFix = function(el, wh, ofx, ofy)
+nvgs.setFix = function(el, wh, ofx, ofy, zindex)
 {
+  if(ofx == undefined)
+    ofx = 0;
+  if(ofy == undefined)
+    ofy = ofx;
+  if(zindex == undefined)
+    zindex = 1001;
+
   $(el).css("position","fixed");
-  $(el).css("z-index","1001");
+  $(el).css("z-index",zindex);
 
   if(wh[0]=="t")
     $(el).css("top",ofy+"px");
@@ -807,7 +811,7 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
   {
     var scroll = $(window).scrollTop();
 
-    if(element.direction == 1)
+    if(element.direction)
     {
       if(scroll >= element.scroll_when)
       {
@@ -826,7 +830,7 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
         }
       }
     }
-    else if(element.direction==0)
+    else if(!element.direction)
     {
       if(scroll<=element.scroll_when)
       {
@@ -878,7 +882,7 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
   if(direction2 !== "" && direction2 !== undefined) 
     this.direction = direction2;
   else 
-    this.direction = 1;
+    this.direction = true;
 
   if(animate !== "" && animate !== undefined) 
     this.animate = animate;
@@ -892,7 +896,7 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
 
 var isScrolling52234;
 $(window).scroll(function ()
-{
+{ 
   window.clearTimeout(isScrolling52234);
   isScrolling52234 = setTimeout(function() {
     if(nvgs.enabled === true)
@@ -962,10 +966,10 @@ nvg_cook.deleteCookie = function(name)
 
 function nvg_cook(inputId, expire)
 {
-	this.delMe = function()
-	{
-		localStorage.removeItem(this.inputId.slice(1));
-	};
+  this.delMe = function()
+  {
+    localStorage.removeItem(this.inputId.slice(1));
+  };
 
   this.clear = function()
   {
