@@ -150,10 +150,6 @@ function nvg_modal(mode, trigger, img, width_new)
       $(this.tg).attr("onclick","$('"+this.tg+"_2').modal('show');");      
       $("body").append(nvg_modal.prototype.create_window(mode,width_new,this.tg, this.img));
     }
-    else if(nvg_modal.framework == "uk")
-    {
-
-    }
   }
 }
 
