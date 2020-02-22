@@ -1,15 +1,17 @@
 nvgs.countEls = [];
 nvgs.enabled = true;
 
-nvgs.setFix = function(el, wh, ofx, ofy)
+nvgs.setFix = function(el, wh, ofx, ofy, zindex)
 {
   if(ofx == undefined)
     ofx = 0;
   if(ofy == undefined)
     ofy = ofx;
+  if(zindex == undefined)
+    zindex = 1001;
 
   $(el).css("position","fixed");
-  $(el).css("z-index","1001");
+  $(el).css("z-index",zindex);
 
   if(wh[0]=="t")
     $(el).css("top",ofy+"px");
