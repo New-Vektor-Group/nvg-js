@@ -48,7 +48,7 @@ nvgjs.https = function()
 
 nvgjs.getVersion = function()
 {
-  return "1.0.0";
+  return "7.6.9";
 };
 
 nvgjs.ScrollBot = function(nvgw)
