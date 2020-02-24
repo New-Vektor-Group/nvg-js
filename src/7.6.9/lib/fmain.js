@@ -114,6 +114,33 @@ nvgjs.isVisible = function(elem, oft, ofb, ofl, ofr)
   return a && b;
 };
 
+nvgjs.inDisplay = function(elem, oft, ofb, ofl, ofr)
+{
+  if(oft === undefined)
+    oft = 0;
+  if(ofb === undefined)
+    ofb = 0;
+  if(ofl === undefined)
+    ofl = 0;
+  if(ofr === undefined)
+    ofr = 0;
+
+  var coords = $(elem)[0].getBoundingClientRect();
+
+  var windowHeight = document.documentElement.clientHeight;
+  var windowWidth = document.documentElement.clientWidth;
+
+  var topVisible = coords.top-oft > 0 && coords.top-oft < windowHeight;
+  var bottomVisible = coords.bottom-ofb < windowHeight && coords.bottom-ofb > 0;
+
+  var leftVisible = coords.left-ofl > 0 && coords.left-ofl < windowWidth;
+  var rightVisible = coords.right-ofr < windowWidth && coords.right-ofr > 0;
+
+  var a = topVisible && bottomVisible;
+  var b = leftVisible && rightVisible;
+  return a && b;
+};
+
 nvgjs.Collision = function(elem1,elem2,pos1,pos2,offsety,offsetx)
 {
   if(pos1 === undefined)
