@@ -68,7 +68,7 @@ nvgjs.ScrollTopSoft = function()
 
 nvgjs.ScrollBotSoft = function()
 {
-  $("html, body").animate({ scrollTop: screen.height }, 'slow');
+  $("html, body").animate({ scrollTop: window.innerHeight+window.outerHeight }, 'slow');
 };
 
 nvgjs.ScrollSoft = function(coord)
