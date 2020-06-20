@@ -17,6 +17,15 @@ nvgjs.btnCollapse = "noelementt";
 nvgjs.attrcollapse = "noelementt";
 nvgjs.framework = "bs";
 
+nvgjs.css = function(el, styles){
+  var els = document.querySelectorAll(el);
+
+  els.forEach(function(el, ind){
+    for(var s in styles){
+      el.style[s] = styles[s];
+    }
+  });
+};
 nvgjs.get = function(parm)
 {
   return new URL(window.location.href).searchParams.get(parm);
