@@ -26,6 +26,11 @@ nvgjs.css = function(el, styles){
     }
   });
 };
+
+nvgjs.nodrag = function(elID){
+  document.getElementById(elID).ondragstart = function() { return false; };
+};
+
 nvgjs.get = function(parm)
 {
   return new URL(window.location.href).searchParams.get(parm);
