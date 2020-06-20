@@ -1,13 +1,11 @@
-nvg_cook.getCookie = function(name)
-{
+nvg_cook.getCookie = function(name){
   var matches = document.cookie.match(new RegExp(
     "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
   ));
   return matches ? decodeURIComponent(matches[1]) : undefined;
 };
 
-nvg_cook.setCookie = function(name, value, options)
-{
+nvg_cook.setCookie = function(name, value, options){
   options = options || {};
 
   var expires = options.expires;
@@ -30,9 +28,8 @@ nvg_cook.setCookie = function(name, value, options)
   {
     updatedCookie += "; " + propName;
     var propValue = options[propName];
-    if (propValue !== true) {
+    if (propValue !== true)
       updatedCookie += "=" + propValue;
-    }
   }
 
   document.cookie = updatedCookie;
@@ -45,15 +42,12 @@ nvg_cook.deleteCookie = function(name)
   });
 };
 
-function nvg_cook(inputId, expire)
-{
-	this.delMe = function()
-	{
+function nvg_cook(inputId, expire){
+	this.delMe = function(){
 		localStorage.removeItem(this.inputId.slice(1));
 	};
 
-  this.clear = function()
-  {
+  this.clear = function(){
     this.delMe();
     $(this.inputId).val('');
   };
