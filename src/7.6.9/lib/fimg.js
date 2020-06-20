@@ -3,41 +3,33 @@ nvgi.needToS = false;
 nvgi.paste = false;
 nvgi.ToS = "";
 
-nvgi.getImg = function(pastee, callback)
-{
+nvgi.getImg = function(pastee, callback){
   if(pastee.clipboardData == false)
   {
-        if(typeof(callback) == "function")
-        {
-            callback(undefined);
-        }
+    if(typeof(callback) == "function")
+        callback(undefined);
   }
 
-    var files = pastee.clipboardData.items;
+  var files = pastee.clipboardData.items;
 
-    if(files == undefined)
-    {
-        if(typeof(callback) == "function")
-        {
-            callback(undefined);
-        }
-    }
+  if(files == undefined)
+  {
+    if(typeof(callback) == "function")
+      callback(undefined);
+  }
 
-    for (var i = 0; i < files.length; i++)
-    {
-        if (files[i].type.indexOf("image") == -1) 
-          continue;
-        var blob = files[i].getAsFile();
+  for (var i = 0; i < files.length; i++)
+  {
+    if (files[i].type.indexOf("image") == -1) 
+      continue;
+    var blob = files[i].getAsFile();
 
-        if(typeof(callback) == "function")
-        {
-          callback(blob);
-        }
-    }
+    if(typeof(callback) == "function")
+      callback(blob);
+  }
 };
 
-nvgi.preLoad = function(elems, srcname, isCss)
-{
+nvgi.preLoad = function(elems, srcname, isCss){
   if(srcname===undefined || srcname === 0)
     srcname = "data-src";
   if(isCss===undefined)
@@ -76,8 +68,7 @@ nvgi.preLoad = function(elems, srcname, isCss)
   });
 };
 
-nvgi.preLoadId = function(elem, srcname, isCss)
-{
+nvgi.preLoadId = function(elem, srcname, isCss){
   if(srcname===undefined || srcname === 0)
       srcname = "data-src";
   if(isCss===undefined)
@@ -154,7 +145,6 @@ function nvg_modal(mode, trigger, img, width_new)
 }
 
 window.addEventListener("paste", function(e){
-
     if(nvgi.paste)
     {
     	nvgi.getImg(e, function(iblob){
@@ -173,5 +163,4 @@ window.addEventListener("paste", function(e){
         }
     });
     }
-
 }, false);
