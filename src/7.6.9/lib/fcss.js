@@ -1,8 +1,7 @@
 nvgs.countEls = [];
 nvgs.enabled = true;
 
-nvgs.setFix = function(el, wh, ofx, ofy, zindex)
-{
+nvgs.setFix = function(el, wh, ofx, ofy, zindex){
   if(ofx == undefined)
     ofx = 0;
   if(ofy == undefined)
@@ -10,24 +9,37 @@ nvgs.setFix = function(el, wh, ofx, ofy, zindex)
   if(zindex == undefined)
     zindex = 1001;
 
-  $(el).css("position","fixed");
-  $(el).css("z-index",zindex);
+  nvgjs.css(el,{
+    position:"fixed",
+    z-index:zindex
+  });
 
   if(wh[0]=="t")
-    $(el).css("top",ofy+"px");
+    nvgjs.css(el,{
+      top: ofy+"px"
+    });
   else if(wh[0]=="b")
-    $(el).css("bottom",ofy+"px");
+    nvgjs.css(el,{
+        bottom: ofy+"px"
+    });
 
   if(wh[1]=="l")
-    $(el).css("left",ofx+"px");
+    nvgjs.css(el,{
+        left: ofx+"px"
+    });
   else if(wh[1]=="r")
-    $(el).css("right",ofx+"px");
+    nvgjs.css(el,{
+        right: ofx+"px"
+    });
   else if(wh[1]=="c")
-    $(el).css("left",(50+ofx)+"%");
+    nvgjs.css(el,{
+        left: (50+ofx)+"%"
+    });
 };
 
-function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
-{
+
+//Jquery
+function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2){
   nvgs.sh5df543 = function(objj, animate)
   {
     $(objj).css("display",'inherit');
@@ -74,7 +86,6 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
         if(!element.needshf) {
           element.needshf = true;
           nvgs.hds5df543(element.obj, element.animate);
-
         }
       }
     }
@@ -164,3 +175,32 @@ $(window).scroll(function ()
     });
   }
 });
+
+
+
+
+const getSort = ({ target }) => {
+        const order = (target.dataset.order = -(target.dataset.order || -1));
+        const index = [...target.parentNode.cells].indexOf(target);
+        const collator = new Intl.Collator(['en', 'ru'], { numeric: true });
+        const comparator = (index, order) => (a, b) => order * collator.compare(
+            a.children[index].innerHTML,
+            b.children[index].innerHTML
+        );
+        
+        for(const tBody of target.closest('table').tBodies)
+            tBody.append(...[...tBody.rows].sort(comparator(index, order)));
+
+        for(const cell of target.parentNode.cells)
+            cell.classList.toggle('sorted', cell === target);
+    };
+    
+    document.querySelectorAll('.table_sort thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
+    $("th[ss]").click();
+
+    var sd=$(".table_sort td:last-child");
+    var i = 0;
+    sd.each(function (e,ee) {
+      i++;
+      $(ee).text(i);
+    })
