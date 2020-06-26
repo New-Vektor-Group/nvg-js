@@ -1,3 +1,74 @@
+nvg_cook.getCookie = function(name){
+  var matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+};
+
+nvg_cook.setCookie = function(name, value, options){
+  options = options || {};
+
+  var expires = options.expires;
+
+  if (typeof expires == "number" && expires)
+  {
+    var d = new Date();
+    d.setTime(d.getTime() + expires * 1000);
+    expires = options.expires = d;
+  }
+
+  if (expires && expires.toUTCString)
+    options.expires = expires.toUTCString();
+
+  value = encodeURIComponent(value);
+
+  var updatedCookie = name + "=" + value;
+
+  for (var propName in options)
+  {
+    updatedCookie += "; " + propName;
+    var propValue = options[propName];
+    if (propValue !== true)
+      updatedCookie += "=" + propValue;
+  }
+
+  document.cookie = updatedCookie;
+};
+
+nvg_cook.deleteCookie = function(name)
+{
+  nvg_cook.setCookie(name, "", {
+    expires: -1
+  });
+};
+
+function nvg_cook(inputId, expire){
+  this.delMe = function(){
+    localStorage.removeItem(this.inputId.slice(1));
+  };
+
+  this.clear = function(){
+    this.delMe();
+    $(this.inputId).val('');
+  };
+
+  if(expire === undefined)
+    this.expire = 86400;
+  else
+    this.expire = expire;
+
+  this.inputId = inputId;
+
+  $(this.inputId).bind('input', function()
+  {
+    localStorage.setItem(this.id, $(this).val());
+    nvg_cook.setCookie("ede56579ee9d437820a0f9"+this.id,1,{expires: this.expire});
+  });
+
+  if(nvg_cook.getCookie("ede56579ee9d437820a0f9"+this.inputId.slice(1))==1)
+    $(this.inputId).val(localStorage.getItem(this.inputId.slice(1)));
+}
+
 nvgtext.nl2br = function(str, is_xhtml)
 {
   if (typeof str === 'undefined' || str === null)
@@ -20,7 +91,95 @@ nvgtext.nocopy = function(element)
   });
 };
 
+nvgtext.boldFunc=function(str, p1, offset, s){
+  return '<strong>'+(p1)+'</strong>'
+};
+
+nvgtext.italicFunc=function(str, p1, offset, s){
+  return '<em>'+(p1)+'</em>'
+};
+
+nvgtext.underlinedFunc=function(str, p1, offset, s){
+  return '<ins>'+(p1)+'</ins>'
+};
+
+nvgtext.ahrefFunc=function(str,b,c,d){
+  return '<a href="'+b+'" target="_blank" class="text-primary">'+(c)+'</a>'
+};
+
+nvgtext.imghrefFunc=function(str,b,c,d){
+  return '<img src="'+b+'" class="img-fluid" style="max-height:500px;">'
+};
+
+nvgtext.hightFunc=function(str, p1, offset, s){
+  return '<span class="bg-primary">'+(p1)+'</span>'
+};
+
+pasBB = function(wh,wha)
+{
+    $textarea=$(wh).parent().next().children("textarea");
+    start = $textarea[0].selectionStart;
+    finish = $textarea[0].selectionEnd;
+    sel = $textarea.get(0).value.substring(start, finish);
+    v = $textarea.val();
+    textBefore = v.substring(0,  start);
+    textAfter  = v.substring(finish, v.length);
+    $textarea.val(textBefore+textAfter);
+    if(sel=="")
+        sel="text";
+    a=" [b]"+sel+"[/b] ";
+    if(wha==1)
+        a=" [i]"+sel+"[/i] ";
+    else if(wha==2)
+        a=" [u]"+sel+"[/u] ";
+    else if(wha==3)
+        a=" [url="+sel+"]"+sel+"[/url] ";
+    else if(wha==4)
+        a=" [h]"+sel+"[/h] ";
+    else if(wha==5)
+        a=" [img="+sel+"]";
+
+    v = $textarea.val();
+    textBefore = v.substring(0,  start);
+    textAfter  = v.substring(start, v.length);
+    $textarea.val(textBefore + a + textAfter);
+
+    $str=BBconvert("#"+$textarea.attr("id"));
+    $textarea.parent().next().next().children(".output-test").html($str);
+};
+
+BBconvert = function(t)
+{
+    $str=nvgtext.nl2br($(t).val());
+    $format_search =  [
+        /\[b\](.*?)\[\/b\]/ig,
+        /\[i\](.*?)\[\/i\]/ig,
+        /\[u\](.*?)\[\/u\]/ig,
+        /\[h\](.*?)\[\/h\]/ig,
+        /\[url=(.*)\](.*)\[\/url\]/ig,
+        /\[img=(.*)\]/ig
+    ];
+    $format_replace = [
+        boldFunc,
+        italicFunc,
+        underlinedFunc,
+        hightFunc,
+        ahrefFunc,
+        imghrefFunc
+    ];
+    for (var i =0;i<$format_search.length;i++) {
+      $str = $str.replace($format_search[i], $format_replace[i]);
+    }
+    return $str;
+};
+
+$(".ianswer").on("input",function(){
+    $str=BBconvert(this);
+    $(this).parent().next().next().children(".output-test").html($str);
+});
+
 function nvgtext(){}
+
 
 function nvg_snow(zindex)
 {
@@ -259,6 +418,20 @@ nvgjs.btnCollapse = "noelementt";
 nvgjs.attrcollapse = "noelementt";
 nvgjs.framework = "bs";
 
+nvgjs.css = function(el, styles){
+  var els = document.querySelectorAll(el);
+
+  els.forEach(function(el, ind){
+    for(var s in styles){
+      el.style[s] = styles[s];
+    }
+  });
+};
+
+nvgjs.nodrag = function(elID){
+  document.getElementById(elID).ondragstart = function() { return false; };
+};
+
 nvgjs.get = function(parm)
 {
   return new URL(window.location.href).searchParams.get(parm);
@@ -310,7 +483,7 @@ nvgjs.ScrollTopSoft = function()
 
 nvgjs.ScrollBotSoft = function()
 {
-  $("html, body").animate({ scrollTop: screen.height }, 'slow');
+  $("html, body").animate({ scrollTop: window.innerHeight+window.outerHeight }, 'slow');
 };
 
 nvgjs.ScrollSoft = function(coord)
@@ -353,6 +526,33 @@ nvgjs.isVisible = function(elem, oft, ofb, ofl, ofr)
 
   var a = topVisible || bottomVisible;
   var b = leftVisible || rightVisible;
+  return a && b;
+};
+
+nvgjs.inDisplay = function(elem, oft, ofb, ofl, ofr)
+{
+  if(oft === undefined)
+    oft = 0;
+  if(ofb === undefined)
+    ofb = 0;
+  if(ofl === undefined)
+    ofl = 0;
+  if(ofr === undefined)
+    ofr = 0;
+
+  var coords = $(elem)[0].getBoundingClientRect();
+
+  var windowHeight = document.documentElement.clientHeight;
+  var windowWidth = document.documentElement.clientWidth;
+
+  var topVisible = coords.top-oft > 0 && coords.top-oft < windowHeight;
+  var bottomVisible = coords.bottom-ofb < windowHeight && coords.bottom-ofb > 0;
+
+  var leftVisible = coords.left-ofl > 0 && coords.left-ofl < windowWidth;
+  var rightVisible = coords.right-ofr < windowWidth && coords.right-ofr > 0;
+
+  var a = topVisible && bottomVisible;
+  var b = leftVisible && rightVisible;
   return a && b;
 };
 
@@ -576,41 +776,33 @@ nvgi.needToS = false;
 nvgi.paste = false;
 nvgi.ToS = "";
 
-nvgi.getImg = function(pastee, callback)
-{
+nvgi.getImg = function(pastee, callback){
   if(pastee.clipboardData == false)
   {
-        if(typeof(callback) == "function")
-        {
-            callback(undefined);
-        }
+    if(typeof(callback) == "function")
+        callback(undefined);
   }
 
-    var files = pastee.clipboardData.items;
+  var files = pastee.clipboardData.items;
 
-    if(files == undefined)
-    {
-        if(typeof(callback) == "function")
-        {
-            callback(undefined);
-        }
-    }
+  if(files == undefined)
+  {
+    if(typeof(callback) == "function")
+      callback(undefined);
+  }
 
-    for (var i = 0; i < files.length; i++)
-    {
-        if (files[i].type.indexOf("image") == -1) 
-          continue;
-        var blob = files[i].getAsFile();
+  for (var i = 0; i < files.length; i++)
+  {
+    if (files[i].type.indexOf("image") == -1) 
+      continue;
+    var blob = files[i].getAsFile();
 
-        if(typeof(callback) == "function")
-        {
-          callback(blob);
-        }
-    }
+    if(typeof(callback) == "function")
+      callback(blob);
+  }
 };
 
-nvgi.preLoad = function(elems, srcname, isCss)
-{
+nvgi.preLoad = function(elems, srcname, isCss){
   if(srcname===undefined || srcname === 0)
     srcname = "data-src";
   if(isCss===undefined)
@@ -649,8 +841,7 @@ nvgi.preLoad = function(elems, srcname, isCss)
   });
 };
 
-nvgi.preLoadId = function(elem, srcname, isCss)
-{
+nvgi.preLoadId = function(elem, srcname, isCss){
   if(srcname===undefined || srcname === 0)
       srcname = "data-src";
   if(isCss===undefined)
@@ -727,7 +918,6 @@ function nvg_modal(mode, trigger, img, width_new)
 }
 
 window.addEventListener("paste", function(e){
-
     if(nvgi.paste)
     {
       nvgi.getImg(e, function(iblob){
@@ -746,15 +936,12 @@ window.addEventListener("paste", function(e){
         }
     });
     }
-
 }, false);
-
 
 nvgs.countEls = [];
 nvgs.enabled = true;
 
-nvgs.setFix = function(el, wh, ofx, ofy, zindex)
-{
+nvgs.setFix = function(el, wh, ofx, ofy, zindex){
   if(ofx == undefined)
     ofx = 0;
   if(ofy == undefined)
@@ -762,24 +949,37 @@ nvgs.setFix = function(el, wh, ofx, ofy, zindex)
   if(zindex == undefined)
     zindex = 1001;
 
-  $(el).css("position","fixed");
-  $(el).css("z-index",zindex);
+  nvgjs.css(el,{
+    position:"fixed",
+    z-index:zindex
+  });
 
   if(wh[0]=="t")
-    $(el).css("top",ofy+"px");
+    nvgjs.css(el,{
+      top: ofy+"px"
+    });
   else if(wh[0]=="b")
-    $(el).css("bottom",ofy+"px");
+    nvgjs.css(el,{
+        bottom: ofy+"px"
+    });
 
   if(wh[1]=="l")
-    $(el).css("left",ofx+"px");
+    nvgjs.css(el,{
+        left: ofx+"px"
+    });
   else if(wh[1]=="r")
-    $(el).css("right",ofx+"px");
+    nvgjs.css(el,{
+        right: ofx+"px"
+    });
   else if(wh[1]=="c")
-    $(el).css("left",(50+ofx)+"%");
+    nvgjs.css(el,{
+        left: (50+ofx)+"%"
+    });
 };
 
-function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
-{
+
+//Jquery
+function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2){
   nvgs.sh5df543 = function(objj, animate)
   {
     $(objj).css("display",'inherit');
@@ -826,7 +1026,6 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
         if(!element.needshf) {
           element.needshf = true;
           nvgs.hds5df543(element.obj, element.animate);
-
         }
       }
     }
@@ -917,79 +1116,29 @@ $(window).scroll(function ()
   }
 });
 
-nvg_cook.getCookie = function(name)
-{
-  var matches = document.cookie.match(new RegExp(
-    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-  ));
-  return matches ? decodeURIComponent(matches[1]) : undefined;
-};
 
-nvg_cook.setCookie = function(name, value, options)
-{
-  options = options || {};
+const getSort = ({ target }) => {
+        const order = (target.dataset.order = -(target.dataset.order || -1));
+        const index = [...target.parentNode.cells].indexOf(target);
+        const collator = new Intl.Collator(['en', 'ru'], { numeric: true });
+        const comparator = (index, order) => (a, b) => order * collator.compare(
+            a.children[index].innerHTML,
+            b.children[index].innerHTML
+        );
+        
+        for(const tBody of target.closest('table').tBodies)
+            tBody.append(...[...tBody.rows].sort(comparator(index, order)));
 
-  var expires = options.expires;
+        for(const cell of target.parentNode.cells)
+            cell.classList.toggle('sorted', cell === target);
+    };
+    
+    document.querySelectorAll('.table_sort thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
+    $("th[ss]").click();
 
-  if (typeof expires == "number" && expires)
-  {
-    var d = new Date();
-    d.setTime(d.getTime() + expires * 1000);
-    expires = options.expires = d;
-  }
-
-  if (expires && expires.toUTCString)
-    options.expires = expires.toUTCString();
-
-  value = encodeURIComponent(value);
-
-  var updatedCookie = name + "=" + value;
-
-  for (var propName in options)
-  {
-    updatedCookie += "; " + propName;
-    var propValue = options[propName];
-    if (propValue !== true) {
-      updatedCookie += "=" + propValue;
-    }
-  }
-
-  document.cookie = updatedCookie;
-};
-
-nvg_cook.deleteCookie = function(name)
-{
-  nvg_cook.setCookie(name, "", {
-    expires: -1
-  });
-};
-
-function nvg_cook(inputId, expire)
-{
-  this.delMe = function()
-  {
-    localStorage.removeItem(this.inputId.slice(1));
-  };
-
-  this.clear = function()
-  {
-    this.delMe();
-    $(this.inputId).val('');
-  };
-
-  if(expire === undefined)
-    this.expire = 86400;
-  else
-    this.expire = expire;
-
-  this.inputId = inputId;
-
-  $(this.inputId).bind('input', function()
-  {
-    localStorage.setItem(this.id, $(this).val());
-    nvg_cook.setCookie("ede56579ee9d437820a0f9"+this.id,1,{expires: this.expire});
-  });
-
-  if(nvg_cook.getCookie("ede56579ee9d437820a0f9"+this.inputId.slice(1))==1)
-    $(this.inputId).val(localStorage.getItem(this.inputId.slice(1)));
-}
+    var sd=$(".table_sort td:last-child");
+    var i = 0;
+    sd.each(function (e,ee) {
+      i++;
+      $(ee).text(i);
+    })
