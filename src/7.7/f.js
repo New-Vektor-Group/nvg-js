@@ -951,7 +951,7 @@ nvgs.setFix = function(el, wh, ofx, ofy, zindex){
 
   nvgjs.css(el,{
     position:"fixed",
-    z-index:zindex
+    zIndex:zindex
   });
 
   if(wh[0]=="t")
@@ -977,10 +977,7 @@ nvgs.setFix = function(el, wh, ofx, ofy, zindex){
     });
 };
 
-
-//Jquery
-function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2){
-  nvgs.sh5df543 = function(objj, animate)
+nvgs.sh5df543 = function(objj, animate)
   {
     $(objj).css("display",'inherit');
     if(animate)
@@ -993,7 +990,7 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2){
     /*setTimeout(function(){},200);*/
   };
 
-  nvgs.hds5df543 = function(objj, animate)
+nvgs.hds5df543 = function(objj, animate)
   {
     if(animate)
     {
@@ -1065,6 +1062,9 @@ function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2){
     }
   };
 
+/*Jquery*/
+function nvgs(obj2, scroll_when2, direction2, animate, scroll_when2_2)
+{
   if(obj2 == "")
     this.obj = "";
   else 
