@@ -455,6 +455,22 @@ nvgjs.set = function(parm, value)
   return url.toString();
 };
 
+nvgjs.ajax = function(method, url, success,error)
+{
+	var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+           if (xmlhttp.status == 200) 
+           	success();
+           else 
+           	error();
+        }
+    };
+
+    xmlhttp.open(method, url, true);
+    xmlhttp.send();
+};
+
 nvgjs.https = function()
 {
   if(location.protocol != 'https:')
